@@ -34,6 +34,23 @@ void instance_pinnacle::Initialize()
     memset(&m_auiEncounter, 0, sizeof(m_auiEncounter));
 }
 
+void instance_pinnacle::OnCreatureCreate(Creature* pCreature)
+{
+    switch (pCreature->GetEntry())
+    {
+        case NPC_SVALA:
+        case NPC_SKADI:
+        case NPC_GORTOK:
+        case NPC_YMIRON:
+        case NPC_FURBOLG:
+        case NPC_WORGEN:
+        case NPC_JORMUNGAR:
+        case NPC_RHINO:
+            m_mNpcEntryGuidStore[pCreature->GetEntry()] = pCreature->GetObjectGuid();
+            break;
+    }
+}
+
 void instance_pinnacle::OnObjectCreate(GameObject* pGo)
 {
     switch(pGo->GetEntry())
@@ -41,7 +58,7 @@ void instance_pinnacle::OnObjectCreate(GameObject* pGo)
         case GO_DOOR_SKADI:
             if (m_auiEncounter[TYPE_SKADI] == DONE)
                 pGo->SetGoState(GO_STATE_ACTIVE);
-            m_mGoEntryGuidStore[GO_DOOR_SKADI] = pGo->GetObjectGuid();
+            m_mGoEntryGuidStore[pGo->GetEntry()] = pGo->GetObjectGuid();
             break;
     }
 }

@@ -45,18 +45,41 @@ enum
 
     NPC_SVALA_SORROW            = 26668,
     NPC_ARTHAS_IMAGE            = 29280,
+    NPC_SPECTATOR               = 26667,
+    NPC_RITUAL_TARGET           = 27327,
+    NPC_FLAME_BRAZIER           = 27273,
+    NPC_RITUAL_CHANNELER        = 27281,
+    NPC_SCOURGE_HULK            = 26555,
 
     SPELL_ARTHAS_VISUAL         = 54134,
 
-    // don't know how these should work in relation to each other
     SPELL_TRANSFORMING          = 54205,
     SPELL_TRANSFORMING_FLOATING = 54140,
     SPELL_TRANSFORMING_CHANNEL  = 54142,
 
-    SPELL_RITUAL_OF_SWORD       = 48276,
-    SPELL_CALL_FLAMES           = 48258,
+    SPELL_RITUAL_OF_SWORD       = 48276, // Teleport and apply dummy aura
+    SPELL_RITUAL_OF_SWORD_RS    = 54159, //RS - Remove Boss Equipment  Apply aura: DisArm
+    SPELL_RITUAL_OF_SWORD_UNK   = 54148, //Unknown Effect. dummy radius 80yrd ????
+    SPELL_RITUAL_STRIKE_TRIGGER = 48331, // triggers 48277 & 59930, needs NPC_RITUAL_TARGET as spell_script_target
+    SPELL_RITUAL_STRIKE_EFF_1   = 48277, // maybe When Sword on ground, svala cast this spell on invisible trigger. Need Spell Script Target. School Damage (Shadow) Value: 6650 to 7350 Radius: 4 yards Effect #2	Apply Aura: Periodic Damage Value: 1000 every 1 second Radius: 4 yards Effect #3	Dummy Server-side script
+    SPELL_SWIRL_SWORD           = 48331, // Visual Effect, need script target 27327
+    SPELL_RITUAL_STRIKE_EFF_2   = 59930, // Apply Aura: Periodic Damage Value: 2000 every 1 second Radius: 4 yards
+
+    SPELL_RITUAL_CHANNELER_1    = 48271,
+    SPELL_RITUAL_CHANNELER_2    = 48274,
+    SPELL_RITUAL_CHANNELER_3    = 48275,
+
+    SPELL_CALL_FLAMES           = 48258,  /// caster effect only, triggers event 17841
+    SPELL_BALL_OF_FLAME         = 48246, /// School Damage (Fire) Value: 1913 to 2587 Radius: 50000 yards
     SPELL_SINISTER_STRIKE       = 15667,
-    SPELL_SINISTER_STRIKE_H     = 59409
+    SPELL_SINISTER_STRIKE_H     = 59409,
+
+    // used by channelers
+    SPELL_SHADOWS_IN_THE_DARK   = 59407, /// apply trigger aura 59408
+    SPELL_SHADOWS_IN_THE_DARK_2 = 59408,
+    SPELL_PARALYZE              = 48278, /// Apply Aura: Stun Value: 48267 Radius: 20 yards
+
+    ACHIEV_THE_INCREDIBLE_HULK  = 2043
 };
 
 /*######
@@ -67,13 +90,13 @@ struct MANGOS_DLL_DECL boss_svalaAI : public ScriptedAI
 {
     boss_svalaAI(Creature* pCreature) : ScriptedAI(pCreature)
     {
-        m_pInstance = (ScriptedInstance*)pCreature->GetInstanceData();
+        m_pInstance = (instance_pinnacle*)pCreature->GetInstanceData();
         m_bIsRegularMode = pCreature->GetMap()->IsRegularDifficulty();
         m_bIsIntroDone = false;
         Reset();
     }
 
-    ScriptedInstance* m_pInstance;
+    instance_pinnacle* m_pInstance;
     bool m_bIsRegularMode;
 
     Creature* pArthas;
