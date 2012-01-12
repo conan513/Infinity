@@ -74,10 +74,22 @@ UPDATE creature_template SET
     vehicle_id = 49
 WHERE entry = 27354;
 
-DELETE FROM npc_spellclick_spells WHERE npc_entry IN (27354);
-INSERT INTO npc_spellclick_spells VALUES
-(27354, 67373, 0, 0, 0, 1);
-INSERT IGNORE INTO spell_script_target VALUES (48610, 1, 27396);
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` IN (27354);
+INSERT INTO `npc_spellclick_spells` VALUES
+(27354, 48533, 12244, 1, 12244, 1),
+(27354, 48533, 12270, 1, 12270, 1);
+
+DELETE FROM `spell_script_target` WHERE `entry` IN (48610);
+INSERT INTO `spell_script_target` VALUES (48610, 1, 27423), (48610, 1, 27371);
+
+-- -------------------------------
+-- Flame Leviathan mechanic seat -
+-- -------------------------------
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` IN (33114);
+INSERT INTO `npc_spellclick_spells` (npc_entry, spell_id, quest_start, quest_start_active, quest_end, cast_flags) VALUES
+(33114,46598, 0, 0, 0, 1);
+UPDATE `creature_template` SET IconName = 'vehichleCursor' WHERE `entry` IN (33114);
+UPDATE `creature_template` SET AIName = 'NullAI' WHERE `entry` IN (33114, 33142, 33143);
 
 -- --------------------------
 -- Forsaken Blight Spreader -
@@ -369,7 +381,7 @@ INSERT INTO npc_spellclick_spells VALUES
 -- Salvaged Siege Engine -
 -- -----------------------
 UPDATE creature_template SET
-    IconName = 'Gunner',
+    IconName = 'VehicleCursor',
     PowerType = 3,
     spell1 = 62345,
     spell2 = 62522,
@@ -393,6 +405,12 @@ UPDATE creature_template SET
     spell5=0,
     spell6=0
 WHERE entry=33067;
+
+UPDATE creature_template SET IconName = 'Gunner', AIName = 'NullAI' WHERE entry IN (33067);
+
+DELETE FROM npc_spellclick_spells WHERE npc_entry = 33067;
+INSERT INTO npc_spellclick_spells VALUES
+(33067, 65031, 0, 0, 0, 1);  -- Siege engine turret
 
 -- ---------------------
 -- Salvaged Demolisher -
