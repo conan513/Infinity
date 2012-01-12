@@ -22,6 +22,7 @@ SDCategory: Utgarde Pinnacle
 EndScriptData */
 
 #include "precompiled.h"
+#include "utgarde_pinnacle.h"
 
 enum
 {
