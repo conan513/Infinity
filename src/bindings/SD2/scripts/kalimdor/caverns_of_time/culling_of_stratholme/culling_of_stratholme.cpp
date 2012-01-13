@@ -785,7 +785,7 @@ struct MANGOS_DLL_DECL npc_arthasAI : public npc_escortAI
                 m_creature->SetGuidValue(UNIT_FIELD_TARGET,ObjectGuid());
                 if (Creature* pHuman = m_pInstance->instance->GetCreature(m_uiHuman01GUID))
                 {
-                    pHuman->SetGuidValue(UNIT_FIELD_TARGET, 0);
+                    pHuman->SetGuidValue(UNIT_FIELD_TARGET, m_creature->GetObjectGuid());
                     pHuman->UpdateEntry(NPC_INFINITE_ADVERSARY);
                 }
                 if (Creature* pHuman2 = m_pInstance->instance->GetCreature(m_uiHuman02GUID))

@@ -577,7 +577,7 @@ struct MANGOS_DLL_DECL npc_nexus_drakeAI : public FollowerAI
                 pHarpooner->KilledMonsterCredit(DRAKE_HUNT_KILL_CREDIT,m_creature->GetObjectGuid());
                 pHarpooner->RemoveAurasByCasterSpell(SPELL_DRAKE_HATCHLING_SUBDUED,uiHarpoonerGUID);
                 SetFollowComplete();
-                uiHarpoonerGUID = 0;
+                uiHarpoonerGUID.Clear();
                 m_creature->ForcedDespawn(1000);
             }
 

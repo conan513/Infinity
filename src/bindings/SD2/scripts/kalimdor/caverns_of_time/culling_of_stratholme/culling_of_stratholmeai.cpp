@@ -464,7 +464,7 @@ struct MANGOS_DLL_DECL npc_moriganAI : public ScriptedAI
            case 12:
               m_creature->SetGuidValue(UNIT_FIELD_TARGET,ObjectGuid());
               if(Creature* pTemp = m_pInstance->GetSingleCreatureFromStorage(NPC_PERELLI))
-                 pTemp->SetGuidValue(UNIT_FIELD_TARGET, 0);
+                 pTemp->SetGuidValue(UNIT_FIELD_TARGET, m_creature->GetObjectGuid());
               m_creature->GetMotionMaster()->MovePoint(0, 1576.119f, 657.675f, 102.09f);
               m_uiStepTimer = 4900;
               break;
@@ -602,7 +602,7 @@ struct MANGOS_DLL_DECL npc_jenaAI : public ScriptedAI
            case 10:
               if (Creature* pTemp = m_pInstance->GetSingleCreatureFromStorage(NPC_MARTHA))
               {
-                 pTemp->SetGuidValue(UNIT_FIELD_TARGET, 0);
+                 pTemp->SetGuidValue(UNIT_FIELD_TARGET, m_creature->GetObjectGuid());
                  pTemp->GetMap()->CreatureRelocation(pTemp, 1640.089f, 725.766f, 113.561f, 4.77f);
                  pTemp->GetMotionMaster()->MovePoint(0,1640.089f, 725.766f, 113.561f);
               }
