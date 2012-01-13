@@ -530,7 +530,7 @@ void Unit::SendMonsterMove(float NewPosX, float NewPosY, float NewPosZ, SplineTy
     data << GetPackGUID();
    if (m_transport)
    {
-       data.appendPackGUID(m_transport->GetGUID());
+       data.appendPackGUID(m_transport->GetObjectGuid());
        data << uint8(0);
    }
     data << uint8(0);                                       // new in 3.1 bool, used to toggle MOVEFLAG2_UNK4 = 0x0040 on client side
