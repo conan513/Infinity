@@ -638,6 +638,20 @@ INSERT INTO npc_spellclick_spells VALUES (25743, 43695, 0, 0, 0, 0);
 DELETE FROM npc_spellclick_spells WHERE npc_entry = 32535;
 INSERT INTO npc_spellclick_spells VALUES (32535, 61245, 0, 0, 0, 1);
 
+-- ----------------------------------------
+-- Rocket Propelled Warhead (quest 12437) -
+-- ----------------------------------------
+UPDATE `creature_template` SET `InhabitType` = 6,`unit_flags` = `unit_flags`|16384,`speed_walk` = 4,`speed_run` = 4, `vehicle_id` = 57, `IconName`='vehicleCursor' WHERE `entry`= 27593;
+UPDATE `creature_model_info` SET `bounding_radius` = 2,`combat_reach` = 3.5 WHERE `modelid` = 26611;
+
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 27593;
+INSERT INTO `npc_spellclick_spells` VALUES
+(27593, 49177, 12437, 1, 0, 1);
+
+DELETE FROM `creature_template_addon` WHERE `entry` = 27593;
+INSERT INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES
+(27593, 0, 0, 1, 0, 0, 0, NULL);
+
 
 -- =====================================================================================
 -- ---------------------
