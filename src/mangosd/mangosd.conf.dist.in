@@ -1374,7 +1374,7 @@ GM.AnnounceBan           = 0
 
 Visibility.GroupMode = 0
 Visibility.Distance.Continents    = 90
-Visibility.Distance.Instances     = 400
+Visibility.Distance.Instances     = 450
 Visibility.Distance.BGArenas      = 180
 Visibility.Distance.InFlight      = 100
 Visibility.Distance.Grey.Unit   = 1
