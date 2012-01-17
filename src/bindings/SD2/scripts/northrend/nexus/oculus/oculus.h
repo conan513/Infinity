@@ -81,6 +81,7 @@ enum
 enum Instance_Oculus
 {
     SAY_VAROS_INTRO             = -1578029,
+    //SAY_BELGARISTRASZ_GREET     = -1578040,
     // varos' shield
     SPELL_CENTRIFUGE_SHIELD     = 50053,
 };
