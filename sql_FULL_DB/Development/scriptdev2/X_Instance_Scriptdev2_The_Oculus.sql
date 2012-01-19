@@ -2,6 +2,9 @@
 -- The Oculus -
 -- ------------
 
+-- (-1578040,'Thank you for freeing us, mortals. Beware, the Blue Flight is alerted to your presence. Even now, Malygos sends Varos Cloudstrider and his ring guardians to defend the Oculus. You will need our help to stand a chance.',0,0,0,1,'belgaristrasz SAY_BELGARISTRASZ_GREET');
+
+
 -- -------------------------
 -- Drakos the Interrogator -
 -- -------------------------
@@ -19,8 +22,7 @@ INSERT INTO `script_texts` (entry, content_default, content_loc8, sound, type, l
 (-1578008,'I condemn you to death!','Я приговариваю вас к смерти!',13601,1,0,0,'SAY_PULL_4'),
 (-1578009,'Tremble, worms!','Трепещите, черви!',13595,1,0,0,'SAY_STOMP_1'),
 (-1578010,'I will crush you!','Я раздавлю вас!',13596,1,0,0,'SAY_STOMP_2'),
-(-1578011,'Can you fly?','Вы умеете летать?',13597,1,0,0,'SAY_STOMP_3'),
-(-1578040,'Thank you for freeing us, mortals. Beware, the Blue Flight is alerted to your presence. Even now, Malygos sends Varos Cloudstrider and his ring guardians to defend the Oculus. You will need our help to stand a chance.',0,0,0,1,'belgaristrasz SAY_BELGARISTRASZ_GREET');
+(-1578011,'Can you fly?','Вы умеете летать?',13597,1,0,0,'SAY_STOMP_3');
 
 -- -------
 -- Varos -
