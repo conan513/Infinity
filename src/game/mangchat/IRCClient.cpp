@@ -1,5 +1,5 @@
-/* 
- * MangChat for MaNGOSR2 // IXC_Project , the open source MMORPG-server
+/*
+ * MangChat for MaNGOSR2 // Infinity_Project , the open source MMORPG-server
  *
  * This Program Is Free Software; You Can Redistribute It And/Or Modify It Under The
  * Terms Of The GNU General Public License
@@ -46,7 +46,7 @@ void IRCClient::run()
     sLog.outString("\n%s\n%s\n%s\n%s",
         "***************************************",
         "**   MangChat Threaded IRC Client    **",
-        "**         for IXC Projects          **",
+        "**         for Infinity Projects     **",
         "***************************************");
     sLog.outString("MangChat: %s", sIRC._Mver.c_str());
     int cCount = 0;
@@ -56,7 +56,7 @@ void IRCClient::run()
     WorldDatabase.PExecute("DELETE FROM `IRC_Inchan`");
     sIRC._Max_Script_Inst = 0;
 
-    // Create a loop to keep the thread running untill active is set to false
+    // Create a loop to keep the thread running until active is set to false
     while (sIRC.Active && !World::IsStopped())
     {
         // Initialize socket library
