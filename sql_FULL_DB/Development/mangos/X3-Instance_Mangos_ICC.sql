@@ -178,6 +178,7 @@ UPDATE `creature_template` SET `unit_flags` = 524288 WHERE `entry` = 37013;
 -- ---------
 
 UPDATE `creature_template` SET `ScriptName`='boss_festergut', `AIName`=''  WHERE `entry`= 36626;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 36626;
 UPDATE `gameobject_template` SET `faction` = '114' WHERE `gameobject_template`.`entry` IN (201371);
 UPDATE `gameobject` SET `state` = '0' WHERE `id` IN (201371);
 UPDATE `creature_template` SET `ScriptName`='mob_vile_gas_malleable_goo', unit_flags = 0, `AIName`='', `flags_extra` = `flags_extra` | 2 | 128  WHERE `entry` IN (38548, 38556);
@@ -221,6 +222,7 @@ UPDATE `creature_template` SET `unit_flags` = `unit_flags` | 33554432 | 2 WHERE 
 -- -------------------
 
 UPDATE `creature_template` SET `ScriptName`='boss_professor_putricide', `AIName`='' WHERE `entry`= 36678;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 36678;
 UPDATE `creature_template` SET `vehicle_id`=587 WHERE `entry` in (36678,38431,38585,38586);
 UPDATE `gameobject_template` SET `faction` = '114',`data0` = '0' WHERE `gameobject_template`.`entry` IN (201372,201614,201613, 201612);
 UPDATE `gameobject` SET `state` = '1' WHERE `id` IN (201612,201614,201613);
@@ -277,6 +279,7 @@ INSERT INTO `spell_script_target` (`entry`, `type`, `targetEntry`) VALUES
 UPDATE `creature_template` SET `ScriptName`='boss_blood_queen_lanathel_intro', `AIName`='' WHERE `entry`= 38004;
 
 UPDATE `creature_template` SET `minhealth` = 5647725, `maxhealth` = 5647725, `ScriptName`='npc_blood_orb_control', `AIName`='' WHERE `entry`= 38008;
+UPDATE `creature` SET `curhealth` = 5647725 WHERE `guid` = 104364;
 UPDATE `creature_template` SET `minhealth` = 22590900, `maxhealth` = 22590900 WHERE `entry` = 38641;
 UPDATE `creature_template` SET `minhealth` = 7600025, `maxhealth` = 7600025 WHERE `entry` = 38773;
 UPDATE `creature_template` SET `minhealth` = 30469825, `maxhealth` = 30469825 WHERE `entry` = 38774;
@@ -369,10 +372,15 @@ UPDATE `creature_template` SET `faction_A` = 35, `faction_H` = 35, `ScriptName` 
 UPDATE `creature_template` SET `faction_A` = 35, `faction_H` = 35, `IconName` = '', `npcflag` = `npcflag` | 1, `ScriptName` = 'mob_nightmare_portal', `AIName` = '' WHERE `entry` = 38430;
 UPDATE `creature_template` SET `faction_A` = 16, `faction_H` = 16, `ScriptName` = 'mob_nightmare_cloud', `AIName` = '', `flags_extra` = `flags_extra` &~128 WHERE `entry` = 38421;
 UPDATE `creature_template` SET `faction_A` = 16, `faction_H` = 16, `ScriptName` = 'mob_gluttonous_abomination', `AIName` = '' WHERE `entry`= 37886;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 37886;
 UPDATE `creature_template` SET `faction_A` = 16, `faction_H` = 16, `ScriptName` = 'mob_blistering_zombie', `AIName` = '' WHERE `entry`= 37934;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 37934;
 UPDATE `creature_template` SET `faction_A` = 16, `faction_H` = 16, `ScriptName` = 'mob_risen_archmage', `AIName` = '' WHERE `entry`= 37868;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 37868;
 UPDATE `creature_template` SET `faction_A` = 16, `faction_H` = 16, `ScriptName` = 'mob_blazing_skeleton', `AIName` = '', `mechanic_immune_mask` = `mechanic_immune_mask` | 2048 WHERE `entry`= 36791;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 36791;
 UPDATE `creature_template` SET `faction_A` = 16, `faction_H` = 16, `ScriptName` = 'mob_suppresser', `AIName` = '' WHERE `entry`= 37863;
+DELETE FROM `creature_ai_scripts` WHERE `creature_id` = 37863;
 UPDATE `creature_template` SET `minlevel` = 82, `maxlevel` = 82, `ScriptName`='mob_mana_void', `AIName`='', `flags_extra` = `flags_extra` &~128 WHERE `entry`= 38068;
 UPDATE `creature_template` SET `ScriptName`='mob_column_of_frost', `AIName`='', `flags_extra` = `flags_extra` &~128 WHERE `entry`= 37918;
 
