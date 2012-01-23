@@ -3,8 +3,8 @@
 -- ------------------------
 
 -- creature and gameobject initial guid
-SET @CREATURE := 200001;
-SET @GAMEOBJECT := 200008;
+SET @CREATURE := 210001;
+SET @GAMEOBJECT := 210008;
 
 DELETE FROM battleground_template WHERE id = 9;
 INSERT INTO battleground_template (id, MinPlayersPerTeam, MaxPlayersPerTeam, AllianceStartLoc, AllianceStartO, HordeStartLoc, HordeStartO) VALUES (9, 5, 15, 1367, 0, 1368, 0);
