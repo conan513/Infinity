@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `db_version` (
 
 # Dumping data for table mangos.db_version: 1 rows
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
-INSERT IGNORE INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_11852_01_mangos_gossip_menu`) VALUES
+INSERT IGNORE INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_11876_01_mangos_creature_linking_template`) VALUES
 	('Infinity_DB_v_r1', 'ACID 3.0.9 \'Streamlined Perfection\' - Full Release for MaNGOS (3.3.5a Client)', 612, b'00000000');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
