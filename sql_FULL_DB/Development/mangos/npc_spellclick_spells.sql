@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:29
+# Date/time:                    2012-01-22 16:48:35
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `npc_spellclick_spells` (
 
 # Dumping data for table mangos.npc_spellclick_spells: 114 rows
 /*!40000 ALTER TABLE `npc_spellclick_spells` DISABLE KEYS */;
-INSERT IGNORE INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `quest_start`, `quest_start_active`, `quest_end`, `cast_flags`) VALUES
+REPLACE INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `quest_start`, `quest_start_active`, `quest_end`, `cast_flags`) VALUES
 	(24418, 43768, 11390, 1, 11390, 1),
 	(24418, 43768, 11391, 1, 11391, 1),
 	(25743, 46260, 11879, 1, 11879, 1),

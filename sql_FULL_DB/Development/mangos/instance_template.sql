@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:18
+# Date/time:                    2012-01-22 16:48:25
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `instance_template` (
 
 # Dumping data for table mangos.instance_template: 87 rows
 /*!40000 ALTER TABLE `instance_template` DISABLE KEYS */;
-INSERT IGNORE INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `ScriptName`) VALUES
+REPLACE INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `ScriptName`) VALUES
 	(269, 0, 66, 0, 'instance_dark_portal'),
 	(532, 0, 68, 0, 'instance_karazhan'),
 	(534, 0, 70, 0, 'instance_hyjal'),
@@ -84,7 +84,7 @@ INSERT IGNORE INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`,
 	(601, 0, 80, 80, 'instance_azjol-nerub'),
 	(574, 0, 70, 72, 'instance_utgarde_keep'),
 	(575, 0, 80, 80, 'instance_pinnacle'),
-	(578, 0, 80, 80, ''),
+	(578, 0, 80, 80, 'instance_oculus'),
 	(595, 0, 74, 80, 'instance_culling_of_stratholme'),
 	(608, 0, 70, 80, 'instance_violet_hold'),
 	(615, 0, 80, 0, 'instance_obsidian_sanctum'),

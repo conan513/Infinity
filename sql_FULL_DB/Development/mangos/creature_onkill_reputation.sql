@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:09
+# Date/time:                    2012-01-22 16:48:15
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `creature_onkill_reputation` (
 
 # Dumping data for table mangos.creature_onkill_reputation: 2,341 rows
 /*!40000 ALTER TABLE `creature_onkill_reputation` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_onkill_reputation` (`creature_id`, `RewOnKillRepFaction1`, `RewOnKillRepFaction2`, `MaxStanding1`, `IsTeamAward1`, `RewOnKillRepValue1`, `MaxStanding2`, `IsTeamAward2`, `RewOnKillRepValue2`, `TeamDependent`) VALUES
+REPLACE INTO `creature_onkill_reputation` (`creature_id`, `RewOnKillRepFaction1`, `RewOnKillRepFaction2`, `MaxStanding1`, `IsTeamAward1`, `RewOnKillRepValue1`, `MaxStanding2`, `IsTeamAward2`, `RewOnKillRepValue2`, `TeamDependent`) VALUES
 	(2496, 87, 21, 5, 0, 25, 7, 0, -125, 0),
 	(3381, 470, 0, 5, 0, 5, 0, 0, 0, 0),
 	(3382, 470, 0, 5, 0, 5, 0, 0, 0, 0),

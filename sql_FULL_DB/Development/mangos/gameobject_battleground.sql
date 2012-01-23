@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:16
+# Date/time:                    2012-01-22 16:48:22
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `gameobject_battleground` (
 
 # Dumping data for table mangos.gameobject_battleground: 328 rows
 /*!40000 ALTER TABLE `gameobject_battleground` DISABLE KEYS */;
-INSERT IGNORE INTO `gameobject_battleground` (`guid`, `event1`, `event2`) VALUES
+REPLACE INTO `gameobject_battleground` (`guid`, `event1`, `event2`) VALUES
 	(150000, 0, 0),
 	(150001, 1, 0),
 	(150013, 254, 0),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:43
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `reputation_reward_rate` (
 
 # Dumping data for table mangos.reputation_reward_rate: 14 rows
 /*!40000 ALTER TABLE `reputation_reward_rate` DISABLE KEYS */;
-INSERT IGNORE INTO `reputation_reward_rate` (`faction`, `quest_rate`, `creature_rate`, `spell_rate`) VALUES
+REPLACE INTO `reputation_reward_rate` (`faction`, `quest_rate`, `creature_rate`, `spell_rate`) VALUES
 	(529, 2, 1, 2),
 	(609, 2, 1, 2),
 	(576, 4, 1, 4),

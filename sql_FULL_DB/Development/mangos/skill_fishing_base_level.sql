@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `skill_fishing_base_level` (
 
 # Dumping data for table mangos.skill_fishing_base_level: 198 rows
 /*!40000 ALTER TABLE `skill_fishing_base_level` DISABLE KEYS */;
-INSERT IGNORE INTO `skill_fishing_base_level` (`entry`, `skill`) VALUES
+REPLACE INTO `skill_fishing_base_level` (`entry`, `skill`) VALUES
 	(130, -20),
 	(305, -20),
 	(702, -70),

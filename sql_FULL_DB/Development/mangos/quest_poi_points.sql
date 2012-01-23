@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:33
+# Date/time:                    2012-01-22 16:48:40
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `quest_poi_points` (
 
 # Dumping data for table mangos.quest_poi_points: 57,421 rows
 /*!40000 ALTER TABLE `quest_poi_points` DISABLE KEYS */;
-INSERT IGNORE INTO `quest_poi_points` (`questId`, `poiId`, `x`, `y`) VALUES
+REPLACE INTO `quest_poi_points` (`questId`, `poiId`, `x`, `y`) VALUES
 	(475, 0, 9845, 441),
 	(487, 0, 9986, 1350),
 	(487, 1, 10003, 1259),
@@ -36631,7 +36631,7 @@ INSERT IGNORE INTO `quest_poi_points` (`questId`, `poiId`, `x`, `y`) VALUES
 	(10904, 0, 2232, 5393),
 	(10904, 0, 2252, 5450),
 	(10904, 0, 2210, 5515);
-INSERT IGNORE INTO `quest_poi_points` (`questId`, `poiId`, `x`, `y`) VALUES
+REPLACE INTO `quest_poi_points` (`questId`, `poiId`, `x`, `y`) VALUES
 	(10904, 0, 2000, 5426),
 	(10904, 0, 1768, 5404),
 	(10904, 0, 1765, 5395),

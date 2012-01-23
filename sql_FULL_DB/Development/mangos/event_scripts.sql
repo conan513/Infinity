@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:13
+# Date/time:                    2012-01-22 16:48:19
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `event_scripts` (
   `comments` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-# Dumping data for table mangos.event_scripts: 771 rows
+# Dumping data for table mangos.event_scripts: 780 rows
 /*!40000 ALTER TABLE `event_scripts` DISABLE KEYS */;
-INSERT IGNORE INTO `event_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES
+REPLACE INTO `event_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES
 	(420, 0, 10, 2755, 180000, 0, 0, 0, 0, 0, 0, 0, -931.73, -3111.81, 48.517, 3.27404, ''),
 	(452, 0, 10, 2937, 600000, 0, 0, 0, 0, 0, 0, 0, -2359.9, -4102.7, 6.93, 2.09, ''),
 	(747, 40, 10, 4490, 900000, 0, 0, 0, 0, 0, 0, 0, -5589.63, -1575.89, 11.75, 6.02, ''),
@@ -806,7 +806,16 @@ INSERT IGNORE INTO `event_scripts` (`id`, `delay`, `command`, `datalong`, `datal
 	(4276, 5, 27, 8, 174712, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
 	(4280, 5, 27, 8, 174713, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
 	(4284, 5, 27, 8, 174708, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
-	(4288, 5, 27, 8, 174709, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '');
+	(4288, 5, 27, 8, 174709, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+	(188596, 2, 0, 0, 27212, 50, 0, 0, 2000000582, 0, 0, 0, 0, 0, 0, 0, ''),
+	(188596, 4, 0, 0, 27212, 50, 0, 0, 2000000583, 0, 0, 0, 0, 0, 0, 0, ''),
+	(188596, 6, 0, 0, 27212, 50, 0, 0, 2000000584, 0, 0, 0, 0, 0, 0, 0, ''),
+	(188596, 8, 0, 0, 27212, 50, 0, 0, 2000000585, 0, 0, 0, 0, 0, 0, 0, ''),
+	(188596, 10, 0, 0, 27212, 50, 0, 0, 2000000586, 0, 0, 0, 0, 0, 0, 0, ''),
+	(188596, 11, 8, 27212, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+	(17841, 0, 10, 27273, 10000, 0, 0, 0, 0, 0, 0, 0, 285.6, -357.5, 91.0833, 5.75959, ''),
+	(17841, 3, 10, 27273, 10000, 0, 0, 0, 0, 0, 0, 0, 307, -357.5, 91.0833, 6.02139, ''),
+	(17841, 6, 10, 27273, 10000, 0, 0, 0, 0, 0, 0, 0, 285.6, -357.5, 91.0833, 5.75959, '');
 /*!40000 ALTER TABLE `event_scripts` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

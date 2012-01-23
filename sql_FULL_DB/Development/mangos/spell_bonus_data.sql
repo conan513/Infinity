@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `spell_bonus_data` (
 
 # Dumping data for table mangos.spell_bonus_data: 152 rows
 /*!40000 ALTER TABLE `spell_bonus_data` DISABLE KEYS */;
-INSERT IGNORE INTO `spell_bonus_data` (`entry`, `direct_bonus`, `dot_bonus`, `ap_bonus`, `ap_dot_bonus`, `comments`) VALUES
+REPLACE INTO `spell_bonus_data` (`entry`, `direct_bonus`, `dot_bonus`, `ap_bonus`, `ap_dot_bonus`, `comments`) VALUES
 	(5185, 1.6104, 0, 0, 0, 'Druid - Healing Touch'),
 	(33763, 0, 0.09518, 0, 0, 'Druid - Lifebloom'),
 	(8936, 0.539, 0.188, 0, 0, 'Druid - Regrowth'),

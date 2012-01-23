@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:28
+# Date/time:                    2012-01-22 16:48:35
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `mail_level_reward` (
 
 # Dumping data for table mangos.mail_level_reward: 24 rows
 /*!40000 ALTER TABLE `mail_level_reward` DISABLE KEYS */;
-INSERT IGNORE INTO `mail_level_reward` (`level`, `raceMask`, `mailTemplateId`, `senderEntry`) VALUES
+REPLACE INTO `mail_level_reward` (`level`, `raceMask`, `mailTemplateId`, `senderEntry`) VALUES
 	(20, 1, 224, 4732),
 	(20, 8, 225, 4753),
 	(20, 4, 226, 4772),

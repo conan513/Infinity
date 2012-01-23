@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `skinning_loot_template` (
   PRIMARY KEY  (`entry`,`item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Loot System';
 
-# Dumping data for table mangos.skinning_loot_template: 5,130 rows
+# Dumping data for table mangos.skinning_loot_template: 5,129 rows
 /*!40000 ALTER TABLE `skinning_loot_template` DISABLE KEYS */;
-INSERT IGNORE INTO `skinning_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
+REPLACE INTO `skinning_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
 	(113, 2318, 40, 1, 1, 1, 0, 0, 0),
 	(113, 2934, 0, 1, 1, 1, 0, 0, 0),
 	(118, 2318, 40, 1, 1, 1, 0, 0, 0),
@@ -3215,7 +3215,6 @@ INSERT IGNORE INTO `skinning_loot_template` (`entry`, `item`, `ChanceOrQuestChan
 	(15327, 20500, 9.7996, 1, 1, 1, 0, 0, 0),
 	(15336, 20498, 42.3729, 1, 1, 2, 0, 0, 0),
 	(15336, 20499, 0, 1, 1, 2, 0, 0, 0),
-	(15554, 8170, 0, 1, 1, 3, 0, 0, 0),
 	(15649, 2318, 40, 1, 1, 1, 0, 0, 0),
 	(15649, 2934, 0, 1, 1, 1, 0, 0, 0),
 	(15650, 2318, 40, 1, 1, 1, 0, 0, 0),

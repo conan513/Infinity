@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:32
+# Date/time:                    2012-01-22 16:48:39
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `playercreateinfo_spell` (
 
 # Dumping data for table mangos.playercreateinfo_spell: 2,851 rows
 /*!40000 ALTER TABLE `playercreateinfo_spell` DISABLE KEYS */;
-INSERT IGNORE INTO `playercreateinfo_spell` (`race`, `class`, `Spell`, `Note`) VALUES
+REPLACE INTO `playercreateinfo_spell` (`race`, `class`, `Spell`, `Note`) VALUES
 	(1, 1, 78, 'Heroic Strike'),
 	(1, 1, 81, 'Dodge'),
 	(1, 1, 107, 'Block'),

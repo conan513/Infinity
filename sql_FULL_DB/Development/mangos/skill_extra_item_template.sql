@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `skill_extra_item_template` (
 
 # Dumping data for table mangos.skill_extra_item_template: 226 rows
 /*!40000 ALTER TABLE `skill_extra_item_template` DISABLE KEYS */;
-INSERT IGNORE INTO `skill_extra_item_template` (`spellId`, `requiredSpecialization`, `additionalCreateChance`, `additionalMaxNum`) VALUES
+REPLACE INTO `skill_extra_item_template` (`spellId`, `requiredSpecialization`, `additionalCreateChance`, `additionalMaxNum`) VALUES
 	(26751, 26798, 100, 1),
 	(36686, 26801, 100, 1),
 	(31373, 26797, 100, 1),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:37
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `spell_proc_item_enchant` (
 
 # Dumping data for table mangos.spell_proc_item_enchant: 8 rows
 /*!40000 ALTER TABLE `spell_proc_item_enchant` DISABLE KEYS */;
-INSERT IGNORE INTO `spell_proc_item_enchant` (`entry`, `ppmRate`) VALUES
+REPLACE INTO `spell_proc_item_enchant` (`entry`, `ppmRate`) VALUES
 	(8034, 9),
 	(8680, 8.5714),
 	(13218, 21.4286),

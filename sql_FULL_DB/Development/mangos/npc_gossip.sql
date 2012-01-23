@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:29
+# Date/time:                    2012-01-22 16:48:35
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS `npc_gossip` (
   PRIMARY KEY  (`npc_guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-# Dumping data for table mangos.npc_gossip: 188 rows
+# Dumping data for table mangos.npc_gossip: 167 rows
 /*!40000 ALTER TABLE `npc_gossip` DISABLE KEYS */;
-INSERT IGNORE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
+REPLACE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
 	(7854, 5836),
 	(69758, 10062),
 	(92754, 9954),
@@ -48,7 +48,6 @@ INSERT IGNORE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
 	(74433, 10654),
 	(92752, 9457),
 	(14659, 5143),
-	(54495, 10237),
 	(46422, 738),
 	(26535, 2835),
 	(9037, 6793),
@@ -67,10 +66,8 @@ INSERT IGNORE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
 	(77352, 5247),
 	(74639, 10465),
 	(67805, 10722),
-	(6452, 5124),
 	(65760, 10290),
 	(65310, 9487),
-	(6301, 1239),
 	(68288, 8724),
 	(57995, 9848),
 	(57994, 9847),
@@ -78,7 +75,6 @@ INSERT IGNORE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
 	(57509, 10232),
 	(62057, 10300),
 	(50946, 8335),
-	(123730, 8125),
 	(2860, 5836),
 	(124589, 8127),
 	(124587, 8131),
@@ -98,17 +94,12 @@ INSERT IGNORE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
 	(53452, 10062),
 	(57300, 9875),
 	(7334, 6947),
-	(40056, 7403),
 	(11615, 3803),
 	(51199, 9067),
-	(9437, 6250),
 	(125581, 6194),
 	(125582, 6194),
 	(39866, 6194),
-	(9361, 6194),
 	(39867, 6194),
-	(39860, 6194),
-	(39901, 6250),
 	(66020, 10634),
 	(48529, 7594),
 	(51200, 798),
@@ -179,21 +170,9 @@ INSERT IGNORE INTO `npc_gossip` (`npc_guid`, `textid`) VALUES
 	(92150, 10903),
 	(97898, 12718),
 	(118874, 12777),
-	(6123, 6194),
-	(9369, 6194),
 	(8574, 4855),
 	(8583, 4871),
-	(80216, 9121),
-	(53887, 9118),
-	(98109, 13702),
 	(126499, 12162),
-	(97740, 8125),
-	(747, 8125),
-	(131554, 8125),
-	(131555, 8125),
-	(131556, 8125),
-	(131557, 8125),
-	(131558, 8125),
 	(132025, 14627),
 	(131997, 14627),
 	(132059, 14627),

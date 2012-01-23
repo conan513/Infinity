@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:25
+# Date/time:                    2012-01-22 16:48:32
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `locales_achievement_reward` (
 
 # Dumping data for table mangos.locales_achievement_reward: 24 rows
 /*!40000 ALTER TABLE `locales_achievement_reward` DISABLE KEYS */;
-INSERT IGNORE INTO `locales_achievement_reward` (`entry`, `gender`, `subject_loc1`, `subject_loc2`, `subject_loc3`, `subject_loc4`, `subject_loc5`, `subject_loc6`, `subject_loc7`, `subject_loc8`, `text_loc1`, `text_loc2`, `text_loc3`, `text_loc4`, `text_loc5`, `text_loc6`, `text_loc7`, `text_loc8`) VALUES
+REPLACE INTO `locales_achievement_reward` (`entry`, `gender`, `subject_loc1`, `subject_loc2`, `subject_loc3`, `subject_loc4`, `subject_loc5`, `subject_loc6`, `subject_loc7`, `subject_loc8`, `text_loc1`, `text_loc2`, `text_loc3`, `text_loc4`, `text_loc5`, `text_loc6`, `text_loc7`, `text_loc8`) VALUES
 	(45, 2, '', '', '', '', '', '', '', 'Ты побывал везде!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Хорошо, посмотрим!\n\nИ я мечтал повидать множество закоулков в этом ледяном месте! Это кажется очевидным для этого гнома, что у тебя есть огонь исследователя, горящий в твоих глазах.\n\nНоси эту накидку с гордостью. Тем самым твои друзья будут знать, у кого спросить дорогу, когда это будет нужно!\n\nПродолжай путешествовать!\n\nБранн Бронзобород'),
 	(614, 2, '', '', '', '', '', '', '', 'За Альянс!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Война бушует повсюду в наших землях. Только самые храбрые герои смеют бросить вызов Орде на границе, где это представляет большую угрозу. Вы в числе таких же героев.\n\nСтолкновения с лидерами Орды, позволят нам нанести завершающий удар. Орда склонится перед мощью Альянса.\n\nВаши успехи будут вознаграждены. Держитесь гордо!\n\n-- Ваш Король'),
 	(619, 2, '', '', '', '', '', '', '', 'За Орду!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Во время большой суматохи истинные герои поднимаются из нищеты. Вы - единственный великий герой.\n\nВойна надвигается на нас. Ваши усилия будут продолжением нашего дела в Азероте. Ваши великие подвиги будут вознаграждены. Возьмите этот приз Оргриммара и поезжайте праздновать.\n\nЗа Орду!\n\nВождь Тралл'),

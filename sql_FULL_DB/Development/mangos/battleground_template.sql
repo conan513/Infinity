@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:02:56
+# Date/time:                    2012-01-22 16:48:01
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `battleground_template` (
 
 # Dumping data for table mangos.battleground_template: 13 rows
 /*!40000 ALTER TABLE `battleground_template` DISABLE KEYS */;
-INSERT IGNORE INTO `battleground_template` (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`) VALUES
+REPLACE INTO `battleground_template` (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`) VALUES
 	(1, 40, 40, 611, 2.72532, 610, 2.27452),
 	(2, 10, 10, 769, 3.14159, 770, 3.14159),
 	(3, 15, 15, 890, 3.40156, 889, 0.263892),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:33
+# Date/time:                    2012-01-22 16:48:40
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `pool_gameobject_template` (
   KEY `pool_idx` (`pool_entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-# Dumping data for table mangos.pool_gameobject_template: 39 rows
+# Dumping data for table mangos.pool_gameobject_template: 42 rows
 /*!40000 ALTER TABLE `pool_gameobject_template` DISABLE KEYS */;
-INSERT IGNORE INTO `pool_gameobject_template` (`id`, `pool_entry`, `chance`, `description`) VALUES
+REPLACE INTO `pool_gameobject_template` (`id`, `pool_entry`, `chance`, `description`) VALUES
 	(186684, 1132, 0, ''),
 	(187264, 1129, 0, ''),
 	(187333, 1130, 0, ''),
@@ -63,7 +63,10 @@ INSERT IGNORE INTO `pool_gameobject_template` (`id`, `pool_entry`, `chance`, `de
 	(2712, 14148, 0, ''),
 	(182941, 14149, 0, ''),
 	(187039, 14150, 0, ''),
-	(180654, 14151, 0, '');
+	(180654, 14151, 0, ''),
+	(187367, 14152, 0, ''),
+	(181098, 14153, 0, ''),
+	(161527, 14153, 0, '');
 /*!40000 ALTER TABLE `pool_gameobject_template` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

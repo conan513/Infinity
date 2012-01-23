@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:18
+# Date/time:                    2012-01-22 16:48:25
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `instance_encounters` (
 
 # Dumping data for table mangos.instance_encounters: 612 rows
 /*!40000 ALTER TABLE `instance_encounters` DISABLE KEYS */;
-INSERT IGNORE INTO `instance_encounters` (`entry`, `creditType`, `creditEntry`, `lastEncounterDungeon`) VALUES
+REPLACE INTO `instance_encounters` (`entry`, `creditType`, `creditEntry`, `lastEncounterDungeon`) VALUES
 	(161, 0, 644, 0),
 	(162, 0, 643, 0),
 	(163, 0, 1763, 0),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:02:56
+# Date/time:                    2012-01-22 16:48:01
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `achievement_criteria_requirement` (
 
 # Dumping data for table mangos.achievement_criteria_requirement: 2,199 rows
 /*!40000 ALTER TABLE `achievement_criteria_requirement` DISABLE KEYS */;
-INSERT IGNORE INTO `achievement_criteria_requirement` (`criteria_id`, `type`, `value1`, `value2`) VALUES
+REPLACE INTO `achievement_criteria_requirement` (`criteria_id`, `type`, `value1`, `value2`) VALUES
 	(2379, 4, 0, 0),
 	(3615, 1, 1412, 0),
 	(3739, 1, 25679, 0),
@@ -534,7 +534,7 @@ INSERT IGNORE INTO `achievement_criteria_requirement` (`criteria_id`, `type`, `v
 	(6832, 12, 1, 0),
 	(6833, 12, 1, 0),
 	(6834, 12, 1, 0),
-	(6835, 18, 0, 0),
+	(6835, 7, 52092, 0),
 	(6835, 12, 1, 0),
 	(6839, 12, 1, 0),
 	(6840, 12, 1, 0),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:43
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `reference_loot_template` (
   PRIMARY KEY  (`entry`,`item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Loot System';
 
-# Dumping data for table mangos.reference_loot_template: 6,473 rows
+# Dumping data for table mangos.reference_loot_template: 6,488 rows
 /*!40000 ALTER TABLE `reference_loot_template` DISABLE KEYS */;
-INSERT IGNORE INTO `reference_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
+REPLACE INTO `reference_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
 	(40636, 40635, 0, 1, 1, 1, 0, 0, 0),
 	(40636, 40636, 0, 1, 1, 1, 0, 0, 0),
 	(40633, 40631, 0, 1, 1, 1, 0, 0, 0),
@@ -6501,7 +6501,22 @@ INSERT IGNORE INTO `reference_loot_template` (`entry`, `item`, `ChanceOrQuestCha
 	(13535, 13535, 0, 1, 1, 1, 0, 0, 0),
 	(13535, 13537, 0, 1, 1, 1, 0, 0, 0),
 	(13535, 13538, 0, 1, 1, 1, 0, 0, 0),
-	(13535, 13539, 0, 1, 1, 1, 0, 0, 0);
+	(13535, 13539, 0, 1, 1, 1, 0, 0, 0),
+	(15793, 15793, 0, 1, 1, 1, 0, 0, 0),
+	(15793, 15794, 0, 1, 1, 1, 0, 0, 0),
+	(15793, 15798, 0, 1, 1, 1, 0, 0, 0),
+	(20518, 20518, 0, 1, 1, 1, 0, 0, 0),
+	(20518, 20526, 0, 1, 1, 1, 0, 0, 0),
+	(20518, 20527, 0, 1, 1, 1, 0, 0, 0),
+	(20518, 20528, 0, 1, 1, 1, 0, 0, 0),
+	(20531, 20531, 0, 1, 1, 1, 0, 0, 0),
+	(20531, 20532, 0, 1, 1, 1, 0, 0, 0),
+	(20531, 20533, 0, 1, 1, 1, 0, 0, 0),
+	(20531, 20535, 0, 1, 1, 1, 0, 0, 0),
+	(20540, 20540, 0, 1, 1, 1, 0, 0, 0),
+	(20540, 20542, 0, 1, 1, 1, 0, 0, 0),
+	(20540, 20543, 0, 1, 1, 1, 0, 0, 0),
+	(20540, 20544, 0, 1, 1, 1, 0, 0, 0);
 /*!40000 ALTER TABLE `reference_loot_template` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

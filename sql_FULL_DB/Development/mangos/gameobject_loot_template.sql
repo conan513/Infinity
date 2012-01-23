@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:16
+# Date/time:                    2012-01-22 16:48:22
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `gameobject_loot_template` (
   PRIMARY KEY  (`entry`,`item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Loot System';
 
-# Dumping data for table mangos.gameobject_loot_template: 8,089 rows
+# Dumping data for table mangos.gameobject_loot_template: 8,080 rows
 /*!40000 ALTER TABLE `gameobject_loot_template` DISABLE KEYS */;
-INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
+REPLACE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
 	(331, 5504, 0.02, 0, 1, 1, 0, 0, 0),
 	(182139, 24422, -100, 0, 1, 1, 0, 0, 0),
 	(1736, 3564, -100, 0, 1, 1, 0, 0, 0),
@@ -1759,7 +1759,6 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(180228, 19818, 11, 0, 1, 1, 14, 0, 128),
 	(180228, 19814, 11, 0, 1, 1, 14, 0, 8),
 	(180228, 19820, 11, 0, 1, 1, 14, 0, 16),
-	(180228, 14047, 20, 0, 2, 5, 0, 0, 0),
 	(180228, 19727, 25, 0, 1, 1, 0, 0, 0),
 	(185557, 23436, 10, 0, -23436, 1, 0, 0, 0),
 	(179697, 3914, 1, 0, -3914, 1, 0, 0, 0),
@@ -1819,7 +1818,6 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(179501, 18240, 31.295, 0, 1, 2, 0, 0, 0),
 	(179501, 8165, 31.6547, 0, 1, 9, 0, 0, 0),
 	(179501, 8154, 32.7338, 0, 1, 9, 0, 0, 0),
-	(179501, 14047, 41.3669, 0, 5, 20, 0, 0, 0),
 	(179499, 18240, 100, 0, 1, 1, 0, 0, 0),
 	(179498, 7910, 0.5, 0, 1, 1, 0, 0, 0),
 	(179498, 8952, 1, 0, 1, 2, 0, 0, 0),
@@ -2413,9 +2411,7 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(54, 2008, -100, 0, 1, 1, 0, 0, 0),
 	(152608, 818, 1, 0, -818, 1, 0, 0, 0),
 	(152608, 2287, 100, 0, 1, 3, 0, 0, 0),
-	(144064, 15793, 15.2653, 0, 1, 1, 0, 0, 0),
-	(144064, 15794, 15.4166, 0, 1, 1, 0, 0, 0),
-	(144064, 15798, 15.7949, 0, 1, 1, 0, 0, 0),
+	(144064, 15793, 20, 0, -15793, 1, 0, 0, 0),
 	(142191, 3927, 18.1755, 0, 1, 4, 0, 0, 0),
 	(142191, 4602, 19.4589, 0, 1, 4, 0, 0, 0),
 	(142191, 4601, 19.7017, 0, 1, 4, 0, 0, 0),
@@ -3652,7 +3648,6 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(103711, 774, 1, 0, -774, 1, 0, 0, 0),
 	(1667, 3340, 100, 0, 1, 1, 0, 0, 0),
 	(181053, 22094, -100, 0, 1, 3, 0, 0, 0),
-	(180229, 14047, 20, 0, 2, 5, 0, 0, 0),
 	(180229, 18335, 1, 0, 1, 1, 0, 0, 0),
 	(180229, 19727, 25, 0, 1, 1, 0, 0, 0),
 	(180229, 19813, 11, 0, 1, 1, 14, 0, 1),
@@ -5143,9 +5138,6 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(131978, 3949, 10, 0, -3949, 1, 0, 0, 0),
 	(105581, 3949, 10, 0, -3949, 1, 0, 0, 0),
 	(75299, 3949, 10, 0, -3949, 1, 0, 0, 0),
-	(181800, 14047, 3.07, 0, 1, 1, 0, 0, 0),
-	(181802, 14047, 2.77, 0, 1, 1, 0, 0, 0),
-	(181804, 14047, 2.17, 0, 1, 1, 0, 0, 0),
 	(181804, 14048, 2.65, 0, 1, 1, 0, 0, 0),
 	(153468, 12684, 3.3922, 0, -12684, 1, 0, 0, 0),
 	(153468, 14497, 0.12, 0, 1, 1, 0, 0, 0),
@@ -6325,7 +6317,7 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(187032, 34237, -100, 0, 1, 1, 0, 0, 0),
 	(187033, 34236, -100, 0, 1, 1, 0, 0, 0),
 	(187238, 34468, -100, 0, 1, 1, 0, 0, 0),
-	(187367, 34597, -100, 0, 1, 1, 0, 0, 0),
+	(187367, 34597, 100, 0, 1, 1, 0, 0, 0),
 	(187381, 34239, -100, 0, 1, 1, 0, 0, 0),
 	(187577, 34690, -100, 0, 1, 1, 0, 0, 0),
 	(187659, 34709, -100, 0, 1, 1, 0, 0, 0),
@@ -6683,7 +6675,6 @@ INSERT IGNORE INTO `gameobject_loot_template` (`entry`, `item`, `ChanceOrQuestCh
 	(190471, 38335, 0.1704, 0, 1, 1, 0, 0, 0),
 	(190483, 12766, -100, 0, 1, 1, 0, 0, 0),
 	(190484, 12768, -100, 0, 1, 1, 0, 0, 0),
-	(190552, 14047, 3.4348, 0, 1, 2, 0, 0, 0),
 	(190552, 21877, 7.7544, 0, 1, 4, 0, 0, 0),
 	(190552, 21929, 0.5, 0, -21929, 1, 0, 0, 0),
 	(190552, 22829, 34.8426, 0, 1, 5, 0, 0, 0),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:18
+# Date/time:                    2012-01-22 16:48:25
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `item_enchantment_template` (
 
 # Dumping data for table mangos.item_enchantment_template: 28,691 rows
 /*!40000 ALTER TABLE `item_enchantment_template` DISABLE KEYS */;
-INSERT IGNORE INTO `item_enchantment_template` (`entry`, `ench`, `chance`) VALUES
+REPLACE INTO `item_enchantment_template` (`entry`, `ench`, `chance`) VALUES
 	(5168, 14, 0.1),
 	(5168, 1307, 0.1),
 	(5168, 1799, 0.1),

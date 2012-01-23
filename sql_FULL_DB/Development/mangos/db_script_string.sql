@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:13
+# Date/time:                    2012-01-22 16:48:19
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS `db_script_string` (
   PRIMARY KEY  (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-# Dumping data for table mangos.db_script_string: 792 rows
+# Dumping data for table mangos.db_script_string: 797 rows
 /*!40000 ALTER TABLE `db_script_string` DISABLE KEYS */;
-INSERT IGNORE INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) VALUES
+REPLACE INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) VALUES
 	(2000000000, 'Since the sparrowhawks have proven such a success in hunting down the raven stones, Watcher Elaira has trained another one to relay my voice at a great distance. He can help us communicate as you investigate the bird spirits revealed in the tablet!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Так как пустельги закрепили свой успех в выслеживании вороньих камней, Дозорный Элайра обучил другого передавать мой голос на большом расстоянии. Он может помочь нам в общении, поскольку вы занимаетесь расследованиями, духи птиц заключены в таблетке!'),
 	(2000000001, 'The tablet has the confirmation we need, just as I thought. Now, we have to use this information to draw out and defeat this Anzu before he can do any more damage to the Emerald Dream!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Необходимое нам подтверждение есть на этой табличке, как я и думал. Теперь, мы должны использовать эту информацию, чтобы вытянуть и победить этого Анзу прежде, чем он сможет нанести больший ущерб Изумрудному Сну!'),
 	(2000000002, 'There\'s something else here, too. After a discription of a bloody battle and the downfall of the raven, there\'s a prophecy. Anzu will haunt the dreams of his enemies, twisting them to affect a return to this world...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Здесь есть еще что-то, на самом деле. После описания кровавого сражения и падения ворона, есть пророчество. Анзу будет обитать в мечтах своих врагов, пытаясь вернуться в этот мир...'),
@@ -821,7 +821,12 @@ INSERT IGNORE INTO `db_script_string` (`entry`, `content_default`, `content_loc1
 	(2000000578, 'You\'ll pay for this insult, $R!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(2000000579, 'Your body is mine! Our fates are forever intertwined!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(2000000580, 'The Argent Crusade invites you to test your skills in honorable combat against other heroes of Azeroth at the Argent Tournament.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(2000000581, 'The champions of the world\'s great nations have gathered at the Argent Tournament Grounds in northeastern Icecrown to face all challengers.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	(2000000581, 'The champions of the world\'s great nations have gathered at the Argent Tournament Grounds in northeastern Icecrown to face all challengers.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2000000582, 'You\'re late, overseer.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2000000583, 'Destiny will not wait. Your craftsmen must increase their production of the war golems before the stone giant leader and his army reach Ulduar.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2000000584, 'Tell your rune-smiths to continue converting what stone giants you can. Those that will not submit must be destroyed.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2000000585, 'If the stone giants interfere with our work at Ulduar, I will hold you and your thane responsible. Mortals must not be allowed to come to the aid of the giants.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2000000586, 'Return to your duties, overseer. Be certain to impress upon your workers the urgency of their tasks.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `db_script_string` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

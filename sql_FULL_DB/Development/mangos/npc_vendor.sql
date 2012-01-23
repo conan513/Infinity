@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:30
+# Date/time:                    2012-01-22 16:48:37
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `npc_vendor` (
 
 # Dumping data for table mangos.npc_vendor: 34,660 rows
 /*!40000 ALTER TABLE `npc_vendor` DISABLE KEYS */;
-INSERT IGNORE INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`, `ExtendedCost`) VALUES
+REPLACE INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`, `ExtendedCost`) VALUES
 	(54, 2495, 0, 0, 0),
 	(54, 2494, 0, 0, 0),
 	(54, 2493, 0, 0, 0),

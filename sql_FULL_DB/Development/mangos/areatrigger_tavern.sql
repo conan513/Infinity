@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:02:56
+# Date/time:                    2012-01-22 16:48:01
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `areatrigger_tavern` (
 
 # Dumping data for table mangos.areatrigger_tavern: 117 rows
 /*!40000 ALTER TABLE `areatrigger_tavern` DISABLE KEYS */;
-INSERT IGNORE INTO `areatrigger_tavern` (`id`, `name`) VALUES
+REPLACE INTO `areatrigger_tavern` (`id`, `name`) VALUES
 	(71, 'Westfall - Sentinel Hill Inn'),
 	(562, 'Elwynn Forest - Goldshire - Lion\'s Pride Inn'),
 	(682, 'Redridge Mountains - Lakeshire Inn'),

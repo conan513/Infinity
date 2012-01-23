@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `db_version` (
   `version` varchar(120) NOT NULL,
   `creature_ai_version` varchar(120) default NULL,
   `cache_id` int(10) default '0',
-  `required_11852_01_mangos_gossip_menu` bit(1) default NULL
+  `required_11876_01_mangos_creature_linking_template` bit(1) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Used DB version notes';
 
 # Dumping data for table mangos.db_version: 1 rows

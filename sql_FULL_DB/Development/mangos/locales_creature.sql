@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:25
+# Date/time:                    2012-01-22 16:48:32
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `locales_creature` (
 
 # Dumping data for table mangos.locales_creature: 29,984 rows
 /*!40000 ALTER TABLE `locales_creature` DISABLE KEYS */;
-INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
+REPLACE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
 	(10290, '', '', '', '', '', '', '', 'Пойманный слизнюк Оскверненного леса', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(6, '', '', '', '', '', '', '', 'Кобольд-вредитель', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(30, '', '', '', '', '', '', '', 'Лесной паук', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7131,7 +7131,7 @@ INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_
 	(15433, '', '', '', '', '', '', '', 'Хозяйка таверны Деланиель', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Хозяйка таверны'),
 	(15434, '', '', '', '', '', '', '', 'Рядовой Драксельмер', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Приемщик удавника'),
 	(15437, '', '', '', '', '', '', '', 'Мастер Песня Ночи', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Приемщик лилового лотоса');
-INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
+REPLACE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
 	(15438, '', '', '', '', '', '', '', 'Большой элементаль огня', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(15439, '', '', '', '', '', '', '', 'Тотем элементаля огня', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(15440, '', '', '', '', '', '', '', 'Капитан Черная Наковальня', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Бригадный капитан Стальгорна'),
@@ -14143,7 +14143,7 @@ INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_
 	(28675, '', '', '', '', '', '', '', 'Служащий банка Реймс', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Банкир'),
 	(28677, '', '', '', '', '', '', '', 'Служащая банка Ханнерс', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Банкир'),
 	(28676, '', '', '', '', '', '', '', 'Служащий банка Алтиеллис', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Банкир');
-INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
+REPLACE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
 	(29282, '', '', '', '', '', '', '', 'Казначей Альштейн', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Банкир'),
 	(29513, '', '', '', '', '', '', '', 'Диди Гаечный Ключ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Наставница в гоблинской инженерии'),
 	(29514, '', '', '', '', '', '', '', 'Финдль Свистопар', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Наставник в гномской инженерии'),
@@ -21259,7 +21259,7 @@ INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_
 	(32256, '', '', '', '', '', '', '', 'Shield Visual Loc Bunny', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(32531, '', '', '', '', '', '', '', 'Banner Bunny, Side, Alliance, Small', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(32298, '', '', '', '', '', '', '', 'Cloak Dome Bunny, Large', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
+REPLACE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
 	(31817, '', '', '', '', '', '', '', 'See Inviso Bunny', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(32525, '', '', '', '', '', '', '', 'Alliance Infra-green Bomber, Parked', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(31887, '', '', '', '', '', '', '', 'Ebon Blade Marker', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -28401,7 +28401,7 @@ INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_
 	(34245, '', '', '', '', '', '', '', 'Покрытый рунами страж', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(34247, '', '', '', '', '', '', '', 'Кованый защитник', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(34250, '', '', '', '', '', '', '', 'Azeroth Planet Stalker', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT IGNORE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
+REPLACE INTO `locales_creature` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `subname_loc1`, `subname_loc2`, `subname_loc3`, `subname_loc4`, `subname_loc5`, `subname_loc6`, `subname_loc7`, `subname_loc8`) VALUES
 	(34254, '', '', '', '', '', '', '', 'Начальник экспедиции', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(34255, '', '', '', '', '', '', '', 'Защитник экспедиции', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(34256, '', '', '', '', '', '', '', 'Инженер экспедиции', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
