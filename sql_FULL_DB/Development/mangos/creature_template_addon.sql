@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:13
+# Date/time:                    2012-01-22 16:48:18
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS `creature_template_addon` (
   PRIMARY KEY  (`entry`)
 ) ENGINE=MyISAM AUTO_INCREMENT=40871 DEFAULT CHARSET=utf8;
 
-# Dumping data for table mangos.creature_template_addon: 16,179 rows
+# Dumping data for table mangos.creature_template_addon: 16,180 rows
 /*!40000 ALTER TABLE `creature_template_addon` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES
+REPLACE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES
 	(1356, 0, 0, 1, 1, 0, 0, NULL),
 	(6, 0, 0, 1, 0, 0, 0, NULL),
 	(30, 0, 0, 1, 0, 0, 0, NULL),
@@ -8127,7 +8127,7 @@ INSERT IGNORE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_
 	(38248, 0, 0, 1, 0, 0, 0, '46598'),
 	(31655, 0, 50331648, 1, 1, 0, 1024, NULL),
 	(34728, 0, 8, 1, 0, 0, 0, NULL),
-	(28782, 0, 0, 0, 0, 0, 0, '46598'),
+	(28782, 0, 0, 1, 0, 0, 0, NULL),
 	(33060, 0, 0, 1, 1, 0, 0, NULL),
 	(33109, 0, 0, 1, 1, 0, 0, NULL),
 	(33243, 0, 0, 1, 0, 0, 0, '64101 62719 63132'),
@@ -12426,7 +12426,7 @@ INSERT IGNORE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_
 	(28556, 0, 0, 1, 0, 0, 0, NULL),
 	(28558, 0, 0, 1, 0, 0, 0, NULL),
 	(28563, 0, 0, 1, 0, 0, 1024, NULL),
-	(28586, 0, 0, 1, 0, 0, 0, '52097'),
+	(28586, 0, 0, 1, 0, 0, 0, NULL),
 	(28587, 0, 0, 1, 0, 0, 0, NULL),
 	(28647, 0, 0, 2, 0, 0, 0, NULL),
 	(28653, 0, 0, 1, 0, 0, 0, NULL),
@@ -16206,7 +16206,8 @@ INSERT IGNORE INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_
 	(34824, 0, 0, 1, 0, 0, 0, '61797'),
 	(34823, 0, 0, 1, 0, 0, 0, '61793'),
 	(34812, 0, 0, 1, 0, 0, 0, '61796'),
-	(34822, 0, 0, 1, 0, 0, 0, '61794');
+	(34822, 0, 0, 1, 0, 0, 0, '61794'),
+	(18757, 0, 0, 1, 0, 0, 0, '32839');
 /*!40000 ALTER TABLE `creature_template_addon` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

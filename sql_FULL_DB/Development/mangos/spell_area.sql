@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `spell_area` (
 
 # Dumping data for table mangos.spell_area: 366 rows
 /*!40000 ALTER TABLE `spell_area` DISABLE KEYS */;
-INSERT IGNORE INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, `quest_end`, `aura_spell`, `racemask`, `gender`, `autocast`) VALUES
+REPLACE INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, `quest_end`, `aura_spell`, `racemask`, `gender`, `autocast`) VALUES
 	(54056, 4306, 12536, 1, 12536, 0, 0, 2, 1),
 	(53405, 4298, 12779, 0, 0, 0, 0, 2, 1),
 	(51915, 4298, 0, 0, 0, 0, 0, 2, 1),

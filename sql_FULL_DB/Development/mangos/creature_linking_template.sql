@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:03
+# Date/time:                    2012-01-22 16:48:08
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -14,16 +14,16 @@
 # Dumping structure for table mangos.creature_linking_template
 DROP TABLE IF EXISTS `creature_linking_template`;
 CREATE TABLE IF NOT EXISTS `creature_linking_template` (
-  `entry` int(10) unsigned NOT NULL auto_increment COMMENT 'creature_template.entry of the slave mob that is linked',
-  `map` mediumint(8) unsigned NOT NULL COMMENT 'Id of map of the mobs',
-  `master_entry` int(10) unsigned NOT NULL COMMENT 'master to trigger events',
-  `flag` mediumint(8) unsigned NOT NULL COMMENT 'flag - describing what should happen when',
+  `entry` mediumint(8) unsigned NOT NULL default '0' COMMENT 'creature_template.entry of the slave mob that is linked',
+  `map` smallint(5) unsigned NOT NULL default '0' COMMENT 'Id of map of the mobs',
+  `master_entry` mediumint(8) unsigned NOT NULL default '0' COMMENT 'master to trigger events',
+  `flag` mediumint(8) unsigned NOT NULL default '0' COMMENT 'flag - describing what should happen when',
   PRIMARY KEY  (`entry`,`map`)
 ) ENGINE=MyISAM AUTO_INCREMENT=30683 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Creature Linking System';
 
 # Dumping data for table mangos.creature_linking_template: 29 rows
 /*!40000 ALTER TABLE `creature_linking_template` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_linking_template` (`entry`, `map`, `master_entry`, `flag`) VALUES
+REPLACE INTO `creature_linking_template` (`entry`, `map`, `master_entry`, `flag`) VALUES
 	(12119, 409, 12118, 519),
 	(11673, 409, 11982, 1024),
 	(11661, 409, 12259, 7),

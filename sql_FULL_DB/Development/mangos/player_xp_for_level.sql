@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:32
+# Date/time:                    2012-01-22 16:48:39
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `player_xp_for_level` (
 
 # Dumping data for table mangos.player_xp_for_level: 79 rows
 /*!40000 ALTER TABLE `player_xp_for_level` DISABLE KEYS */;
-INSERT IGNORE INTO `player_xp_for_level` (`lvl`, `xp_for_next_level`) VALUES
+REPLACE INTO `player_xp_for_level` (`lvl`, `xp_for_next_level`) VALUES
 	(1, 400),
 	(2, 900),
 	(3, 1400),

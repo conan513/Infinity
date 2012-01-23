@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:13
+# Date/time:                    2012-01-22 16:48:19
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `exploration_basexp` (
 
 # Dumping data for table mangos.exploration_basexp: 80 rows
 /*!40000 ALTER TABLE `exploration_basexp` DISABLE KEYS */;
-INSERT IGNORE INTO `exploration_basexp` (`level`, `basexp`) VALUES
+REPLACE INTO `exploration_basexp` (`level`, `basexp`) VALUES
 	(0, 0),
 	(1, 5),
 	(10, 85),

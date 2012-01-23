@@ -33,7 +33,7 @@ EndContentData */
 ## mobs_bladespire_ogre
 ######*/
 
-//TODO: add support for quest 10512 + creature abilities
+//TODO: add support for quest 10512 & 10545 + creature abilities
 struct MANGOS_DLL_DECL mobs_bladespire_ogreAI : public ScriptedAI
 {
     mobs_bladespire_ogreAI(Creature* pCreature) : ScriptedAI(pCreature) {Reset();}
@@ -58,23 +58,26 @@ CreatureAI* GetAI_mobs_bladespire_ogre(Creature* pCreature)
 ## mobs_nether_drake
 ######*/
 
-#define SAY_NIHIL_1                 -1000169
-#define SAY_NIHIL_2                 -1000170
-#define SAY_NIHIL_3                 -1000171
-#define SAY_NIHIL_4                 -1000172
-#define SAY_NIHIL_INTERRUPT         -1000173
+enum
+{
+    SAY_NIHIL_1                = -1000169,
+    SAY_NIHIL_2                = -1000170,
+    SAY_NIHIL_3                = -1000171,
+    SAY_NIHIL_4                = -1000172,
+    SAY_NIHIL_INTERRUPT        = -1000173,
 
-#define ENTRY_WHELP                 20021
-#define ENTRY_PROTO                 21821
-#define ENTRY_ADOLE                 21817
-#define ENTRY_MATUR                 21820
-#define ENTRY_NIHIL                 21823
+    ENTRY_WHELP                = 20021,
+    ENTRY_PROTO                = 21821,
+    ENTRY_ADOLE                = 21817,
+    ENTRY_MATUR                = 21820,
+    ENTRY_NIHIL                = 21823,
 
-#define SPELL_T_PHASE_MODULATOR     37573
+    SPELL_T_PHASE_MODULATOR    = 37573,
 
-#define SPELL_ARCANE_BLAST          38881
-#define SPELL_MANA_BURN             38884
-#define SPELL_INTANGIBLE_PRESENCE   36513
+    SPELL_ARCANE_BLAST         = 38881,
+    SPELL_MANA_BURN            = 38884,
+    SPELL_INTANGIBLE_PRESENCE  = 36513,
+};
 
 struct MANGOS_DLL_DECL mobs_nether_drakeAI : public ScriptedAI
 {
@@ -99,12 +102,12 @@ struct MANGOS_DLL_DECL mobs_nether_drakeAI : public ScriptedAI
         IntangiblePresence_Timer = 15000;
     }
 
-    void MoveInLineOfSight(Unit *who)
+    void MoveInLineOfSight(Unit* pWho)
     {
         if (m_creature->HasFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE))
             return;
 
-        ScriptedAI::MoveInLineOfSight(who);
+        ScriptedAI::MoveInLineOfSight(pWho);
     }
 
     //in case creature was not summoned (not expected)

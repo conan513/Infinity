@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:32
+# Date/time:                    2012-01-22 16:48:39
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `pool_creature` (
 
 # Dumping data for table mangos.pool_creature: 1,267 rows
 /*!40000 ALTER TABLE `pool_creature` DISABLE KEYS */;
-INSERT IGNORE INTO `pool_creature` (`guid`, `pool_entry`, `chance`, `description`) VALUES
+REPLACE INTO `pool_creature` (`guid`, `pool_entry`, `chance`, `description`) VALUES
 	(58, 1341, 0, 'NPC 14490'),
 	(181, 1300, 0, 'NPC 10077'),
 	(131465, 318, 0, 'NPC 10817'),

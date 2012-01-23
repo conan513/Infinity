@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:13
+# Date/time:                    2012-01-22 16:48:19
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `disenchant_loot_template` (
 
 # Dumping data for table mangos.disenchant_loot_template: 122 rows
 /*!40000 ALTER TABLE `disenchant_loot_template` DISABLE KEYS */;
-INSERT IGNORE INTO `disenchant_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
+REPLACE INTO `disenchant_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
 	(1, 10940, 80, 1, 1, 2, 0, 0, 0),
 	(1, 10938, 20, 1, 1, 2, 0, 0, 0),
 	(2, 10940, 75, 1, 2, 3, 0, 0, 0),

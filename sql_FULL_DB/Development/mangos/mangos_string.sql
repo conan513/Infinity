@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:28
+# Date/time:                    2012-01-22 16:48:35
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `mangos_string` (
 
 # Dumping data for table mangos.mangos_string: 824 rows
 /*!40000 ALTER TABLE `mangos_string` DISABLE KEYS */;
-INSERT IGNORE INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) VALUES
+REPLACE INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) VALUES
 	(1, 'You should select a character or a creature.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Вы должны выбрать персонажа или существо.'),
 	(2, 'You should select a creature.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Вы должны выбрать существо.'),
 	(3, '|cffff0000[System Message]: %s|r', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '|cffff0000[Системное сообщение]: %s|r'),

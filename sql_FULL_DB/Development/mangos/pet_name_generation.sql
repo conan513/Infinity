@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:31
+# Date/time:                    2012-01-22 16:48:38
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `pet_name_generation` (
 
 # Dumping data for table mangos.pet_name_generation: 313 rows
 /*!40000 ALTER TABLE `pet_name_generation` DISABLE KEYS */;
-INSERT IGNORE INTO `pet_name_generation` (`id`, `word`, `entry`, `half`) VALUES
+REPLACE INTO `pet_name_generation` (`id`, `word`, `entry`, `half`) VALUES
 	(1, 'Aba', 416, 0),
 	(2, 'Az', 416, 0),
 	(3, 'Bel', 416, 0),

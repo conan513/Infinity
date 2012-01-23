@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:34
+# Date/time:                    2012-01-22 16:48:41
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `quest_start_scripts` (
 
 # Dumping data for table mangos.quest_start_scripts: 582 rows
 /*!40000 ALTER TABLE `quest_start_scripts` DISABLE KEYS */;
-INSERT IGNORE INTO `quest_start_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES
+REPLACE INTO `quest_start_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `datalong3`, `datalong4`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES
 	(1713, 24, 3, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 333.31, -1453.69, 42.01, 4.68, ''),
 	(1713, 14, 3, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 328.52, -1442.03, 40.5, 5.65, ''),
 	(1713, 7, 3, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 296.56, -1435.98, 47.19, 6.18, ''),

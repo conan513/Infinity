@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:02:56
+# Date/time:                    2012-01-22 16:48:01
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `areatrigger_teleport` (
 
 # Dumping data for table mangos.areatrigger_teleport: 256 rows
 /*!40000 ALTER TABLE `areatrigger_teleport` DISABLE KEYS */;
-INSERT IGNORE INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_item`, `required_item2`, `heroic_key`, `heroic_key2`, `required_quest_done`, `required_quest_done_heroic`, `required_failed_text`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
+REPLACE INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_item`, `required_item2`, `heroic_key`, `heroic_key2`, `required_quest_done`, `required_quest_done_heroic`, `required_failed_text`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
 	(78, 'DeadMines Entrance', 10, 0, 0, 0, 0, 0, 0, NULL, 36, -16.4, -383.07, 61.78, 1.86),
 	(101, 'Stormwind Stockades Entrance', 15, 0, 0, 0, 0, 0, 0, NULL, 34, 54.23, 0.28, -18.34, 6.26),
 	(107, 'Stormwind Vault Entrance', 0, 0, 0, 0, 0, 0, 0, NULL, 35, -0.91, 40.57, -24.23, 0),

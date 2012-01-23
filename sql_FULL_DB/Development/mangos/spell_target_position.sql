@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:37
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `spell_target_position` (
 
 # Dumping data for table mangos.spell_target_position: 581 rows
 /*!40000 ALTER TABLE `spell_target_position` DISABLE KEYS */;
-INSERT IGNORE INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
+REPLACE INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
 	(8195, 0, 16229, 16265, 14, 3.19),
 	(11362, 0, -5096.24, 755.33, 260.5, 4.62),
 	(11409, 0, -14466, 453.47, 15.35, 2),

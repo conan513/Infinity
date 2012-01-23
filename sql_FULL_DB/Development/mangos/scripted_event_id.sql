@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:36
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `scripted_event_id` (
 
 # Dumping data for table mangos.scripted_event_id: 23 rows
 /*!40000 ALTER TABLE `scripted_event_id` DISABLE KEYS */;
-INSERT IGNORE INTO `scripted_event_id` (`id`, `ScriptName`) VALUES
+REPLACE INTO `scripted_event_id` (`id`, `ScriptName`) VALUES
 	(11225, 'event_taxi_stormcrow'),
 	(2228, 'event_spell_altar_boss_aggro'),
 	(2268, 'event_spell_altar_boss_aggro'),

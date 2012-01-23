@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:18
+# Date/time:                    2012-01-22 16:48:24
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `game_tele` (
 
 # Dumping data for table mangos.game_tele: 1,434 rows
 /*!40000 ALTER TABLE `game_tele` DISABLE KEYS */;
-INSERT IGNORE INTO `game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES
+REPLACE INTO `game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES
 	(314, -758.534, 4401.98, 79.563, 2.88658, 530, 'DustquillRavine'),
 	(313, -6440.73, -1987.77, 244.718, 0.464476, 0, 'DustfireValley'),
 	(312, -10898.3, -364.784, 39.2681, 3.04614, 0, 'Duskwood'),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:18
+# Date/time:                    2012-01-22 16:48:24
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `game_weather` (
 
 # Dumping data for table mangos.game_weather: 41 rows
 /*!40000 ALTER TABLE `game_weather` DISABLE KEYS */;
-INSERT IGNORE INTO `game_weather` (`zone`, `spring_rain_chance`, `spring_snow_chance`, `spring_storm_chance`, `summer_rain_chance`, `summer_snow_chance`, `summer_storm_chance`, `fall_rain_chance`, `fall_snow_chance`, `fall_storm_chance`, `winter_rain_chance`, `winter_snow_chance`, `winter_storm_chance`) VALUES
+REPLACE INTO `game_weather` (`zone`, `spring_rain_chance`, `spring_snow_chance`, `spring_storm_chance`, `summer_rain_chance`, `summer_snow_chance`, `summer_storm_chance`, `fall_rain_chance`, `fall_snow_chance`, `fall_storm_chance`, `winter_rain_chance`, `winter_snow_chance`, `winter_storm_chance`) VALUES
 	(1, 0, 45, 2, 0, 30, 1, 0, 53, 0, 0, 90, 0),
 	(33, 30, 0, 0, 40, 0, 0, 60, 0, 0, 70, 0, 0),
 	(36, 2, 45, 2, 12, 30, 1, 13, 53, 0, 0, 90, 0),

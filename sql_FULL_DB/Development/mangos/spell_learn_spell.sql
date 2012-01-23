@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:37
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `spell_learn_spell` (
 
 # Dumping data for table mangos.spell_learn_spell: 22 rows
 /*!40000 ALTER TABLE `spell_learn_spell` DISABLE KEYS */;
-INSERT IGNORE INTO `spell_learn_spell` (`entry`, `SpellID`, `Active`) VALUES
+REPLACE INTO `spell_learn_spell` (`entry`, `SpellID`, `Active`) VALUES
 	(264, 3018, 1),
 	(265, 3018, 1),
 	(266, 3018, 1),

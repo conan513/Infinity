@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:32
+# Date/time:                    2012-01-22 16:48:39
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `player_classlevelstats` (
 
 # Dumping data for table mangos.player_classlevelstats: 800 rows
 /*!40000 ALTER TABLE `player_classlevelstats` DISABLE KEYS */;
-INSERT IGNORE INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES
+REPLACE INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES
 	(1, 1, 20, 0),
 	(1, 2, 29, 0),
 	(1, 3, 38, 0),

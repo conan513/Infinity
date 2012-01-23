@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:28
+# Date/time:                    2012-01-22 16:48:34
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `locales_points_of_interest` (
 
 # Dumping data for table mangos.locales_points_of_interest: 494 rows
 /*!40000 ALTER TABLE `locales_points_of_interest` DISABLE KEYS */;
-INSERT IGNORE INTO `locales_points_of_interest` (`entry`, `icon_name_loc1`, `icon_name_loc2`, `icon_name_loc3`, `icon_name_loc4`, `icon_name_loc5`, `icon_name_loc6`, `icon_name_loc7`, `icon_name_loc8`) VALUES
+REPLACE INTO `locales_points_of_interest` (`entry`, `icon_name_loc1`, `icon_name_loc2`, `icon_name_loc3`, `icon_name_loc4`, `icon_name_loc5`, `icon_name_loc6`, `icon_name_loc7`, `icon_name_loc8`) VALUES
 	(1000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Таверна "Гордость льва"'),
 	(1001, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ирма'),
 	(1002, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Залдимар Вефхеллт'),

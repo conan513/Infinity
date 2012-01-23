@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:32
+# Date/time:                    2012-01-22 16:48:39
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `points_of_interest` (
 
 # Dumping data for table mangos.points_of_interest: 494 rows
 /*!40000 ALTER TABLE `points_of_interest` DISABLE KEYS */;
-INSERT IGNORE INTO `points_of_interest` (`entry`, `x`, `y`, `icon`, `flags`, `data`, `icon_name`) VALUES
+REPLACE INTO `points_of_interest` (`entry`, `x`, `y`, `icon`, `flags`, `data`, `icon_name`) VALUES
 	(1013, -9386.55, -118.731, 7, 99, 0, 'Lee Brown'),
 	(1015, -8851, 856.599, 7, 99, 0, 'Stormwind Inscription'),
 	(1016, -9060.71, 149.236, 7, 99, 0, 'Herbalist Pomeroy'),

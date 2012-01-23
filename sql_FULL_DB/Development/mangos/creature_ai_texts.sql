@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:02
+# Date/time:                    2012-01-22 16:48:08
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS `creature_ai_texts` (
   PRIMARY KEY  (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Script Texts';
 
-# Dumping data for table mangos.creature_ai_texts: 1,254 rows
+# Dumping data for table mangos.creature_ai_texts: 1,263 rows
 /*!40000 ALTER TABLE `creature_ai_texts` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`, `sound`, `type`, `language`, `emote`, `comment`) VALUES
+REPLACE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`, `sound`, `type`, `language`, `emote`, `comment`) VALUES
 	(-1, 'I see those fools at the Abbey sent some fresh meat for us.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Я смотрю, эти дураки из Аббатства прислали нам свежего мяса.', 0, 0, 0, 0, '103'),
 	(-2, 'The Brotherhood will not tolerate your actions.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Братство этого так не оставит.', 0, 0, 0, 0, 'Common Defais Text'),
 	(-3, 'Ah, a chance to use this freshly sharpened blade.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Наконец-то я смогу пустить свой клинок в дело!', 0, 0, 0, 0, 'Common Defais Text'),
@@ -57,6 +57,7 @@ INSERT IGNORE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc
 	(-20, 'I hope you die! Painfully!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Твой жизненный цикл закончен!', 0, 0, 0, 0, '20905'),
 	(-21, 'Mission accomplished.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Образцы... нужно... сохранить.', 11073, 1, 0, 0, '17976'),
 	(-22, 'VanCleef pay big for you heads!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5774, 1, 0, 0, '644'),
+	(-1190, 'Relinquish.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14000, 1, 0, 0, '29314'),
 	(-23, 'On guard!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Берегись!', 11241, 1, 0, 0, '20886'),
 	(-24, 'Defend yourself, for all the good it will do...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Защишайтесь, и пусть вам повезет...', 11242, 1, 0, 0, '20886'),
 	(-25, 'Knew this was... the only way out', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Я знал... это единственный выход.', 11243, 1, 0, 0, '20886'),
@@ -176,12 +177,6 @@ INSERT IGNORE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc
 	(-139, '...and put his eyes on $n.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 2, 0, 0, '15370'),
 	(-140, 'The coils of death... Will crush you.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Жернова смерти... раздавят тебя.', 5787, 1, 0, 0, '3670'),
 	(-141, 'Invaders! Sound the Alarm!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Нарушители! Включить тревогу!', 0, 1, 0, 0, '23586'),
-	(-142, 'In the throes of the Sundering, Ameth\'Aran was at the whim of the terror that gripped the land. There was little hope for survival.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '4509'),
-	(-143, 'Athrikus came to us. He told us that he could save us from harm. He cast a spell upon us to protect us from harm.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Атрикус прибыл . Он защитит нас. Его заклинание предохранит нас от вреда.', 0, 0, 0, 0, '4509'),
-	(-144, 'When the shaking stopped, his true motives were revealed. We were trapped, and he was slowly draining our powers.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Когда колебания прекратились, его истинные намерения проявились. Мы были пойманы в ловушку, и он медленно иссушил наши силы.', 0, 0, 0, 0, '4509'),
-	(-145, 'There were hundreds imprisoned by his spell. Now only a few remain in their prisons. He would speak to us sometimes.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Там были сотни, лишенных свободы его заклинанием. Сейчас только несколько осталось в их тюрьмах. Иногда он будет говорить с нами.', 0, 0, 0, 0, '4509'),
-	(-146, 'He worried that his power weakened, that soon even we last of his precious soulgems would fade and die.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '4509'),
-	(-147, 'His lieutenant, Ilkurd Magthrull possesses a tome which might indicate the location of the remaining soulgems.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Его лейтенант, Илкруд Магтрулл, владеет книгой, которая может определить местонахождение оставшихся камней душ.', 0, 0, 0, 0, '4509'),
 	(-148, 'Woot! Thanks!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Вау! Спасибо!', 0, 0, 0, 0, '17681'),
 	(-149, '%s becomes unstable and begins to disintegrate!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '% входит в транс!', 0, 2, 0, 0, '16876'),
 	(-150, 'Will you help me find my dog...?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ты не поможешь мне найти моего пса?', 11797, 0, 0, 0, '23618'),
@@ -840,7 +835,6 @@ INSERT IGNORE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc
 	(-807, '%s begins to retaliate all attacks against him!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 2, 0, 0, '14325'),
 	(-808, 'No one get past me and threaten da king!  Ungh, take it!!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '14325'),
 	(-809, 'Help me crush these punys!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 0, 0, '14325'),
-	(-810, 'Back in business! Now, to execute an exit strategy.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Снова в деле! Так, подумаем о путях отхода.', 14498, 1, 0, 0, '29266'),
 	(-811, 'It seems my freedom must be bought... with blood.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Похоже за свободу придется заплатить... кровью.', 14499, 1, 0, 0, '29266'),
 	(-812, 'Nothing personal...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ничего личного...', 14504, 1, 0, 0, '29266'),
 	(-813, 'Business concluded.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Сделка закрыта.', 14505, 1, 0, 0, '29266'),
@@ -1210,8 +1204,17 @@ INSERT IGNORE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc
 	(-50007, 'Farunn goes on land to the north of the place that you people call a sweet waterfall waves. You\'ll find him one, but saw him, you will realize that he needs no defenders.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Фарунн идет на север к месту, которое Вы люди называете сладкие волны водопада. Вы обнаружите его одного, но, увидя его, вы поймёте, что он не нуждается ни в каких защитниках.', 0, 0, 0, 0, NULL),
 	(-50008, 'Return to the satellite. Tell him that he went to Farunn and got him his reward.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Возвращайтесь к спутнику. Скажите ему, что вы ходили к Farunn и получили от него награду.', 0, 0, 0, 0, NULL),
 	(-50009, 'Then give him that he left this earth in peace. Do not place it here.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Затем, дайте ему покинуть эту землю с миром. Не оставляй его здесь.', 0, 0, 0, 0, NULL),
-	(-50010, 'You are looking for their leader ... the kids, you have ventured to war against the clans of the Grom\'thar the Thunderbringer. Not rush so zealously to his death.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Вы ищите их предводителя...малыши, вы отважились на войну против  кланов самого Гром\'тара Громовержца. Не мчитесь так рьяно к своей смерти.', 0, 0, 0, 0, 'q12150'),
-	(-50011, 'Ha! So be it. Protrubi in the horn master magnataurus in terms of plumes to the south of Azure Dragonshrine. Reconciled with their gods ... Grom\'thar come.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ха! Так тому и быть. Протруби в горн повелителя магнатавров в круге  факелов к югу  от лазуритового синих драконов. Примирись со своими богами...Гром\'тар придет. ', 0, 0, 0, 0, 'q12150'),
+	(-174, 'The %s moans but seems otherwise unaffected by the blight.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 2, 0, 0, '27349'),
+	(-1172, 'I have fallen! Fear not, brethren! Let nothing keep you from the Stoneforge!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, 0, 0, '24371'),
+	(-1173, 'Me crush puny friend of dragons!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '23786'),
+	(-1174, 'You leave Stonemaul lands now!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '23786'),
+	(-1175, 'Why you wake ghost? Where other Stonemauls?!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '23786'),
+	(-1176, 'We finish this now, champions of Kirin Tor!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13947, 1, 0, 0, '31134'),
+	(-1177, 'I will end the Kirin Tor!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13952, 1, 0, 0, '31134'),
+	(-1178, 'Dalaran will fall!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13953, 1, 0, 0, '31134'),
+	(-1179, 'So ends your defiance of the Spell-Weaver!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13954, 1, 0, 0, '31134'),
+	(-1180, 'Perhaps... we have... underestimated... you.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13955, 1, 0, 0, '31134'),
+	(-1181, 'A valiant defense, but this city must be razed. I will fulfill Malygos\'s wishes myself!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13946, 1, 0, 0, '31134'),
 	(-50012, 'Thank you all. Ancient Druids took the wise decision to destroy Fordrassil, because it is deeply rooted in the land, where dwelt an ancient evil.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Спасибо вам всем. Друиды древности приняли мудрое решение разрушить Фордрассил, ибо его корни уходили глубоко в землю, где обитало древнее зло.', 0, 0, 0, 0, 'q12236'),
 	(-50013, 'To you it is well known under the name of the ancient gods. Beware Yogg-Saron, a beast with a thousand paste. His evil has spread far beyond the roots Fordrassila.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Вам оно известно под именем древних богов. Остерегайся Йогг-Сарона, зверя с тысячью пастей. Его зло распространилось далеко за пределы корней Фордрассила.', 0, 0, 0, 0, 'q12236'),
 	(-332241, 'Can not be! Am I finally being free?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Не может быть! Я по-настоящему буду свободным?', 0, 0, 0, 0, '33224'),
@@ -1224,19 +1227,25 @@ INSERT IGNORE INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc
 	(-308353, 'Look like, my lady? A vrykul, I suppose. They did not actually show him to me. Ever since The Shadow Vault....', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Как он выглядел, госпожа? Как врайкул, я полагаю. Вообще-то мне его не показывали. С тех пор, как Мрачный Свод...', 0, 0, 0, 0, NULL),
 	(-308354, 'A name? Oh, yes, the name! I believe it was Iskalder.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Имя? Ах да, имя! Кажется, Искальдер', 0, 0, 0, 0, NULL),
 	(-308352, 'There is word from Jotunheim. The sleep-watchers there believe that they have found someone of significance.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Пришло сообщение из Йотунхейма. Сноходцы полагают, что нашли кого-то очень важного', 0, 0, 0, 0, NULL),
+	(-1191, 'Fall... to shadow.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14001, 1, 0, 0, '29314'),
+	(-1192, 'Disperse.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14002, 1, 0, 0, '29314'),
+	(-1193, 'Know... my... pain.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13997, 1, 0, 0, '29314'),
 	(-243811, 'Arise, my brothers!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '24381'),
 	(-243812, 'Our iron masters is for us the job!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '24381'),
 	(-243813, 'Follow me to the mountains and do the will of our Lord!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '24381'),
 	(-243814, 'We will not surrender!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '24381'),
-	(-272121, 'You\'re late, overseer.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
+	(-1182, 'Crush....', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14176, 1, 0, 0, '27977'),
 	(-297241, 'Trying to recover lost data...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
 	(-296471, 'I have all of you will break!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
 	(-296472, 'Your torture only increased my fury!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
 	(-296473, 'I\'ll eat you whole!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Я сожру вас целиком!', 0, 0, 0, 0, NULL),
-	(-272125, 'Return to your duties, overseer. Be certain to impress upon your workers the urgency of their tasks.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
-	(-272124, 'If the stone giants interfere with our work at Ulduar, I will hold you and your thane responsible. Mortals must not be allowed to come to the aid of the giants.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
-	(-272123, 'Tell your rune-smiths to continue converting what stone giants you can. Those that will not submit must be destroyed.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
-	(-272122, 'Destiny will not wait. Your craftsmen must increase their production of the war golems before the stone giant leader and his army reach Ulduar.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
+	(-1188, 'Eradicate.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13996, 1, 0, 0, '29314'),
+	(-1189, 'More... energy.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13999, 1, 0, 0, '29314'),
+	(-1187, 'Intriguing... a high quantity of arcane energy is near. Time for some prospecting...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14500, 1, 0, 0, '29266'),
+	(-1186, 'Plentiful, exploitable resources... primed for acquisition!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14502, 1, 0, 0, '29266'),
+	(-1183, 'Ha...ha...ha...ha...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14177, 1, 0, 0, '27977'),
+	(-1184, 'Uuuuhhhhhhhhhh......', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14179, 1, 0, 0, '27977'),
+	(-1185, 'The air teems with latent energy... quite the harvest!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14501, 1, 0, 0, '29266'),
 	(-297242, 'Being checked in the third level...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),
 	(-297243, 'Verifying database integrity...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Проверка целостности базы данных...', 0, 0, 0, 0, NULL),
 	(-213191, 'Little- $R is not able to raise a spear. Gore to raise the spear!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL),

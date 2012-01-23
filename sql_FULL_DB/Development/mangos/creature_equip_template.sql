@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:02
+# Date/time:                    2012-01-22 16:48:08
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `creature_equip_template` (
 
 # Dumping data for table mangos.creature_equip_template: 4,222 rows
 /*!40000 ALTER TABLE `creature_equip_template` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_equip_template` (`entry`, `equipentry1`, `equipentry2`, `equipentry3`) VALUES
+REPLACE INTO `creature_equip_template` (`entry`, `equipentry1`, `equipentry2`, `equipentry3`) VALUES
 	(3001, 1910, 0, 0),
 	(3002, 1911, 0, 0),
 	(3003, 2715, 5291, 2552),
@@ -3412,7 +3412,7 @@ INSERT IGNORE INTO `creature_equip_template` (`entry`, `equipentry1`, `equipentr
 	(325, 14618, 0, 0),
 	(324, 22738, 23356, 0),
 	(323, 29707, 29640, 30580),
-	(101008, 17042, 0, 0),
+	(40503, 17042, 0, 0),
 	(322, 24012, 0, 0),
 	(321, 13722, 0, 0),
 	(320, 28115, 0, 0),
@@ -3605,8 +3605,8 @@ INSERT IGNORE INTO `creature_equip_template` (`entry`, `equipentry1`, `equipentr
 	(136, 12290, 0, 0),
 	(135, 5276, 0, 0),
 	(134, 5285, 0, 0),
-	(101009, 46069, 11587, 0),
-	(101010, 46070, 0, 0),
+	(40504, 46069, 11587, 0),
+	(40505, 46070, 0, 0),
 	(133, 12883, 12883, 0),
 	(132, 13631, 0, 0),
 	(131, 1905, 2052, 0),

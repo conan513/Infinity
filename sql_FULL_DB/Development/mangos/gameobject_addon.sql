@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:16
+# Date/time:                    2012-01-22 16:48:22
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `gameobject_addon` (
 
 # Dumping data for table mangos.gameobject_addon: 9 rows
 /*!40000 ALTER TABLE `gameobject_addon` DISABLE KEYS */;
-INSERT IGNORE INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `path_rotation2`, `path_rotation3`) VALUES
+REPLACE INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `path_rotation2`, `path_rotation3`) VALUES
 	(43835, 0, 0, -0.932008, 0.362437),
 	(52137, 0, 0, 0.99999, 0.00436634),
 	(52135, 0, 0, 0.99999, 0.00436634),

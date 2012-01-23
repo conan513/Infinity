@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:37
+# Date/time:                    2012-01-22 16:48:44
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `transports` (
 
 # Dumping data for table mangos.transports: 29 rows
 /*!40000 ALTER TABLE `transports` DISABLE KEYS */;
-INSERT IGNORE INTO `transports` (`entry`, `name`, `period`) VALUES
+REPLACE INTO `transports` (`entry`, `name`, `period`) VALUES
 	(176495, 'Grom\'Gol Base Camp and Undercity', 315032),
 	(176310, 'Menethil Harbor and Auberdine', 241778),
 	(176244, 'Teldrassil and Auberdine', 309295),

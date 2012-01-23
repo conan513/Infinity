@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:07
+# Date/time:                    2012-01-22 16:48:12
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `creature_model_info` (
 
 # Dumping data for table mangos.creature_model_info: 24,154 rows
 /*!40000 ALTER TABLE `creature_model_info` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_model_info` (`modelid`, `bounding_radius`, `combat_reach`, `gender`, `modelid_other_gender`, `modelid_alternative`) VALUES
+REPLACE INTO `creature_model_info` (`modelid`, `bounding_radius`, `combat_reach`, `gender`, `modelid_other_gender`, `modelid_alternative`) VALUES
 	(4, 2, 3, 2, 0, 0),
 	(13, 0, 0, 2, 0, 0),
 	(14, 0, 0, 2, 0, 0),

@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:31
+# Date/time:                    2012-01-22 16:48:38
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `pickpocketing_loot_template` (
 
 # Dumping data for table mangos.pickpocketing_loot_template: 18,151 rows
 /*!40000 ALTER TABLE `pickpocketing_loot_template` DISABLE KEYS */;
-INSERT IGNORE INTO `pickpocketing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
+REPLACE INTO `pickpocketing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `lootcondition`, `condition_value1`, `condition_value2`) VALUES
 	(3, 16882, 19.7304, 0, 1, 1, 0, 0, 0),
 	(3, 5376, 10.5392, 0, 1, 1, 0, 0, 0),
 	(3, 4606, 6.8627, 0, 1, 1, 0, 0, 0),

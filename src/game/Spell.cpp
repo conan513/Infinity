@@ -505,11 +505,14 @@ void Spell::FillTargetMap()
         // but need it support in some know cases
         switch(m_spellInfo->EffectImplicitTargetA[i])
         {
-            case 0:
+            case TARGET_NONE:
                 switch(m_spellInfo->EffectImplicitTargetB[i])
                 {
-                    case 0:
-                        SetTargetMap(SpellEffectIndex(i), TARGET_EFFECT_SELECT, tmpUnitMap);
+                    case TARGET_NONE:
+                        if (m_caster->GetObjectGuid().IsPet())
+                            SetTargetMap(SpellEffectIndex(i), TARGET_SELF, tmpUnitMap);
+                        else
+                            SetTargetMap(SpellEffectIndex(i), TARGET_EFFECT_SELECT, tmpUnitMap);
                         break;
                     default:
                         SetTargetMap(SpellEffectIndex(i), m_spellInfo->EffectImplicitTargetB[i], tmpUnitMap);
@@ -519,7 +522,7 @@ void Spell::FillTargetMap()
             case TARGET_SELF:
                 switch(m_spellInfo->EffectImplicitTargetB[i])
                 {
-                    case 0:
+                    case TARGET_NONE:
                     case TARGET_EFFECT_SELECT:
                         SetTargetMap(SpellEffectIndex(i), m_spellInfo->EffectImplicitTargetA[i], tmpUnitMap);
                         break;
@@ -540,7 +543,7 @@ void Spell::FillTargetMap()
             case TARGET_EFFECT_SELECT:
                 switch(m_spellInfo->EffectImplicitTargetB[i])
                 {
-                    case 0:
+                    case TARGET_NONE:
                     case TARGET_EFFECT_SELECT:
                         SetTargetMap(SpellEffectIndex(i), m_spellInfo->EffectImplicitTargetA[i], tmpUnitMap);
                         break;
@@ -1275,6 +1278,8 @@ void Spell::DoAllEffectOnTarget(TargetInfo *target)
     // Call scripted function for AI if this spell is casted by a creature
     if (m_caster->GetTypeId() == TYPEID_UNIT && ((Creature*)m_caster)->AI())
         ((Creature*)m_caster)->AI()->SpellHitTarget(unit, m_spellInfo);
+    if (real_caster && real_caster != m_caster && real_caster->GetTypeId() == TYPEID_UNIT && ((Creature*)real_caster)->AI())
+        ((Creature*)real_caster)->AI()->SpellHitTarget(unit, m_spellInfo);
 }
 
 void Spell::DoSpellHitOnUnit(Unit *unit, uint32 effectMask)
@@ -1342,10 +1347,6 @@ void Spell::DoSpellHitOnUnit(Unit *unit, uint32 effectMask)
                 if (!(m_spellInfo->AttributesEx & SPELL_ATTR_EX_NO_THREAT) &&
                     !unit->isInCombat() && unit->GetTypeId() != TYPEID_PLAYER && ((Creature*)unit)->AI())
                     unit->AttackedBy(realCaster);
-
-                unit->AddThreat(realCaster);
-                unit->SetInCombatWith(realCaster);
-                realCaster->SetInCombatWith(unit);
 
                 if (Player *attackedPlayer = unit->GetCharmerOrOwnerPlayerOrPlayerItself())
                     realCaster->SetContestedPvP(attackedPlayer);

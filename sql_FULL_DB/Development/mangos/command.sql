@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:02:56
+# Date/time:                    2012-01-22 16:48:01
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `command` (
 
 # Dumping data for table mangos.command: 329 rows
 /*!40000 ALTER TABLE `command` DISABLE KEYS */;
-INSERT IGNORE INTO `command` (`name`, `security`, `help`) VALUES
+REPLACE INTO `command` (`name`, `security`, `help`) VALUES
 	('account delete', 4, 'Syntax: .account delete $account\r\n\r\nDelete account with all characters.'),
 	('additem', 2, 'Syntax: .additem #itemid/[#itemname]/#shift-click-item-link #itemcount\r\n\r\nAdds the specified number of items of id #itemid (or exact (!) name $itemname in brackets, or link created by shift-click at item in inventory or recipe) to your or selected character inventory. If #itemcount is omitted, only one item will be added.\r\n.'),
 	('additemset', 3, 'Syntax: .additemset #itemsetid\r\n\r\nAdd items from itemset of id #itemsetid to your or selected character inventory. Will add by one example each item from itemset.'),

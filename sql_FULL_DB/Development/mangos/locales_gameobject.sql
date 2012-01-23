@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:26
+# Date/time:                    2012-01-22 16:48:32
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `locales_gameobject` (
 
 # Dumping data for table mangos.locales_gameobject: 17,165 rows
 /*!40000 ALTER TABLE `locales_gameobject` DISABLE KEYS */;
-INSERT IGNORE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `castbarcaption_loc1`, `castbarcaption_loc2`, `castbarcaption_loc3`, `castbarcaption_loc4`, `castbarcaption_loc5`, `castbarcaption_loc6`, `castbarcaption_loc7`, `castbarcaption_loc8`) VALUES
+REPLACE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `castbarcaption_loc1`, `castbarcaption_loc2`, `castbarcaption_loc3`, `castbarcaption_loc4`, `castbarcaption_loc5`, `castbarcaption_loc6`, `castbarcaption_loc7`, `castbarcaption_loc8`) VALUES
 	(11, '', '', '', '', '', '', '', 'Обломки кораблекрушения', '', '', '', '', '', '', '', 'Изучение'),
 	(31, '', '', '', '', '', '', '', 'Статуя старого льва', '', '', '', '', '', '', '', 'Изучение'),
 	(32, '', '', '', '', '', '', '', 'Затонувший сундук', '', '', '', '', '', '', '', 'Изучение'),
@@ -7959,7 +7959,7 @@ INSERT IGNORE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `nam
 	(181616, '', '', '', '', '', '', '', 'Косяк красного луциана', '', '', '', '', '', '', '', 'Изучение'),
 	(181617, '', '', '', '', '', '', '', 'Местоположение флага Силитуса, Орда', '', '', '', '', '', '', '', 'Изучение'),
 	(181618, '', '', '', '', '', '', '', 'Для ВоВ - счетчик захвата флага - Альянс', '', '', '', '', '', '', '', 'Изучение');
-INSERT IGNORE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `castbarcaption_loc1`, `castbarcaption_loc2`, `castbarcaption_loc3`, `castbarcaption_loc4`, `castbarcaption_loc5`, `castbarcaption_loc6`, `castbarcaption_loc7`, `castbarcaption_loc8`) VALUES
+REPLACE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `castbarcaption_loc1`, `castbarcaption_loc2`, `castbarcaption_loc3`, `castbarcaption_loc4`, `castbarcaption_loc5`, `castbarcaption_loc6`, `castbarcaption_loc7`, `castbarcaption_loc8`) VALUES
 	(181619, '', '', '', '', '', '', '', 'Для ВоВ - счетчик захвата флага - Орда', '', '', '', '', '', '', '', 'Изучение'),
 	(181620, '', '', '', '', '', '', '', 'Неоткрытый сундук', '', '', '', '', '', '', '', 'Изучение'),
 	(181621, '', '', '', '', '', '', '', 'Источник душ', '', '', '', '', '', '', '', 'Изучение'),
@@ -15702,7 +15702,7 @@ INSERT IGNORE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `nam
 	(195129, '', '', '', '', '', '', '', 'Бочка с маслом', '', '', '', '', '', '', '', 'Изучение'),
 	(194201, '', '', '', '', '', '', '', 'Зимние сокровища', '', '', '', '', '', '', '', 'Изучение'),
 	(194277, '', '', '', '', '', '', '', 'Знамя Стальгорна', '', '', '', '', '', '', '', 'Изучение');
-INSERT IGNORE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `castbarcaption_loc1`, `castbarcaption_loc2`, `castbarcaption_loc3`, `castbarcaption_loc4`, `castbarcaption_loc5`, `castbarcaption_loc6`, `castbarcaption_loc7`, `castbarcaption_loc8`) VALUES
+REPLACE INTO `locales_gameobject` (`entry`, `name_loc1`, `name_loc2`, `name_loc3`, `name_loc4`, `name_loc5`, `name_loc6`, `name_loc7`, `name_loc8`, `castbarcaption_loc1`, `castbarcaption_loc2`, `castbarcaption_loc3`, `castbarcaption_loc4`, `castbarcaption_loc5`, `castbarcaption_loc6`, `castbarcaption_loc7`, `castbarcaption_loc8`) VALUES
 	(194963, '', '', '', '', '', '', '', 'Озеро Ледяных Оков - юго-западное знамя завода', '', '', '', '', '', '', '', 'Изучение'),
 	(194959, '', '', '', '', '', '', '', 'Озеро Ледяных Оков - юго-восточное знамя завода', '', '', '', '', '', '', '', 'Изучение'),
 	(194960, '', '', '', '', '', '', '', 'Озеро Ледяных Оков - юго-восточное знамя завода', '', '', '', '', '', '', '', 'Изучение'),

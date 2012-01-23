@@ -3,7 +3,7 @@
 # Server version:               5.0.45-community-nt - MySQL Community Edition (GPL)
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3968
-# Date/time:                    2011-12-29 12:03:09
+# Date/time:                    2012-01-22 16:48:15
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `creature_movement_template` (
 
 # Dumping data for table mangos.creature_movement_template: 1,581 rows
 /*!40000 ALTER TABLE `creature_movement_template` DISABLE KEYS */;
-INSERT IGNORE INTO `creature_movement_template` (`entry`, `point`, `position_x`, `position_y`, `position_z`, `waittime`, `script_id`, `textid1`, `textid2`, `textid3`, `textid4`, `textid5`, `emote`, `spell`, `wpguid`, `orientation`, `model1`, `model2`) VALUES
+REPLACE INTO `creature_movement_template` (`entry`, `point`, `position_x`, `position_y`, `position_z`, `waittime`, `script_id`, `textid1`, `textid2`, `textid3`, `textid4`, `textid5`, `emote`, `spell`, `wpguid`, `orientation`, `model1`, `model2`) VALUES
 	(28669, 1, 6072.31, 2086.86, 423.023, 3000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(28669, 2, 6071.52, 2087.48, 423.023, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(28669, 3, 6063.74, 2094.86, 431.521, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
