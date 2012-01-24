@@ -1,5 +1,4 @@
-/* Copyright (C) 2006 - 2011 ScriptDev2 <http://www.scriptdev2.com/>
- * Copyright (C) 2011 - 2012 Infinity_sd2
+/* Copyright (C) 2006 - 2012 ScriptDev2 <http://www.scriptdev2.com/>
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -52,14 +51,14 @@ enum
     // SPELL_SUMMON_CRYSTAL_HANDLER    = 49179,             // Spell seems to be unused, perhaps only server-side, and especially no suitable positioned caster are found for this spell
     SPELL_SUMMON_FETID_TROLL_CORPSE = 49103,
     SPELL_SUMMON_HULKING_CORPSE     = 49104,
-    SPELL_SUMMON_RISEN_SHADOWCASTER = 49105,
+    SPELL_SUMMON_RISON_SHADOWCASTER = 49105,
 
     // Spells 'Crystal Handler Death' 47336, 55801, 55803, 55805 (defined in instance script)
 
     NPC_CRYSTAL_HANDLER             = 26627,
     NPC_HULKING_CORPSE              = 27597,
     NPC_FETID_TROLL_CORPSE          = 27598,
-    NPC_RISEN_SHADOWCASTER          = 27600,
+    NPC_RISON_SHADOWCASTER          = 27600,
     NPC_ROTTED_TROLL_CORPSE         = 32786,                // On heroic as effect of SPELL_SUMMON_MINIONS_H
 };
 
@@ -138,7 +137,7 @@ struct MANGOS_DLL_DECL boss_novosAI : public Scripted_NoMovementAI
     void MoveInLineOfSight(Unit* pWho)
     {
         // An Add reached the ground, if its z-pos is near the z pos of Novos
-        if (pWho->GetEntry() == NPC_HULKING_CORPSE || pWho->GetEntry() == NPC_FETID_TROLL_CORPSE || pWho->GetEntry() == NPC_RISEN_SHADOWCASTER)
+        if (pWho->GetEntry() == NPC_HULKING_CORPSE || pWho->GetEntry() == NPC_FETID_TROLL_CORPSE || pWho->GetEntry() == NPC_RISON_SHADOWCASTER)
         {
             // Add reached ground, and the failure has not yet been reported
             if (pWho->GetPositionZ() < m_creature->GetPositionZ() + 1.5f && m_pInstance && m_pInstance->GetData(TYPE_NOVOS) == IN_PROGRESS)
@@ -234,7 +233,7 @@ struct MANGOS_DLL_DECL boss_novosAI : public Scripted_NoMovementAI
                 if (m_uiSummonShadowcasterTimer < uiDiff)
                 {
                     if (Creature* pSummoner = m_pInstance->GetSummonDummy())
-                        pSummoner->CastSpell(pSummoner, SPELL_SUMMON_RISEN_SHADOWCASTER, false, NULL, NULL, m_creature->GetObjectGuid());
+                        pSummoner->CastSpell(pSummoner, SPELL_SUMMON_RISON_SHADOWCASTER, false, NULL, NULL, m_creature->GetObjectGuid());
                     m_uiSummonShadowcasterTimer = 25000;
                 }
                 else
@@ -337,7 +336,7 @@ struct MANGOS_DLL_DECL npc_crystal_channel_targetAI : public ScriptedAI
 
     void JustSummoned(Creature* pSummoned)
     {
-        if (pSummoned->GetEntry() == NPC_HULKING_CORPSE || pSummoned->GetEntry() == NPC_FETID_TROLL_CORPSE || pSummoned->GetEntry() == NPC_RISEN_SHADOWCASTER)
+        if (pSummoned->GetEntry() == NPC_HULKING_CORPSE || pSummoned->GetEntry() == NPC_FETID_TROLL_CORPSE || pSummoned->GetEntry() == NPC_RISON_SHADOWCASTER)
         {
             // Let them move down the stairs
             float fX, fY, fZ;
@@ -353,7 +352,7 @@ struct MANGOS_DLL_DECL npc_crystal_channel_targetAI : public ScriptedAI
 
     void SummonedMovementInform(Creature* pSummoned, uint32 uiMotionType, uint32 uiPointId)
     {
-        if (uiPointId != 1 || uiMotionType != POINT_MOTION_TYPE || (pSummoned->GetEntry() != NPC_HULKING_CORPSE && pSummoned->GetEntry() != NPC_FETID_TROLL_CORPSE && pSummoned->GetEntry() != NPC_RISEN_SHADOWCASTER))
+        if (uiPointId != 1 || uiMotionType != POINT_MOTION_TYPE || (pSummoned->GetEntry() != NPC_HULKING_CORPSE && pSummoned->GetEntry() != NPC_FETID_TROLL_CORPSE && pSummoned->GetEntry() != NPC_RISON_SHADOWCASTER))
             return;
 
         if (!pSummoned->isInCombat() && m_pInstance)

@@ -1,5 +1,4 @@
-/* Copyright (C) 2006 - 2011 ScriptDev2 <http://www.scriptdev2.com/>
- * Copyright (C) 2011 - 2012 Infinity_sd2
+/* Copyright (C) 2006 - 2012 ScriptDev2 <http://www.scriptdev2.com/>
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -18,9 +17,8 @@
 /* ScriptData
 SDName: Boss_Trollgore
 SD%Complete: 80%
-SDComment:
+SDComment: Some details related to the summoned creatures need more adjustments
 SDCategory: Drak'Tharon Keep
-ToDo: fix corpse expl. && fix addeds (corpse && way of summon)  // more work is needed
 EndScriptData */
 
 #include "precompiled.h"
@@ -34,33 +32,22 @@ enum
     SAY_EXPLODE                     = -1600003,
     SAY_KILL                        = -1600004,
 
-    SPELL_CRUSH                     = 49639, // Crushes your target, inflicting 150% melee damage.
-    SPELL_INFECTED_WOUND            = 49637, // Increases the Physical damage taken by an enemy by 15% for 10 sec.
-    SPELL_CORPSE_EXPLODE            = 49555, // (aura#226)
-    SPELL_CORPSE_EXPLODE_H          = 59807, // (aura#226)
-    SPELL_CONSUME                   = 49380, // Deals 1885 to 2115 Shadow damage to enemies within 50 yards (50 yrds around target hit). For every enemy damaged in this way, the caster gains a 2% damage increase.
-    SPELL_CONSUME_H                 = 59803, // Deals 4713 to 5287 Shadow damage to enemies within 50 yards (50 yrds around target hit). For every enemy damaged in this way, the caster gains a 5% damage increase.
-
-    SPELL_CORPSE_EXPLODE_PROC       = 49618, // Infests a nearby Drakkari Invader corpse, causing it to explode after a few seconds dealing 3770 to 4230 Nature damage to enemies within 5 yards.
-    H_SPELL_CORPSE_EXPLODE_PROC     = 59809, // Infests a nearby Drakkari Invader corpse, causing it to explode after a few seconds dealing 9425 to 10575 Nature damage to enemies within 5 yards.
-
-///-> used for Achiev
+    SPELL_CRUSH                     = 49639,
+    SPELL_INFECTED_WOUND            = 49637,
+    SPELL_CORPSE_EXPLODE            = 49555,
+    SPELL_CORPSE_EXPLODE_H          = 59807,
+    SPELL_CONSUME                   = 49380,
+    SPELL_CONSUME_H                 = 59803,
+    SPELL_CONSUME_BUFF              = 49381,            // used to measure the achiev
     SPELL_CONSUME_BUFF_H            = 59805,
 
-    SPELL_INVADER_TAUNT             = 49405, // cast 49406
+    SPELL_SUMMON_INVADER_1          = 49456,            // summon 27709
+    SPELL_SUMMON_INVADER_2          = 49457,            // summon 27753
+    //SPELL_SUMMON_INVADER_3        = 49458,            // summon 27754
+    SPELL_INVADER_TAUNT             = 49405,            // triggers 49406
 
-    SPELL_INVADER_A                 = 49456,
-    SPELL_INVADER_B                 = 49457,
-    SPELL_INVADER_C                 = 49458,
-
+    MAX_CONSOME_STACKS              = 10,
 };
-
-///-> Temp achi Hack
-#define ACHIEVEMENT			2151
-
-const float PosSummon1[3] = {-259.59f, -652.49f, 26.52f};
-const float PosSummon2[3] = {-261.60f, -658.71f, 26.51f};
-const float PosSummon3[3] = {-262.05f, -665.71f, 26.49f};
 
 /*######
 ## boss_trollgore
@@ -78,75 +65,24 @@ struct MANGOS_DLL_DECL boss_trollgoreAI : public ScriptedAI
     instance_draktharon_keep* m_pInstance;
     bool m_bIsRegularMode;
 
-    uint32 m_uiCrush_Timer;
-    uint32 m_uiInfectedWound_Timer;
+    uint8 m_uiConsumeStacks;
+
     uint32 m_uiConsumeTimer;
-    uint32 m_uiCorpseExplode_Timer;
+    uint32 m_uiCrushTimer;
+    uint32 m_uiInfectedWoundTimer;
+    uint32 m_uiWaveTimer;
+    uint32 m_uiCorpseExplodeTimer;
 
-    uint32 m_uiWave_Timer;
-
-///-> Achiev
-    bool m_bAchievFailed;
-    uint32 m_uiCheckTimer;
+    GUIDVector m_vTriggers;
 
     void Reset()
     {
-        m_uiCrush_Timer          = 10000;
-        m_uiInfectedWound_Timer  = 20000;
-        m_uiConsumeTimer         = 15000;
-        m_uiWave_Timer           = 2000;
-
-        m_uiCorpseExplode_Timer = 10000;
-
-        if (m_pInstance)
-            m_pInstance->SetData(TYPE_TROLLGORE, NOT_STARTED);
-
-        if (!m_bIsRegularMode)
-            m_pInstance->SetSpecialAchievementCriteria(TYPE_CONSUME_JUNCTION, true);
-
-        m_uiCheckTimer = 1000;
-        m_bAchievFailed = false;
-    }
-
-    void SummonWaves()
-    {
-        if (Creature* pInvader1 = m_creature->SummonCreature(NPC_DRAKKARI_INVADER,PosSummon1[0],PosSummon1[1],PosSummon1[2],0, TEMPSUMMON_TIMED_DESPAWN, 15000))
-            pInvader1->AI()->AttackStart(m_creature);
-        if (Creature* pInvader2 = m_creature->SummonCreature(NPC_DRAKKARI_INVADER,PosSummon2[0],PosSummon2[1],PosSummon2[2],0, TEMPSUMMON_TIMED_DESPAWN, 15000))
-            pInvader2->AI()->AttackStart(m_creature);
-        if (Creature* pInvader3 = m_creature->SummonCreature(NPC_DRAKKARI_INVADER,PosSummon3[0],PosSummon3[1],PosSummon3[2],0, TEMPSUMMON_TIMED_DESPAWN, 15000))
-            pInvader3->AI()->AttackStart(m_creature);
-    }
-
-    void JustSummoned(Creature* pSummoned)
-    {
-        Creature* pTarget = m_pInstance->GetSingleCreatureFromStorage(NPC_TROLLGORE);
-        if (Creature* pSummoned = m_pInstance->GetSingleCreatureFromStorage(NPC_DRAKKARI_INVADER))
-        {
-            pSummoned->AddThreat(pTarget,1000.0f);
-            pTarget->AddThreat(pSummoned);
-            pSummoned->CastSpell(pSummoned,SPELL_INVADER_TAUNT,true);
-        }
-    }
-
-    void CheckAchievement()
-    {
-        if (!m_pInstance)
-            return;
-
-        Creature* pTarget = m_pInstance->GetSingleCreatureFromStorage(NPC_TROLLGORE);
-        if (pTarget)
-        {
-            SpellAuraHolderPtr holder = pTarget->GetSpellAuraHolder(SPELL_CONSUME_BUFF_H);
-            if (holder)
-            {
-                if (holder->GetStackAmount() > 10)
-                {
-                    //m_pInstance->SetSpecialAchievementCriteria(TYPE_CONSUME_JUNCTION, false);
-                    m_bAchievFailed = true;
-                }
-            }
-         }
+        m_uiCorpseExplodeTimer  = 20000;
+        m_uiConsumeTimer        = 15000;
+        m_uiCrushTimer          = 10000;
+        m_uiInfectedWoundTimer  = 5000;
+        m_uiWaveTimer           = 0;
+        m_uiConsumeStacks       = 0;
     }
 
     void Aggro(Unit* pWho)
@@ -154,12 +90,16 @@ struct MANGOS_DLL_DECL boss_trollgoreAI : public ScriptedAI
         DoScriptText(SAY_AGGRO, m_creature);
 
         if (m_pInstance)
+        {
             m_pInstance->SetData(TYPE_TROLLGORE, IN_PROGRESS);
+            m_pInstance->GetTrollgoreOutsideTriggers(m_vTriggers);
+        }
     }
 
     void KilledUnit(Unit* pVictim)
     {
-        DoScriptText(SAY_KILL, m_creature);
+        if (pVictim->GetCharmerOrOwnerPlayerOrPlayerItself())
+            DoScriptText(SAY_KILL, m_creature);
     }
 
     void JustDied(Unit* pKiller)
@@ -168,12 +108,6 @@ struct MANGOS_DLL_DECL boss_trollgoreAI : public ScriptedAI
 
         if (m_pInstance)
             m_pInstance->SetData(TYPE_TROLLGORE, DONE);
-
-        if (!m_bIsRegularMode && !m_bAchievFailed)
-        {
-            if (m_pInstance)
-                m_pInstance->DoCompleteAchievement(ACHIEVEMENT);
-        }
     }
 
     void JustReachedHome()
@@ -182,65 +116,114 @@ struct MANGOS_DLL_DECL boss_trollgoreAI : public ScriptedAI
             m_pInstance->SetData(TYPE_TROLLGORE, FAIL);
     }
 
+    void SpellHit(Unit* pTarget, const SpellEntry* pSpell)
+    {
+        if (pSpell->Id == SPELL_CONSUME_BUFF || pSpell->Id == SPELL_CONSUME_BUFF_H)
+        {
+            ++m_uiConsumeStacks;
+
+            // if the boss has 10 stacks then set the achiev to fail
+            if (m_uiConsumeStacks == MAX_CONSOME_STACKS)
+            {
+                if (m_pInstance)
+                    m_pInstance->SetData(TYPE_TROLLGORE, SPECIAL);
+            }
+        }
+    }
+
+    void JustSummoned(Creature* pSummoned)
+    {
+        // This spell taunts the boss and the boss taunts back
+        pSummoned->CastSpell(m_creature, SPELL_INVADER_TAUNT, true);
+    }
+
+    // Wrapper to handle the drakkari invaders summon
+    void DoSummonDrakkariInvaders()
+    {
+        if (!m_pInstance)
+            return;
+
+        // check if there are there are at least 2 triggers in the vector
+        if (m_vTriggers.size() < 2)
+            return;
+
+        if (roll_chance_i(30))
+        {
+            // Summon a troll in the corner and 2 trolls in the air
+            if (Creature* pTrigger = m_creature->GetMap()->GetCreature(m_pInstance->GetTrollgoreCornerTrigger()))
+                pTrigger->CastSpell(pTrigger, roll_chance_i(20) ? SPELL_SUMMON_INVADER_1 : SPELL_SUMMON_INVADER_2, true, NULL, NULL, m_creature->GetObjectGuid());
+
+            // get two random outside triggers
+            uint8 uiMaxTriggers = m_vTriggers.size();
+            uint8 uiPos1 = urand(0, uiMaxTriggers  - 1);
+            uint8 uiPos2 = (uiPos1 + urand(1, uiMaxTriggers  - 1)) % uiMaxTriggers;
+
+            if (Creature* pTrigger = m_creature->GetMap()->GetCreature(m_vTriggers[uiPos1]))
+                pTrigger->CastSpell(pTrigger, roll_chance_i(30) ? SPELL_SUMMON_INVADER_1 : SPELL_SUMMON_INVADER_2, true, NULL, NULL, m_creature->GetObjectGuid());
+            if (Creature* pTrigger = m_creature->GetMap()->GetCreature(m_vTriggers[uiPos2]))
+                pTrigger->CastSpell(pTrigger, roll_chance_i(30) ? SPELL_SUMMON_INVADER_1 : SPELL_SUMMON_INVADER_2, true, NULL, NULL, m_creature->GetObjectGuid());
+        }
+        else
+        {
+            // Summon 3 trolls in the air
+            for(uint8 i = 0; i < m_vTriggers.size(); ++i)
+            {
+                if (Creature* pTrigger = m_creature->GetMap()->GetCreature(m_vTriggers[i]))
+                    pTrigger->CastSpell(pTrigger, roll_chance_i(30) ? SPELL_SUMMON_INVADER_1 : SPELL_SUMMON_INVADER_2, true, NULL, NULL, m_creature->GetObjectGuid());
+            }
+        }
+    }
+
     void UpdateAI(const uint32 uiDiff)
     {
         if (!m_creature->SelectHostileTarget() || !m_creature->getVictim())
             return;
 
-        Creature* pInvader = m_pInstance->GetSingleCreatureFromStorage(NPC_DRAKKARI_INVADER);
-        //m_uiInvaderGuid = pInvader->GetObjectGuid();
-
-        if (!m_bAchievFailed)
-        {
-            if (m_uiCheckTimer < uiDiff)
-            {
-                CheckAchievement();
-                m_uiCheckTimer = 1000;
-            }
-            else m_uiCheckTimer -= uiDiff;
-        }
-
-        // Summon npcs
-        if (m_uiWave_Timer < uiDiff)
-        {
-            SummonWaves();
-            m_uiWave_Timer = 15000;
-        }else m_uiWave_Timer -= uiDiff;
-
-        // Crush
-        if (m_uiCrush_Timer < uiDiff)
+        if (m_uiCrushTimer < uiDiff)
         {
             if (DoCastSpellIfCan(m_creature->getVictim(), SPELL_CRUSH) == CAST_OK)
-                m_uiCrush_Timer = 10000;
-        }else m_uiCrush_Timer -= uiDiff;
+                m_uiCrushTimer = 10000;
+        }
+        else
+            m_uiCrushTimer -= uiDiff;
 
-        // Infected Wound
-        if (m_uiInfectedWound_Timer < uiDiff)
+        if (m_uiInfectedWoundTimer < uiDiff)
         {
             if (DoCastSpellIfCan(m_creature->getVictim(), SPELL_INFECTED_WOUND) == CAST_OK)
-                m_uiInfectedWound_Timer = 20000;
-        }else m_uiInfectedWound_Timer -= uiDiff;
+                m_uiInfectedWoundTimer = urand(20000, 30000);
+        }
+        else
+            m_uiInfectedWoundTimer -= uiDiff;
 
-        // consume
+        if (m_uiWaveTimer < uiDiff)
+        {
+            DoSummonDrakkariInvaders();
+            m_uiWaveTimer = 30000;
+        }
+        else
+            m_uiWaveTimer -= uiDiff;
+
         if (m_uiConsumeTimer < uiDiff)
         {
-            if (DoCastSpellIfCan(m_creature->getVictim(),  m_bIsRegularMode ? SPELL_CONSUME : SPELL_CONSUME_H) == CAST_OK)
-                m_uiConsumeTimer = 15000;
-        }else m_uiConsumeTimer -= uiDiff;
-
-        //Corpse Explosion
-        if (m_uiCorpseExplode_Timer < uiDiff)
-        {
-            if (Creature* pCorpse = GetClosestCreatureWithEntry(m_creature, NPC_DRAKKARI_INVADER, 85.0f))
+            if (DoCastSpellIfCan(m_creature,  m_bIsRegularMode ? SPELL_CONSUME : SPELL_CONSUME_H) == CAST_OK)
             {
-                if (pCorpse->isAlive())
-                {
-                    DoCast(pCorpse,m_bIsRegularMode ? SPELL_CORPSE_EXPLODE : SPELL_CORPSE_EXPLODE_H,true);
-                    DoScriptText(SAY_EXPLODE, m_creature);
-                }
+                DoScriptText(SAY_CONSUME, m_creature);
+                m_uiConsumeTimer = 15000;
             }
-            m_uiCorpseExplode_Timer = 15000;
-        }else m_uiCorpseExplode_Timer -= uiDiff;
+        }
+        else
+            m_uiConsumeTimer -= uiDiff;
+
+        if (m_uiCorpseExplodeTimer < uiDiff)
+        {
+            if (DoCastSpellIfCan(m_creature,  m_bIsRegularMode ? SPELL_CORPSE_EXPLODE : SPELL_CORPSE_EXPLODE_H) == CAST_OK)
+            {
+                DoScriptText(SAY_EXPLODE, m_creature);
+                m_uiCorpseExplodeTimer = 10000;
+            }
+        }
+        else
+            m_uiCorpseExplodeTimer -= uiDiff;
 
         DoMeleeAttackIfReady();
     }
