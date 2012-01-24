@@ -397,14 +397,14 @@ INSERT INTO npc_spellclick_spells VALUES
 -- Salvaged Siege Turret -
 -- -----------------------
 UPDATE creature_template SET
-    PowerType=3,
-    spell1=62358,
-    spell2=62359,
-    spell3=64677,
-    spell4=0,
-    spell5=0,
-    spell6=0
-WHERE entry=33067;
+    PowerType = 3,
+    spell1 = 62358,
+    spell2 = 62359,
+    spell3 = 64677,
+    spell4 = 0,
+    spell5 = 0,
+    spell6 = 0
+WHERE entry= 33067;
 
 UPDATE creature_template SET IconName = 'Gunner', AIName = 'NullAI' WHERE entry IN (33067);
 
@@ -427,20 +427,21 @@ WHERE entry = 33109;
 
 DELETE FROM npc_spellclick_spells WHERE npc_entry = 33109;
 INSERT INTO npc_spellclick_spells VALUES
-(33109, 62309, 0, 0, 0, 1);
+(33109, 62309, 0, 0, 0, 1),
+(33167, 62309, 0, 0, 0, 1);  -- Demolisher mechanic seat
 
 -- -----------------------------------
 -- Salvaged Demolisher Mechanic Seat -
 -- -----------------------------------
 UPDATE creature_template SET
-    PowerType=3,
-    spell1=62634,
-    spell2=64979,
-    spell3=62479,
-    spell4=62471,
-    spell5=0,
-    spell6=62428
-WHERE entry=33167;
+    PowerType = 3,
+    spell1 = 62634,
+    spell2 = 64979,
+    spell3 = 62479,
+    spell4 = 62471,
+    spell5 = 0,
+    spell6 = 62428
+WHERE entry = 33167;
 
 -- ------------------------------------------------------
 -- All Support Vehicles for mount The Argent Tournament -
