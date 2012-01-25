@@ -1,19 +1,6 @@
-/* Copyright (C) 2006 - 2011 ScriptDev2 <http://www.scriptdev2.com/>
- * Copyright (C) 2011 - 2012 Infinity_sd2
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
+/* Copyright (C) 2006 - 2012 ScriptDev2 <http://www.scriptdev2.com/>
+ * This program is free software licensed under GPL version 2
+ * Please see the included DOCS/LICENSE.TXT for more information */
 
 #ifndef DEF_DRAKTHARON_KEEP_H
 #define DEF_DRAKTHARON_KEEP_H
@@ -21,9 +8,6 @@
 enum
 {
     MAX_ENCOUNTER                   = 4,
-    MAX_SPECIAL_ACHIEV_CRITS        = 1,
-
-    TYPE_CONSUME_JUNCTION           = 0,
 
     TYPE_TROLLGORE                  = 0,
     TYPE_NOVOS                      = 1,
@@ -36,6 +20,7 @@ enum
     // Adds of King Dred Encounter - deaths counted for achievement
     NPC_DRAKKARI_GUTRIPPER          = 26641,
     NPC_DRAKKARI_SCYTHECLAW         = 26628,
+    NPC_WORLD_TRIGGER               = 22515,
 
     // Novos Encounter
     SPELL_BEAM_CHANNEL              = 52106,
@@ -51,12 +36,9 @@ enum
     GO_CRYSTAL_NW                   = 189301,
     GO_CRYSTAL_SE                   = 189302,
 
-    NPC_DRAKKARI_INVADER            = 27753,
-    NPC_TROLLGORE                   = 26630,
-
     // Achievement Criterias to be handled with SD2
-    ACHIEV_CRIT_BETTER_OFF_DRED     = 7318,
-    ACHIEV_CRIT_CONSUME_JUNCTION    = 7581,
+    ACHIEV_CRIT_BETTER_OFF_DREAD    = 7318,
+    ACHIEV_CRIT_CONSUME_JUNCTION    = 7579,
     ACHIEV_CRIT_OH_NOVOS            = 7361,
 };
 
@@ -88,8 +70,10 @@ class MANGOS_DLL_DECL instance_draktharon_keep : public ScriptedInstance
         void OnCreatureCreate(Creature* pCreature);
         void OnObjectCreate(GameObject* pGo);
 
+        void GetTrollgoreOutsideTriggers(GUIDVector& vTriggers) { vTriggers = m_vTriggerGuids; }
+        ObjectGuid GetTrollgoreCornerTrigger() { return m_trollgoreCornerTriggerGuid; }
+
         bool CheckAchievementCriteriaMeet(uint32 uiCriteriaId, Player const* pSource, Unit const* pTarget, uint32 uiMiscValue1 /* = 0*/);
-        void SetSpecialAchievementCriteria(uint32 uiType, bool bIsMet);
 
         const char* Save() { return m_strInstData.c_str(); }
         void Load(const char* chrIn);
@@ -104,17 +88,18 @@ class MANGOS_DLL_DECL instance_draktharon_keep : public ScriptedInstance
         uint32 m_auiEncounter[MAX_ENCOUNTER];
         std::string m_strInstData;
 
-        bool m_abAchievCriteria[MAX_SPECIAL_ACHIEV_CRITS];
-
         uint32 m_uiDreadAddsKilled;
         bool m_bNovosAddGrounded;
+        bool m_bTrollgoreConsume;
 
         ObjectGuid m_novosChannelGuid;
+        ObjectGuid m_trollgoreCornerTriggerGuid;
 
         NovosCrystalInfo m_aNovosCrystalInfo[MAX_CRYSTALS];
 
         GUIDVector m_vSummonDummyGuids;
         GUIDList m_lNovosDummyGuids;
+        GUIDVector m_vTriggerGuids;
 };
 
 #endif

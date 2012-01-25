@@ -42,6 +42,7 @@
 #include "Vehicle.h"
 #include "BattleGround.h"
 #include "InstanceData.h"
+#include "WorldPvP/WorldPvP.h"
 #include "MapPersistentStateMgr.h"
 #include "GridNotifiersImpl.h"
 #include "CellImpl.h"
@@ -1050,6 +1051,10 @@ uint32 Unit::DealDamage(Unit *pVictim, uint32 damage, CleanDamage const* cleanDa
         if (GetTypeId() == TYPEID_UNIT && ((Creature*)this)->AI())
             ((Creature*)this)->AI()->KilledUnit(pVictim);
 
+        // Call World pvp scripts for player kill
+        if (pVictim->GetTypeId() == TYPEID_PLAYER && GetTypeId() == TYPEID_PLAYER)
+            sWorldPvPMgr.HandlePlayerKill((Player*)this, pVictim);
+
         // Call AI OwnerKilledUnit (for any current summoned minipet/guardian/protector)
         PetOwnerKilledUnit(pVictim);
 
@@ -1118,6 +1123,9 @@ uint32 Unit::DealDamage(Unit *pVictim, uint32 damage, CleanDamage const* cleanDa
             if (InstanceData* mapInstance = cVictim->GetInstanceData())
                 mapInstance->OnCreatureDeath(cVictim);
 
+            if (m_zoneScript = sWorldPvPMgr.GetZoneScript(GetZoneId()))
+                m_zoneScript->OnCreatureDeath(((Creature*)cVictim));
+
             if (cVictim->IsLinkingEventTrigger())
                 cVictim->GetMap()->GetCreatureLinkingHolder()->DoCreatureLinkingEvent(LINKING_EVENT_DIE, cVictim);
 
@@ -1173,6 +1181,13 @@ uint32 Unit::DealDamage(Unit *pVictim, uint32 damage, CleanDamage const* cleanDa
             he->CombatStopWithPets(true);
 
             he->DuelComplete(DUEL_INTERUPTED);
+        }
+
+        // handle player kill in outdoor pvp
+        if (player_tap && this != pVictim)
+        {
+            if (WorldPvP* pWorldBg = player_tap->GetWorldPvP())
+                pWorldBg->HandlePlayerKillInsideArea(player_tap, pVictim);
         }
 
         // battleground things (do this at the end, so the death state flag will be properly set to handle in the bg->handlekill)
@@ -7948,7 +7963,11 @@ bool Unit::IsSpellCrit(Unit *pVictim, SpellEntry const *spellProto, SpellSchoolM
                         else if (spellProto->Category == 19)
                         {
                             if (pVictim->GetCreatureTypeMask() & CREATURE_TYPEMASK_DEMON_OR_UNDEAD)
-                                return true;
+                            {
+                                // don't override auras that prevent critical strikes taken
+                                if (crit_chance > -100.0f)
+                                    return true;
+                            }
                         }
                         break;
                     case SPELLFAMILY_SHAMAN:
@@ -7957,7 +7976,11 @@ bool Unit::IsSpellCrit(Unit *pVictim, SpellEntry const *spellProto, SpellSchoolM
                         {
                             // Flame Shock
                             if (pVictim->GetAura<SPELL_AURA_PERIODIC_DAMAGE, SPELLFAMILY_SHAMAN, CF_SHAMAN_FLAME_SHOCK>(GetObjectGuid()))
-                                return true;
+                            {
+                                // don't override auras that prevent critical strikes taken
+                                if (crit_chance > -100.0f)
+                                    return true;
+                            }
                         }
                         break;
                 }
