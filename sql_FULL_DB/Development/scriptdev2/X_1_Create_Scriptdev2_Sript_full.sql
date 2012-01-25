@@ -4,7 +4,6 @@
 
 DELETE FROM sd2_db_version;
 INSERT INTO sd2_db_version (version) VALUES ('Infinity_Scriptdev2 and ScriptDev2 (for MaNGOS 11812+) ');
-
 --
 -- Below contains data for table `script_texts` mainly used in C++ parts.
 -- valid entries for table are between -1000000 and -1999999
@@ -836,7 +835,8 @@ INSERT INTO script_texts (entry,content_default,sound,type,language,emote,commen
 (-1000778,'Not quite so sure of yourself without the Purifier, hm?',0,0,0,0,'Balizar the Umbrage SAY_BALIZAR_FINAL_AMBUSH'),
 (-1000779,'I\'ll finish you off for good this time!',0,0,0,0,'Feero Ironhand SAY_FINAL_AMBUSH_ATTACK'),
 (-1000780,'Well done! I should be fine on my own from here. Remember to talk to Delgren when you return to Maestra\'s Post in Ashenvale.',0,0,0,0,'Feero Ironhand SAY_QUEST_END'),
-(-1000781,'I knew Lurielle would send help! Thank you, friend, and give Lurielle my thanls as well!',0,0,0,0,'Chill Nymph SAY_FREE_1'),
+
+(-1000781,'I knew Lurielle would send help! Thank you, friend, and give Lurielle my thanks as well!',0,0,0,0,'Chill Nymph SAY_FREE_1'),
 (-1000782,'Where am I? What happend to me? You... you freed me?',0,0,0,0,'Chill Nymph SAY_FREE_2'),
 (-1000783,'Thank you. I thought I would die without seeing my sisters again!',0,0,0,0,'Chill Nymph SAY_FREE_3');
 
@@ -2136,7 +2136,9 @@ INSERT INTO script_texts (entry,content_default,sound,type,language,emote,commen
 (-1558006,'Stare into the darkness of your soul.',10511,1,0,0,'maladaar SAY_SOUL_CLEAVE'),
 (-1558007,'These walls will be your doom.',10516,1,0,0,'maladaar SAY_SLAY_1'),
 (-1558008,'<laugh> Now, you\'ll stay for eternity!',10517,1,0,0,'maladaar SAY_SLAY_2'),
-(-1558009,'This is... where.. I belong...',10518,1,0,0,'maladaar SAY_DEATH');
+(-1558009,'This is... where.. I belong...',10518,1,0,0,'maladaar SAY_DEATH'),
+
+(-1558010,'%s focuses on $N',0,3,0,0,'shirrak EMOTE_FOCUS');
 
 -- -1 560 000 ESCAPE FROM DURNHOLDE (OLD HILLSBRAD)
 INSERT INTO script_texts (entry,content_default,sound,type,language,emote,comment) VALUES
@@ -2586,6 +2588,31 @@ INSERT INTO script_texts (entry,content_default,sound,type,language,emote,commen
 (-1576022,'%s shields himself and divert his power to the rifts!',0,3,0,0,'anomalus EMOTE_SHIELD');
 
 -- -1 578 000 OCULUS
+INSERT INTO script_texts (entry,content_default,sound,type,language,emote,comment) VALUES
+(-1578000,'What do we have here... those would defy the Spell-Weaver? Those without foresight or understanding. How could I make you see? Malygos is saving the world from itself! Bah! You are hardly worth my time!',13635,1,0,0,'urom SAY_SUMMON_1'),
+(-1578001,'Clearly my pets failed. Perhaps another demonstration is in order.',13636,1,0,0,'urom SAY_SUMMON_2'),
+(-1578002,'Still you fight. Still you cling to misguided principles. If you survive, you\'ll find me in the center ring.',13637,1,0,0,'urom SAY_SUMMON_3'),
+(-1578003,'Poor blind fools!',13638,1,0,0,'urom SAY_AGGRO'),
+(-1578004,'A taste... just a small taste... of the Spell-Weaver\'s power!',13639,1,0,0,'urom SAY_EXPLOSION_1'),
+(-1578005,'So much unstable energy... but worth the risk to destroy you!',13640,1,0,0,'urom SAY_EXPLOSION_2'),
+(-1578006,'If only you understood!',13641,1,0,0,'urom SAY_KILL_1'),
+(-1578007,'Now do you see? Do you?!',13642,1,0,0,'urom SAY_KILL_2'),
+(-1578008,'Unfortunate, but necessary.',13643,1,0,0,'urom SAY_KILL_3'),
+(-1578009,'Everything I\'ve done... has been for Azeroth...',13644,1,0,0,'urom SAY_DEATH'),
+
+(-1578010,'Simpletons! You cannot comprehend the forces you have set in motion. The ley line conduit will not be disrupted! Your defeat shall be absolute!',13622,6,0,0,'eregos SAY_SPAWN'),
+(-1578011,'You brash interlopers are out of your element! I will ground you!',13623,1,0,0,'eregos SAY_AGGRO'),
+(-1578012,'We command the arcane! It shall not be used against us.',13626,1,0,0,'eregos SAY_ARCANE_SHIELD'),
+(-1578013,'It is trivial to extinguish your fire!',13627,1,0,0,'eregos SAY_FIRE_SHIELD'),
+(-1578014,'No magic of nature will help you now!',13625,1,0,0,'eregos SAY_NATURE_SHIELD'),
+(-1578015,'Such insolence... such arrogance... must be PUNISHED!',13624,1,0,0,'eregos SAY_FRENZY'),
+(-1578016,'It\'s a long way down...',13628,1,0,0,'eregos SAY_KILL_1'),
+(-1578017,'Back to the earth with you!',13629,1,0,0,'eregos SAY_KILL_2'),
+(-1578018,'Enjoy the fall!',13630,1,0,0,'eregos SAY_KILL_3'),
+(-1578019,'Savor this small victory, foolish little creatures. You and your dragon allies have won this battle. But we will win... the Nexus War.',13631,1,0,0,'eregos SAY_DEATH'),
+
+(-1578020,'Intruders, your victory will be short-lived. I am Commander Varos Cloudstrider. My drakes control the skies and protect this conduit. I will see to it personally that the Oculus does not fall into your hands!',13648,6,0,0,'varos SAY_VAROS_INTRO'),
+(-1578021,'Thank you for freeing us, mortals. Beware, the Blue Flight is alerted to your presence. Even now, Malygos sends Varos Cloudstrider and his ring guardians to defend the Oculus. You will need our help to stand a chance.',0,0,0,1,'belgaristrasz SAY_BELGARISTRASZ_GREET');
 
 -- -1 580 000 SUNWELL PLATEAU
 INSERT INTO script_texts (entry,content_default,sound,type,language,emote,comment) VALUES
@@ -2677,13 +2704,13 @@ INSERT INTO script_texts (entry,content_default,sound,type,language,emote,commen
 (-1580079,'Aggghh! The powers of the Sunwell... turn... against me! What have you done? What have you done???',12510,1,0,0,'kiljaeden SAY_PHASE_5'),
 (-1580080,'You are not alone. The Blue Dragonflight shall help you vanquish the Deceiver.',12438,1,0,0,'kalecgos SAY_KALECGOS_INTRO'),
 (-1580081,'Anveena, you must awaken, this world needs you!',12445,1,0,0,'kalecgos SAY_KALECGOS_AWAKE_1'),
-(-1580082,'I serve only the Master now.',12511,1,0,0,'anveena SAY_ANVEENA_IMPRISONED'),
+(-1580082,'I serve only the Master now.',12511,0,0,0,'anveena SAY_ANVEENA_IMPRISONED'),
 (-1580083,'You must let go! You must become what you were always meant to be! The time is now, Anveena!',12446,1,0,0,'kalecgos SAY_KALECGOS_AWAKE_2'),
-(-1580084,'But I\'m... lost. I cannot find my way back.',12512,1,0,0,'anveena SAY_ANVEENA_LOST'),
+(-1580084,'But I\'m... lost. I cannot find my way back.',12512,0,0,0,'anveena SAY_ANVEENA_LOST'),
 (-1580085,'Anveena, I love you! Focus on my voice, come back for me now! Only you can cleanse the Sunwell!',12447,1,0,0,'kalecgos SAY_KALECGOS_AWAKE_4'),
-(-1580086,'Kalec... Kalec?',12513,1,0,0,'anveena SAY_ANVEENA_AWAKE'),
+(-1580086,'Kalec... Kalec?',12513,0,0,0,'anveena SAY_ANVEENA_AWAKE'),
 (-1580087,'Yes, Anveena! Let fate embrace you now!',12448,1,0,0,'kalecgos SAY_KALECGOS_AWAKE_5'),
-(-1580088,'The nightmare is over, the spell is broken! Goodbye, Kalec, my love!',12514,1,0,0,'anveena SAY_ANVEENA_SACRIFICE'),
+(-1580088,'The nightmare is over, the spell is broken! Goodbye, Kalec, my love!',12514,0,0,0,'anveena SAY_ANVEENA_SACRIFICE'),
 (-1580089,'Goodbye, Anveena, my love. Few will remember your name, yet this day you change the course of destiny. What was once corrupt is now pure. Heroes, do not let her sacrifice be in vain.',12450,0,0,0,'kalecgos SAY_KALECGOS_GOODBYE'),
 (-1580090,'Strike now, heroes, while he is weakened! Vanquish the Deceiver!',12449,1,0,0,'kalecgos SAY_KALECGOS_ENCOURAGE'),
 (-1580091,'I will channel my power into the orbs, be ready!',12440,1,0,0,'kalecgos SAY_KALECGOS_ORB_1'),
@@ -4060,6 +4087,7 @@ INSERT INTO gossip_texts (entry,content_default,comment) VALUES
 -- -3 564 000 BLACK TEMPLE
 INSERT INTO gossip_texts (entry,content_default,comment) VALUES
 (-3564000,'We are ready to fight alongside you, Akama','akama(shade) GOSSIP_ITEM_START_ENCOUNTER');
+
 
 -- -3 595 000 CULLING OF STRATHOLME
 INSERT INTO gossip_texts (entry,content_default,comment) VALUES

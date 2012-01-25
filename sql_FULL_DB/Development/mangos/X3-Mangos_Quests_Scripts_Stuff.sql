@@ -1,6 +1,10 @@
 -- ----------------------
 -- QUEST && Ect Support -
 -- ----------------------
+
+-- temp sd2 scriptname
+UPDATE creature_template SET ScriptName='boss_shirrak' WHERE entry=18371;
+
 -- temp fix need to find true fix
 -- help fix quest 12813 currently
 -- insert been commented out til i figure out how to handle this guy in this area  he shouldn't be here like this or in this form or something
