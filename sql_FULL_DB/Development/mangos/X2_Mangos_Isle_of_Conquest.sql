@@ -3,8 +3,8 @@
 -- ------------------
 
 -- creature and gameobject initial guid
-SET @CREATURE := 700000;
-SET @GAMEOBJECT := 700000;
+SET @CREATURE := 750000;
+SET @GAMEOBJECT := 750000;
 -- use these 2 queries only if you want to enable IoC by direct queueing it
 -- DELETE FROM battleground_template WHERE id = 30;
 -- INSERT INTO battleground_template (id, MinPlayersPerTeam, MaxPlayersPerTeam, AllianceStartLoc, AllianceStartO, HordeStartLoc, HordeStartO) VALUES
