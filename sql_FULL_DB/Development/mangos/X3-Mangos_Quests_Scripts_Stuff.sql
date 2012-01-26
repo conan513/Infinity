@@ -4,6 +4,7 @@
 
 -- temp sd2 scriptname
 UPDATE creature_template SET ScriptName='boss_shirrak' WHERE entry=18371;
+UPDATE creature_template SET ScriptName='npc_void_traveler' WHERE entry=19226;
 
 -- temp fix need to find true fix
 -- help fix quest 12813 currently
