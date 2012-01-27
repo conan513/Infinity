@@ -6,6 +6,14 @@
 UPDATE creature_template SET ScriptName='boss_shirrak' WHERE entry=18371;
 UPDATE creature_template SET ScriptName='npc_void_traveler' WHERE entry=19226;
 
+delete from spell_script_target where entry = 39364;
+insert into spell_script_target values
+(39364, 1, 18732);
+
+insert into creature_linking_template values
+(19224, 555, 18732, 4112), -- void portal (despawn on death / evade)
+(19226, 555, 18732, 4112); -- void traveler (despawn on death / evade)
+
 -- temp fix need to find true fix
 -- help fix quest 12813 currently
 -- insert been commented out til i figure out how to handle this guy in this area  he shouldn't be here like this or in this form or something

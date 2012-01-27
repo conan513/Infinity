@@ -6353,16 +6353,12 @@ bool Unit::IsHostileTo(Unit const* unit) const
     // CvP forced reaction and reputation case
     else if (target->GetTypeId()==TYPEID_PLAYER)
     {
-        // forced reaction
         if (tester_faction->faction)
         {
-            if (ReputationRank const* force = ((Player*)target)->GetReputationMgr().GetForcedRankIfAny(tester_faction))
-                return *force <= REP_HOSTILE;
-
             // apply reputation state
             FactionEntry const* raw_tester_faction = sFactionStore.LookupEntry(tester_faction->faction);
             if (raw_tester_faction && raw_tester_faction->reputationListID >=0 )
-                return ((Player const*)target)->GetReputationMgr().GetRank(raw_tester_faction) <= REP_HOSTILE;
+                return ((Player const*)target)->GetReputationMgr().GetRank(raw_tester_faction, true) <= REP_HOSTILE;
         }
     }
 
@@ -6468,16 +6464,12 @@ bool Unit::IsFriendlyTo(Unit const* unit) const
     // CvP forced reaction and reputation case
     else if (target->GetTypeId()==TYPEID_PLAYER)
     {
-        // forced reaction
         if (tester_faction->faction)
         {
-            if (ReputationRank const* force =((Player*)target)->GetReputationMgr().GetForcedRankIfAny(tester_faction))
-                return *force >= REP_FRIENDLY;
-
             // apply reputation state
             if (FactionEntry const* raw_tester_faction = sFactionStore.LookupEntry(tester_faction->faction))
                 if (raw_tester_faction->reputationListID >=0 )
-                    return ((Player const*)target)->GetReputationMgr().GetRank(raw_tester_faction) >= REP_FRIENDLY;
+                    return ((Player const*)target)->GetReputationMgr().GetRank(raw_tester_faction, true) >= REP_FRIENDLY;
         }
     }
 
@@ -12277,10 +12269,27 @@ void Unit::RemoveAurasAtMechanicImmunity(uint32 mechMask, uint32 exceptSpellId, 
             ++iter;
         else if (iter->second->HasMechanicMask(mechMask))
         {
-            RemoveAurasDueToSpell(spell->Id);
+            bool removedSingleAura = false;
+
+            for(int32 i = 0; i < MAX_EFFECT_INDEX; i++)
+            {
+                if (iter->second)
+                {
+                    if ((1 << (spell->EffectMechanic[SpellEffectIndex(i)] - 1)) & mechMask)
+                    {
+                        RemoveSingleAuraFromSpellAuraHolder(iter->second, SpellEffectIndex(i));
+                        removedSingleAura = true;
+                    }
+                }
+            }
+
+            if (!removedSingleAura)
+                RemoveAurasDueToSpell(spell->Id);
 
             if (auras.empty())
                 break;
+            else if (iter->second)
+                ++iter;
             else
                 iter = auras.begin();
          }
@@ -12743,9 +12752,10 @@ void Unit::CleanupDeletedHolders(bool force)
     {
         for (SpellAuraHolderSet::iterator iter = m_deletedHolders.begin(); iter != m_deletedHolders.end();)
         {
-            if ((*iter) && !(*iter)->IsInUse())
+            if ((*iter) && (!(*iter)->IsInUse() || GetTypeId() != TYPEID_PLAYER))
             {
-                m_deletedHolders.erase(*iter++);
+                m_deletedHolders.erase(*iter);
+                iter = m_deletedHolders.begin();
             }
             else
                 ++iter;
