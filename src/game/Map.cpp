@@ -3374,7 +3374,7 @@ void Map::PlayDirectSoundToMap(uint32 soundId, uint32 zoneId /*=0*/)
 
 /**
 * Need Base Support (With Values 0)
-*
+* Function to change weather in zone and change weather on map from script.
 */
 bool Map::SetZoneWeather(uint32 zoneId, WeatherType type, float grade)
 {
