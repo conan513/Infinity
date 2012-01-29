@@ -2,7 +2,7 @@
 * Copyright (C) 2005-2011 MaNGOS <http://getmangos.com/>
 * Copyright (C) 2010 Blueboy
 * Copyright (C) 2011 MangosR2
-* Copyright (C) 2011 Infinity
+* Copyright (C) 2011 - 2012 Infinity
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -772,6 +772,8 @@ void PlayerbotAI::SendOrders(Player& /*player*/)
         out << "I ASSIST " << (m_targetAssist ? m_targetAssist->GetName() : "unknown");
     else if (m_combatOrder & ORDERS_HEAL)
         out << "I HEAL";
+     else if (m_combatOrder & ORDERS_PASSIVE)
+        out << "I'M PASSIVE";
     if ((m_combatOrder & ORDERS_PRIMARY) && (m_combatOrder & ORDERS_SECONDARY))
         out << " and ";
     if (m_combatOrder & ORDERS_PROTECT)
@@ -786,6 +788,8 @@ void PlayerbotAI::SendOrders(Player& /*player*/)
             out << "NORMAL";
         else if (m_botState == BOTSTATE_COMBAT)
             out << "COMBAT";
+        else if (m_botState == BOTSTATE_TAME)
+            out << "TAMING";
         else if (m_botState == BOTSTATE_DEAD)
             out << "DEAD";
         else if (m_botState == BOTSTATE_DEADRELEASED)
@@ -860,6 +864,58 @@ void PlayerbotAI::HandleBotOutgoingPacket(const WorldPacket& packet)
             }
             return;
         }
+
+        case SMSG_PET_TAME_FAILURE:
+        {
+            // DEBUG_LOG("SMSG_PET_TAME_FAILURE");
+            WorldPacket p(packet);
+            uint8 reason;
+            p >> reason;
+
+           switch(reason)
+           {
+                case PETTAME_INVALIDCREATURE:           // = 1,
+                    DEBUG_LOG("Invalid Creature");
+                    break;
+                case PETTAME_TOOMANY:                   // = 2,
+                    DEBUG_LOG("Too many Creature");
+                    break;
+                case PETTAME_CREATUREALREADYOWNED:      // = 3,
+                    DEBUG_LOG("Creature already owned");
+                    break;
+                case PETTAME_NOTTAMEABLE:               // = 4,
+                    DEBUG_LOG("Creature not tameable");
+                    break;
+                case PETTAME_ANOTHERSUMMONACTIVE:       // = 5,
+                    DEBUG_LOG("Another summon active");
+                    break;
+                case PETTAME_UNITSCANTTAME:             // = 6,
+                    DEBUG_LOG("Unit cant tame");
+                    break;
+                case PETTAME_NOPETAVAILABLE:            // = 7,    // not used in taming
+                    DEBUG_LOG("No pet available");
+                    break;
+                case PETTAME_INTERNALERROR:             // = 8,
+                    DEBUG_LOG("Internal error");
+                    break;
+                case PETTAME_TOOHIGHLEVEL:              // = 9,
+                    DEBUG_LOG("Creature level too high");
+                    break;
+                case PETTAME_DEAD:                      // = 10,   // not used in taming
+                    DEBUG_LOG("Creature dead");
+                    break;
+                case PETTAME_NOTDEAD:                   // = 11,   // not used in taming
+                    DEBUG_LOG("Creature not dead");
+                    break;
+                case PETTAME_CANTCONTROLEXOTIC:         // = 12,   // 3.x
+                    DEBUG_LOG("Creature exotic");
+                    break;
+                case PETTAME_UNKNOWNERROR:              // = 13
+                    DEBUG_LOG("Unknown error");
+                    break;
+           }
+           return;
+       }
 
         case SMSG_BUY_FAILED:
         {
@@ -994,6 +1050,9 @@ void PlayerbotAI::HandleBotOutgoingPacket(const WorldPacket& packet)
                         return;
                     case EQUIP_ERR_TOO_FAR_AWAY_FROM_BANK:
                         TellMaster("I'm too far from the bank.");
+                        return;
+                    case EQUIP_ERR_NONE:
+                        TellMaster("I can't use it on that");
                         return;
                     default:
                         TellMaster("I can't use that.");
@@ -2237,6 +2296,9 @@ void PlayerbotAI::DoNextCombatManeuver()
     if (!m_bot)
         return;
 
+    if (m_combatOrder == ORDERS_PASSIVE)
+        return;
+
     // check for new targets
     if (m_ScenarioType == SCENARIO_DUEL)
         GetDuelTarget(GetMaster());
@@ -3131,6 +3193,7 @@ void PlayerbotAI::SetCombatOrderByStr(std::string str, Unit *target)
     else if (str == "assist") co = ORDERS_ASSIST;
     else if (str == "heal") co = ORDERS_HEAL;
     else if (str == "protect") co = ORDERS_PROTECT;
+    else if (str == "passive") co = ORDERS_PASSIVE;
     else
         co = ORDERS_RESET;
     SetCombatOrder(co, target);
@@ -3433,6 +3496,51 @@ void PlayerbotAI::UpdateAI(const uint32 /*p_time*/)
         Spell* const pSpell = GetCurrentSpell();
         if (pSpell && !(pSpell->IsChannelActive() || pSpell->IsAutoRepeat()))
             InterruptCurrentCastingSpell();
+
+        else if (m_botState == BOTSTATE_TAME)
+        {
+            Unit* pTarget = ObjectAccessor::GetUnit(*m_bot, m_targetGuidCommand);
+            if (!pTarget)
+                return;
+            m_bot->SetSelectionGuid(m_targetGuidCommand);
+
+            if (!IsInRange(pTarget, TAME_BEAST_1))
+
+                m_bot->clearUnitState(UNIT_STAT_CHASE);
+
+            if (!m_bot->hasUnitState(UNIT_STAT_CHASE))
+            {
+                m_bot->GetMotionMaster()->MoveChase(pTarget);
+                return;
+            }
+
+            SpellEntry const* spellInfo = sSpellStore.LookupEntry(TAME_BEAST_1);
+
+            if (!spellInfo)
+                return;
+
+            Spell *spell = new Spell(m_bot, spellInfo, false);
+            if (!spell)
+                return;
+
+            if (m_bot->GetPetGuid() || spell->CheckCast(true) != SPELL_CAST_OK || !pTarget ||
+                pTarget->isDead() || !m_bot->IsInMap(pTarget) || !(((Creature*)pTarget)->GetCreatureInfo()->type_flags & CREATURE_TYPEFLAGS_TAMEABLE))
+            {
+                MovementReset();
+                m_bot->SetSelectionGuid(ObjectGuid());
+                SetState(BOTSTATE_NORMAL);
+                SetIgnoreUpdateTime(0);
+            }
+            else if (!m_bot->HasAura(TAME_BEAST_1, EFFECT_INDEX_1))
+            {
+                m_bot->SetFacingTo(m_bot->GetAngle(pTarget));
+                SpellCastTargets targets;
+                targets.setUnitTarget(pTarget);
+                spell->prepare(&targets);
+                SetIgnoreUpdateTime(10);
+            }
+            return;
+        }
 
         // direct cast command from master
         else if (m_spellIdCommand != 0)
@@ -5767,6 +5875,16 @@ void PlayerbotAI::UseItem(Item *item, uint32 targetFlag, ObjectGuid targetGUID)
             spellId = item->GetProto()->Spells[i].SpellId;
             break;
         }
+    }
+
+    if (item->GetProto()->Flags & ITEM_FLAG_LOOTABLE && spellId == 0)
+    {
+        // Open quest item in inventory, containing related items (e.g Gnarlpine necklace, containing Tallonkai's Jewel)
+        WorldPacket* const packet = new WorldPacket(CMSG_OPEN_ITEM, 2);
+        *packet << item->GetBagSlot();
+        *packet << item->GetSlot();
+        m_bot->GetSession()->QueuePacket(packet); // queue the packet to get around race condition
+        return;
     }
 
     WorldPacket *packet = new WorldPacket(CMSG_USE_ITEM, 28);
@@ -8326,12 +8444,39 @@ void PlayerbotAI::_HandleCommandQuest(std::string &text, Player &fromPlayer)
 
 void PlayerbotAI::_HandleCommandPet(std::string &text, Player &fromPlayer)
 {
+    if (ExtractCommand("tame", text))
+    {
+        if (m_bot->GetPetGuid())
+        {
+            SendWhisper("I already have a pet!", fromPlayer);
+            return;
+        }
+        ObjectGuid castOnGuid = fromPlayer.GetSelectionGuid();
+        if (castOnGuid && m_bot->HasSpell(TAME_BEAST_1))
+        {
+            m_targetGuidCommand = castOnGuid;
+            SetState(BOTSTATE_TAME);
+        }
+        else
+            SendWhisper("I can't tame that!", fromPlayer);
+        return;
+    }
+
     Pet * pet = m_bot->GetPet();
     if (!pet)
     {
         SendWhisper("I have no pet.", fromPlayer);
         return;
     }
+
+    if (ExtractCommand("abandon", text))
+    {
+        // abandon pet
+        WorldPacket* const packet = new WorldPacket(CMSG_PET_ABANDON, 8);
+        *packet << pet->GetObjectGuid();
+        m_bot->GetSession()->QueuePacket(packet);
+    }
+    else if (ExtractCommand("react", text))
 
     if (ExtractCommand("react", text))
     {
@@ -9203,14 +9348,19 @@ void PlayerbotAI::_HandleCommandHelp(std::string &text, Player &fromPlayer)
 
         if (!bMainHelp)
         {
-            ch.SendSysMessage(_HandleCommandHelpHelper("pet spells", "Shows you the spells my pet knows.").c_str());
+            ch.SendSysMessage(_HandleCommandHelpHelper("pet abandon", "Abandons active hunter pet.").c_str());
             ch.SendSysMessage(_HandleCommandHelpHelper("pet cast", "Has my pet cast this spell. May require a treat. Or at least ask nicely.", HL_SPELL).c_str());
             ch.SendSysMessage(_HandleCommandHelpHelper("pet toggle", "Toggles autocast for this spell.", HL_SPELL).c_str());
-            ch.SendSysMessage(_HandleCommandHelpHelper("pet state", "Shows my pet's aggro mode.").c_str());
             ch.SendSysMessage(_HandleCommandHelpHelper("pet react", "Sets my pet's aggro mode.", HL_PETAGGRO).c_str());
+            ch.SendSysMessage(_HandleCommandHelpHelper("pet spells", "Shows you the spells my pet knows.").c_str());
+            ch.SendSysMessage(_HandleCommandHelpHelper("pet state", "Shows my pet's aggro mode.").c_str());
+            ch.SendSysMessage(_HandleCommandHelpHelper("pet tame", "Allows a hunter to acquire a pet.", HL_TARGET).c_str());
+            ch.SendSysMessage(_HandleCommandHelpHelper("pet toggle", "Toggles autocast for this spell.", HL_SPELL).c_str());
 
             // Catches all valid subcommands, also placeholders for potential future sub-subcommands
             if (ExtractCommand("spells", text)) {}
+            else if(ExtractCommand("tame", text)) {}
+            else if(ExtractCommand("abandon", text)) {}
             else if(ExtractCommand("cast", text)) {}
             else if(ExtractCommand("toggle", text)) {}
             else if (ExtractCommand("state", text)) {}
