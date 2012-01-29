@@ -51,10 +51,10 @@
   #else
     #define _FULLVERSION _VERSION " (Win32)"
   #endif
-  #define _SCRIPTDEV2_CONFIG  "scriptdev2.conf"
+  #define _SCRIPTDEV2_CONFIG  "scriptdev2.dll"
 #else
   #define _FULLVERSION _VERSION " (Unix)"
-  #define _SCRIPTDEV2_CONFIG  SYSCONFDIR"scriptdev2.conf"
+  #define _SCRIPTDEV2_CONFIG  SYSCONFDIR"scriptdev2.dll"
 #endif
 
 #endif
