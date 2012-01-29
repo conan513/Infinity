@@ -218,7 +218,7 @@ GridUnload = 1
 GridCleanUpDelay = 300000
 MapUpdateInterval = 100
 ChangeWeatherInterval = 600000
-PlayerSave.Interval = 900000
+PlayerSave.Interval = 300000
 PlayerSave.Stats.MinLevel = 0
 PlayerSave.Stats.SaveOnlyOnLogout = 1
 vmap.enableLOS = 1
@@ -359,9 +359,9 @@ MapUpdate.LoadBalanceLowValue = 0.2
 #
 ###################################################################################################################
 
-LogSQL = 1
+LogSQL = 0
 PidFile = ""
-LogLevel = 3
+LogLevel = 0
 LogTime = 0
 LogFile = "Server.log"
 LogTimestamp = 0
@@ -390,7 +390,7 @@ GmLogFile = ""
 GmLogTimestamp = 0
 GmLogPerAccount = 0
 RaLogFile = ""
-LogColors = ""
+LogColors = "13 7 11 9"
 
 ###################################################################################################################
 #   LEXICS CUTTER SYSTEM
@@ -483,7 +483,7 @@ ChatLogWhisperScreen = 0
 ChatLogChannelScreen = 0
 ChatLogRaidScreen = 0
 ChatLogBattleGroundScreen = 0
-LexicsCutterEnable = 0
+LexicsCutterEnable = 1
 LexicsCutterInnormativeCut = 1
 LexicsCutterCutReplacement = &!@^%!^&*!!!
 LexicsCutterLogFile = innormative-$d.log
@@ -912,7 +912,7 @@ LexicsCutterNoActionOnGM = 1
 #
 ###################################################################################################################
 
-GameType = 1
+GameType = 6
 RealmZone = 1
 Expansion = 2
 DBC.Locale = 255
@@ -938,7 +938,7 @@ StartHonorPoints = 0
 AllowHonorKillsTitles = 0
 MaxArenaPoints = 5000
 StartArenaPoints = 0
-InstantLogout = 1
+InstantLogout = 0
 DisableWaterBreath = 4
 AllFlightPaths = 0
 AlwaysMaxSkillForLevel = 0
@@ -947,7 +947,7 @@ CastUnstuck = 1
 MaxSpellCastsInChain = 10
 BirthdayTime = 1125180000
 Instance.IgnoreLevel = 0
-Instance.IgnoreRaid = 0
+Instance.IgnoreRaid = 1
 Instance.ResetTimeHour = 4
 Instance.UnloadDelay = 1800000
 Quests.LowLevelHideDiff = 4
@@ -979,15 +979,15 @@ OffhandCheckAtTalentsReset = 0
 PetUnsummonAtMount = 1
 PetSaveAllInDB = 0
 RaidFlags.Unique = 0
-AllowFlightOnOldMaps = 0
+AllowFlightOnOldMaps = 1
 ClientCacheVersion = 0
 Event.Announce = 0
 BeepAtStart = 1
 ShowProgressBars = 1
 WaitAtStartupError = 0
-Motd = "Welcome to the Massive Network Game Object Server."
+Motd = "Udv a Single Player Project Infinity szerveren."
 Raid.MinLevel = 10
-CheckGOInPath = 0
+CheckGOInPath = 1
 CrowdControlHPBase = 0.1
 
 ###################################################################################################################
@@ -1057,7 +1057,7 @@ TalentsInspecting = 1
 #
 ###################################################################################################################
 
-AutoBroadcast.On = 0
+AutoBroadcast.On = 1
 AutoBroadcast.Center = 0
 AutoBroadcast.Timer = 30000
 
@@ -1836,7 +1836,7 @@ Network.KickOnBadPacket = 0
 #
 ###################################################################################################################
 
-Console.Enable = 1
+Console.Enable = 0
 Ra.Enable = 0
 Ra.IP = 0.0.0.0
 Ra.Port = 3443
@@ -1873,10 +1873,10 @@ SOAP.Port = 7878
 #
 ###################################################################################################################
 
-Anticheat.Enable = 0
+Anticheat.Enable = 1
 Anticheat.DelayAfterAction = 30
 Anticheat.GmLevel = 0
-Anticheat.Warden  = 0
+Anticheat.Warden  = 1
 
 ###################################################################################################################
 #    CharDelete.Method
@@ -2020,7 +2020,7 @@ LFG.OnlyLastEncounterForCompleteDungeon = 0
 #                 1 - on
 #
 ###################################################################################################################
-PlayerbotAI.DisableBots = 1
+PlayerbotAI.DisableBots = 0
 PlayerbotAI.SharedBots = 0
 PlayerbotAI.DebugWhisper = 0
 PlayerbotAI.FollowDistanceMin = 0.5
@@ -2029,15 +2029,15 @@ PlayerbotAI.MaxNumBots = 9
 PlayerbotAI.RestrictBotLevel = 80
 PlayerbotAI.MinBotLevel = 1
 PlayerbotAI.AllowSummonOppositeFaction = 0
-PlayerbotAI.Collect.Combat = 0
-PlayerbotAI.Collect.Quest = 0
-PlayerbotAI.Collect.Profession = 0
-PlayerbotAI.Collect.Loot = 0
-PlayerbotAI.Collect.Skin = 0
-PlayerbotAI.Collect.Objects = 0
+PlayerbotAI.Collect.Combat = 1
+PlayerbotAI.Collect.Quest = 1
+PlayerbotAI.Collect.Profession = 1
+PlayerbotAI.Collect.Loot = 1
+PlayerbotAI.Collect.Skin = 1
+PlayerbotAI.Collect.Objects = 1
 PlayerbotAI.Collect.DistanceMax = 50
 PlayerbotAI.Collect.Distance = 25
-PlayerbotAI.SellGarbage = 0
+PlayerbotAI.SellGarbage = 1
 
 ###################################################################################################################
 # Chat disable under Level Configuration
@@ -2121,7 +2121,7 @@ ChatDisable.ChannelLevel = 0
 #        Default: 1000 (1 sec)
 #
 ###################################################################################################################
-VMSS.Enable = 0
+VMSS.Enable = 1
 VMSS.MaxThreadBreaks = 5
 VMSS.ThreadBreakRememberTime = 600
 VMSS.MapFreeMethod = 1
@@ -2167,7 +2167,7 @@ VMSS.ForceUnloadDelay = 3000
 #                 1 - battlegrounds and FFA areas only
 #
 ###################################################################################################################
-PvPToken.Enable = 0
+PvPToken.Enable = 1
 PvPToken.ItemID = 29434
 PvPToken.ItemCount = 1
 PvPToken.Gold = 0
@@ -2183,7 +2183,7 @@ PvPToken.MapRestriction = 4
 #       Default: 1 - enabled
 #                0 - disabled
 ###################################################################################################################
-PvPAnnouncer.Enable = 0
+PvPAnnouncer.Enable = 1
 PvPAnnouncer.ColorKiller = |CFFFFFF01
 PvPAnnouncer.ColorKilled = |CFFFFFF01
 PvPAnnouncer.ColorArea = |CFFFE8A0E
