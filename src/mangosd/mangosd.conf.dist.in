@@ -969,7 +969,7 @@ MaxPrimaryTradeSkill = 2
 TradeSkill.GMIgnore.MaxPrimarySkillsCount = 4
 TradeSkill.GMIgnore.Level = 4
 TradeSkill.GMIgnore.Skill = 4
-MinPetitionSigns = 9
+MinPetitionSigns = 0
 MaxGroupXPDistance = 74
 MailDeliveryDelay = 3600
 MassMailer.SendPerTick = 10
@@ -2167,7 +2167,7 @@ VMSS.ForceUnloadDelay = 3000
 #                 1 - battlegrounds and FFA areas only
 #
 ###################################################################################################################
-PvPToken.Enable = 1
+PvPToken.Enable = 0
 PvPToken.ItemID = 29434
 PvPToken.ItemCount = 1
 PvPToken.Gold = 0
