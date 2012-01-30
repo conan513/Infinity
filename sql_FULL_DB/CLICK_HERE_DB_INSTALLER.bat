@@ -103,14 +103,17 @@ for %%i in (%dbpath1%\*.sql) do if %%i neq %dbpath%\*.sql if %%i neq %dbpath1%\*
 echo.
 echo This will wipe out your current Realm database and replace it.
 set /p yesno=Do you wish to continue? (y/n) 
-if %yesno% neq y if %yesno% neq Y goto optimize
+if %yesno% neq y if %yesno% neq Y goto done
 
 echo.
 echo Importing Realm database
 
 %mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %rdb% < %dbpath%\realmd.sql
 
+echo.
 
+
+:done
 echo.
 echo Done :)
 echo.
