@@ -108,10 +108,7 @@ if %yesno% neq y if %yesno% neq Y goto done
 echo.
 echo Importing Realm database
 
-%mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %rdb% < %dbpath%\realmd.sql
-
-echo.
-
+for %%i in (%dbpath2%\*.sql) do if %%i neq %dbpath%\*.sql if %%i neq %dbpath1%\*.sql if %%i neq %dbpath3%\*.sql echo %%i & %mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %rdb% < %%i
 
 :done
 echo.
