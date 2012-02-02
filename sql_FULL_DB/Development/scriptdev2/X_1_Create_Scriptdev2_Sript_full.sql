@@ -3,7 +3,8 @@
 --
 
 DELETE FROM sd2_db_version;
-INSERT INTO sd2_db_version (version) VALUES ('Infinity_Scriptdev2 and ScriptDev2 (for MaNGOS 11812+) ');
+INSERT INTO sd2_db_version (version) VALUES ('Infinity_ScriptDev2 (for MaNGOS 11812+) ');
+
 --
 -- Below contains data for table `script_texts` mainly used in C++ parts.
 -- valid entries for table are between -1000000 and -1999999
