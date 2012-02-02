@@ -425,7 +425,7 @@ UPDATE creature_template SET
     AIName = 'NullAI'
 WHERE entry = 33109;
 
-DELETE FROM npc_spellclick_spells WHERE npc_entry = 33109;
+DELETE FROM npc_spellclick_spells WHERE npc_entry IN (33109, 33167);
 INSERT INTO npc_spellclick_spells VALUES
 (33109, 62309, 0, 0, 0, 1),
 (33167, 62309, 0, 0, 0, 1);  -- Demolisher mechanic seat
