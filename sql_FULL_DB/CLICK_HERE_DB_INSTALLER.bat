@@ -5,7 +5,7 @@ rem This will automatically use the variables below to install the world and scr
 rem To use: Set your environment variables below and change 'set quick=off' to 'set quick=on' 
 set quick=off
 if %quick% == off goto standard
-echo (( MangosR2 Quick Installer ))
+echo (( Infinity Quick Installer ))
 rem -- Change the values below to match your server --
 set svr=localhost
 set user=root
