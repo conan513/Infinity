@@ -5,6 +5,7 @@
 -- temp sd2 scriptname
 UPDATE creature_template SET ScriptName='boss_shirrak' WHERE entry=18371;
 UPDATE creature_template SET ScriptName='npc_void_traveler' WHERE entry=19226;
+UPDATE creature_template SET ScriptName='npc_hive_zara_larva' WHERE entry=15555;
 
 delete from spell_script_target where entry = 39364;
 insert into spell_script_target values
@@ -13,6 +14,11 @@ insert into spell_script_target values
 insert into creature_linking_template values
 (19224, 555, 18732, 4112), -- void portal (despawn on death / evade)
 (19226, 555, 18732, 4112); -- void traveler (despawn on death / evade)
+
+
+
+-- end of temp sd2 fixes
+
 
 -- temp fix need to find true fix
 -- help fix quest 12813 currently
