@@ -1,5 +1,6 @@
 /*
 * Copyright (C) 2005-2011 MaNGOS <http://getmangos.com/>
+* Copyright (C) 2011 MangosR2
 * Copyright (C) 2011-2012 Infinity
 *
 * This program is free software; you can redistribute it and/or modify

@@ -1,7 +1,38 @@
 Infinity Project
 
- Project Ver 0.1
-12/5/2011 - ??/??/????
+ Project Ver 0.2 -- The longest yard
+ 02/5/2012 - ??/??/????
+
+ Rough EST. of Revisions
+ Ver2 :?: SD2 X :?: DB X :?:  
+ 42 core commits
+ 81 sd2 commits
+ 73 DB commits
+ 
+ ==== Infinity_Project Features ====
+ 
+ 
+ ==== Infinity Database ====
+ 
+ 
+ ==== Infinity Scriptdev2 ====
+ 
+ 
+ ==== Compile Platform ===== 
+
+ * VC90 =
+
+ * VC100 =
+ 
+=========================================================================================
+ Project Ver 0.1 -- Intial set up
+12/5/2011 - 02/5/2012
+
+Rough EST. of Revisions
+XO :42: SD2 X :81: DB X :73: 
+ 42 core commits
+ 81 sd2 commits
+ 73 DB commits
 
  ==== Infinity_Project Features ====
   * Implented: AdvancePlayerbot System
@@ -33,10 +64,10 @@ Infinity Project
   * Implented: Optional pvp annoucner and pvp token system
   * Implented: Optional Flight mounts allowed on old maps
 
- ==== Database  ====
+ ==== Infinity Database ====
  Current DB Ver == InfinityDB_V_1.0
 
- ==== Scriptdev2 ====
+ ==== Infinity Scriptdev2 ====
  * Implented: Infinity_sd2 Optional Customs
 
  * Implented/rewritten/Fixes: Instance Nexus:BETA

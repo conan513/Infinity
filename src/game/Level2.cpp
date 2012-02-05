@@ -2680,7 +2680,7 @@ bool ChatHandler::HandlePInfoCommand(char* args)
                 security = (AccountTypes)fields[1].GetUInt32();                                         // if it doesn't for realm, apply regular perms
         }
         else
-            security = (AccountTypes)fields[1].GetUInt32();                                             // if it doesn't for account, apply regular perms 
+            security = (AccountTypes)fields[1].GetUInt32();                                             // if it doesn't for account, apply regular perms
 
         if (GetAccessLevel() >= security)
         {
