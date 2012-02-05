@@ -216,3 +216,43 @@ INSERT INTO `gameobject` (`guid`,`id`,`map`,`spawnMask`,`phaseMask`,`position_x`
 UPDATE `gameobject` SET `spawntimesecs` = -180 WHERE `id` IN (182301,182302,182303,182304,182305,182306,182307,182308,182297,182298,182299,182300);
 UPDATE `gameobject` SET `spawntimesecs` = -180 WHERE `id` IN (182267,182280,182281,182282,182222,182272,182273,182274,182266,182275,182276,182277);
 /* ################################# */
+
+
+-- ---------------
+-- DB-CLEAN_UP  --
+-- ---------------
+-- -------- these all added 16 to pvp bit state or whatever
+
+DELETE FROM `creature_addon` WHERE  `guid`=69153 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=69154 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=69155 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=69156 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=69157 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=69158 LIMIT 1;
+
+DELETE FROM `creature_addon` WHERE  `guid`=71073 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71075 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71079 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71080 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71081 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71096 LIMIT 1;
+
+DELETE FROM `creature_addon` WHERE  `guid`=71110 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71111 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71112 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71132 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71134 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71137 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71138 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71139 LIMIT 1;
+DELETE FROM `creature_addon` WHERE  `guid`=71141 LIMIT 1;
+
+-- ---------- need to get movement data from ytdb and correctly use these in opvp w/ addon table above 
+DELETE FROM `creature_movement` WHERE `id`=77095 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77092 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77091 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77090 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77089 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77088 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77087 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77086 LIMIT 1;
