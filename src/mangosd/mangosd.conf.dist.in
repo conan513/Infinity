@@ -65,9 +65,9 @@ LogsDir = ""
 LoginDatabaseInfo     = "127.0.0.1;3306;mangos;mangos;realmd"
 WorldDatabaseInfo     = "127.0.0.1;3306;mangos;mangos;mangos"
 CharacterDatabaseInfo = "127.0.0.1;3306;mangos;mangos;characters"
-LoginDatabaseConnections = 1
-WorldDatabaseConnections = 1
-CharacterDatabaseConnections = 1
+LoginDatabaseConnections = 3
+WorldDatabaseConnections = 3
+CharacterDatabaseConnections = 3
 MaxPingTime = 30
 WorldServerPort = 8085
 BindIP = "0.0.0.0"
@@ -390,7 +390,7 @@ GmLogFile = ""
 GmLogTimestamp = 0
 GmLogPerAccount = 0
 RaLogFile = ""
-LogColors = ""
+LogColors = "13 7 11 9"
 
 ###################################################################################################################
 #   LEXICS CUTTER SYSTEM
@@ -1908,9 +1908,9 @@ Anticheat.Warden  = 0
 #
 ###################################################################################################################
 
-CharDelete.Method = 1
+CharDelete.Method = 2
 CharDelete.MinLevel = 10
-CharDelete.KeepDays = 30
+CharDelete.KeepDays = 120
 
 ###################################################################################################################
 #    Refer-A-Friend system by Mas0n
@@ -2027,8 +2027,8 @@ LFG.OnlyLastEncounterForCompleteDungeon = 0
 #                 1 - on
 #
 ###################################################################################################################
-PlayerbotAI.DisableBots = 1
-PlayerbotAI.SharedBots = 0
+PlayerbotAI.DisableBots = 0
+PlayerbotAI.SharedBots = 1
 PlayerbotAI.DebugWhisper = 0
 PlayerbotAI.FollowDistanceMin = 0.5
 PlayerbotAI.FollowDistanceMax = 1.0
@@ -2036,15 +2036,15 @@ PlayerbotAI.MaxNumBots = 9
 PlayerbotAI.RestrictBotLevel = 80
 PlayerbotAI.MinBotLevel = 1
 PlayerbotAI.AllowSummonOppositeFaction = 0
-PlayerbotAI.Collect.Combat = 0
-PlayerbotAI.Collect.Quest = 0
-PlayerbotAI.Collect.Profession = 0
-PlayerbotAI.Collect.Loot = 0
-PlayerbotAI.Collect.Skin = 0
-PlayerbotAI.Collect.Objects = 0
+PlayerbotAI.Collect.Combat = 1
+PlayerbotAI.Collect.Quest = 1
+PlayerbotAI.Collect.Profession = 1
+PlayerbotAI.Collect.Loot = 1
+PlayerbotAI.Collect.Skin = 1
+PlayerbotAI.Collect.Objects = 1
 PlayerbotAI.Collect.DistanceMax = 50
 PlayerbotAI.Collect.Distance = 25
-PlayerbotAI.SellGarbage = 0
+PlayerbotAI.SellGarbage = 1
 
 ###################################################################################################################
 # Chat disable under Level Configuration
