@@ -248,11 +248,11 @@ DELETE FROM `creature_addon` WHERE  `guid`=71139 LIMIT 1;
 DELETE FROM `creature_addon` WHERE  `guid`=71141 LIMIT 1;
 
 -- ---------- need to get movement data from ytdb and correctly use these in opvp w/ addon table above 
-DELETE FROM `creature_movement` WHERE `id`=77095 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77092 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77091 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77090 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77089 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77088 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77087 LIMIT 1;
-DELETE FROM `creature_movement` WHERE `id`=77086 LIMIT 1;
+DELETE FROM `creature_movement` WHERE `id`=77095;
+DELETE FROM `creature_movement` WHERE `id`=77092;
+DELETE FROM `creature_movement` WHERE `id`=77091;
+DELETE FROM `creature_movement` WHERE `id`=77090;
+DELETE FROM `creature_movement` WHERE `id`=77089;
+DELETE FROM `creature_movement` WHERE `id`=77088;
+DELETE FROM `creature_movement` WHERE `id`=77087;
+DELETE FROM `creature_movement` WHERE `id`=77086;
