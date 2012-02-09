@@ -10,6 +10,7 @@ INSERT INTO sd2_db_version (version) VALUES ('Infinity_ScriptDev2 (for MaNGOS 11
 -- valid entries for table are between -1000000 and -1999999
 --
 
+
 TRUNCATE script_texts;
 
 --
@@ -649,7 +650,7 @@ INSERT INTO script_texts (entry,content_default,sound,type,language,emote,commen
 (-1000610,'The mosswalker victim groans in pain.',0,2,0,0,'mosswalker victim EMOTE_PAIN'),
 
 (-1000611,'Maybe you make weather better too?',0,0,0,0,'mosswalker victim SAY_RESCUE_1'),
-(-1000612,'We saved. You nice, $N.',0,0,0,0,'mosswalker victim SAY_RESCUE_2'),
+(-1000612,'We saved. You nice, dryskin.',0,0,0,0,'mosswalker victim SAY_RESCUE_2'),
 (-1000613,'You save us! Yay for you!',0,0,0,0,'mosswalker victim SAY_RESCUE_3'),
 (-1000614,'Thank you! You good!',0,0,0,0,'mosswalker victim SAY_RESCUE_4'),
 
@@ -872,7 +873,14 @@ INSERT INTO script_texts (entry,content_default,sound,type,language,emote,commen
 (-1033016,'Arrrgh!',0,0,0,0,'deathstalker vincent SAY_VINCENT_DIE'),
 (-1033017,'You, too, shall serve!',5793,1,0,0,'boss_arugal YELL_AGGRO'),
 (-1033018,'Another Falls!',5795,1,0,0,'boss_arugal YELL_KILLED_PLAYER'),
-(-1033019,'Release your rage!',5797,1,0,0,'boss_arugal YELL_COMBAT');
+(-1033019,'Release your rage!',5797,1,0,0,'boss_arugal YELL_COMBAT'),
+
+(-1033020,'Did they bother to tell you who I am and why I am doing this?',0,0,0,0,'hummel SAY_INTRO_1'),
+(-1033021,'...or are they just using you like they do everybody else?',0,0,0,0,'hummel SAY_INTRO_2'),
+(-1033022,'But what does it matter. It is time for this to end.',0,0,0,0,'hummel SAY_INTRO_3'),
+(-1033023,'Baxter! Get in there and help! NOW!',0,0,0,0,'hummel SAY_CALL_BAXTER'),
+(-1033024,'It is time, Frye! Attack!',0,0,0,0,'hummel SAY_CALL_FRYE'),
+(-1033025,'...please don\'t think less of me.',0,0,0,0,'hummel SAY_DEATH');
 
 -- -1 034 000 STOCKADES
 

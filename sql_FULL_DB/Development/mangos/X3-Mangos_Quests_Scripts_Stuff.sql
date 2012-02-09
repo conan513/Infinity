@@ -9,6 +9,8 @@ UPDATE creature_template SET ScriptName='npc_hive_zara_larva' WHERE entry=15555;
 UPDATE creature_template SET ScriptName='boss_buru' WHERE entry=15370;
 UPDATE creature_template SET ScriptName='npc_buru_egg' WHERE entry=15514;
 UPDATE creature_template SET ScriptName='npc_melizza_brimbuzzle' WHERE entry=12277;
+UPDATE creature_template SET ScriptName='npc_apothecary_hummel' WHERE entry=36296;
+UPDATE creature_template SET ScriptName='npc_valentine_boss_manager' WHERE entry=36643;
 
 delete from spell_script_target where entry = 39364;
 insert into spell_script_target values
