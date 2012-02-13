@@ -7371,6 +7371,13 @@ uint32 Unit::SpellDamageBonusDone(Unit *pVictim, SpellEntry const *spellProto, u
             DoneTotalMod += ((*i)->GetModifier()->m_amount+100.0f)/100.0f;
     }
 
+    AuraList const& mDamageDoneVersusAuraState = GetAurasByType(SPELL_AURA_DAMAGE_DONE_VERSUS_AURA_STATE_PCT);
+    for(AuraList::const_iterator i = mDamageDoneVersusAuraState.begin();i != mDamageDoneVersusAuraState.end(); ++i)
+    {
+        if (pVictim->HasAuraState(AuraState((*i)->GetModifier()->m_miscvalue)))
+            DoneTotalMod *= ((*i)->GetModifier()->m_amount + 100.0f)/100.0f;
+    }
+
     // done scripted mod (take it from owner)
     Unit *owner = GetOwner();
     if (!owner)
@@ -8393,17 +8400,13 @@ bool Unit::IsImmuneToSpell(SpellEntry const* spellInfo) const
     if (!effectMask)
         return true;
 
-    if (!(spellInfo->AttributesEx & SPELL_ATTR_UNAFFECTED_BY_INVULNERABILITY) &&
-        IsNonPositiveSpell(spellInfo) &&
-        IsImmunedToSchool(GetSpellSchoolMask(spellInfo)))
-        return true;
-
     SpellImmuneList const& dispelList = m_spellImmune[IMMUNITY_DISPEL];
     for(SpellImmuneList::const_iterator itr = dispelList.begin(); itr != dispelList.end(); ++itr)
         if (itr->type == spellInfo->Dispel)
             return true;
 
-    if (!(spellInfo->AttributesEx & SPELL_ATTR_EX_UNAFFECTED_BY_SCHOOL_IMMUNE) &&         // unaffected by school immunity
+    if (!(spellInfo->Attributes & SPELL_ATTR_UNAFFECTED_BY_INVULNERABILITY) &&
+        !(spellInfo->AttributesEx & SPELL_ATTR_EX_UNAFFECTED_BY_SCHOOL_IMMUNE) &&         // unaffected by school immunity
         !(spellInfo->AttributesEx & SPELL_ATTR_EX_DISPEL_AURAS_ON_IMMUNITY))              // can remove immune (by dispell or immune it)
     {
         SpellImmuneList const& schoolList = m_spellImmune[IMMUNITY_SCHOOL];
@@ -8439,13 +8442,7 @@ bool Unit::IsImmuneToSpellEffect(SpellEntry const* spellInfo, SpellEffectIndex i
     if (spellInfo->Effect[index] == SPELL_EFFECT_NONE)
         return true;
 
-    // in case of trigger spells, check not current spell, but triggered (/dev/rsa)
-    if (spellInfo->Effect[index] == SPELL_EFFECT_TRIGGER_SPELL)
-        if (SpellEntry const* triggeredSpellInfo = sSpellStore.LookupEntry(spellInfo->EffectTriggerSpell[index]))
-            return IsImmuneToSpell(triggeredSpellInfo);
-
-
-    if (!(spellInfo->AttributesEx & SPELL_ATTR_UNAFFECTED_BY_INVULNERABILITY))
+    if (!(spellInfo->Attributes & SPELL_ATTR_UNAFFECTED_BY_INVULNERABILITY))
     {
         //If m_immuneToEffect type contain this effect type, IMMUNE effect.
         uint32 effect = spellInfo->Effect[index];
@@ -8605,6 +8602,13 @@ uint32 Unit::MeleeDamageBonusDone(Unit *pVictim, uint32 pdamage,WeaponAttackType
     Unit *owner = GetOwner();
     if (!owner)
         owner = this;
+
+    AuraList const& mDamageDoneVersusAuraState = GetAurasByType(SPELL_AURA_DAMAGE_DONE_VERSUS_AURA_STATE_PCT);
+    for(AuraList::const_iterator i = mDamageDoneVersusAuraState.begin();i != mDamageDoneVersusAuraState.end(); ++i)
+    {
+        if (pVictim->HasAuraState(AuraState((*i)->GetModifier()->m_miscvalue)))
+            DonePercent *= ((*i)->GetModifier()->m_amount + 100.0f)/100.0f;
+    }
 
     // ..done (class scripts)
     if (spellProto)
