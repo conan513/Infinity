@@ -12355,15 +12355,24 @@ void Unit::RemoveAurasAtMechanicImmunity(uint32 mechMask, uint32 exceptSpellId, 
 
                 for (int32 i = 0; i < MAX_EFFECT_INDEX; i++)
                 {
-
                     if ((1 << (iter->second->GetSpellProto()->EffectMechanic[SpellEffectIndex(i)] - 1)) & mechMask)
                     {
-                        // even if aura already deleted, assuming that not delete all holder
-                        removedSingleAura = true;
-
                         Aura* aura = iter->second->GetAuraByEffectIndex(SpellEffectIndex(i));
                         if (aura && !aura->IsDeleted())
-                            aurasToRemove.insert(aura);
+                        {
+                            if (!aura->IsLastAuraOnHolder())
+                            {
+                                // don't remove holder if it has other auras that may not have this mechanic
+                                aurasToRemove.insert(aura);
+                                removedSingleAura = true;
+                            }
+                            else
+                            {
+                                // if this is last aura then remove the holder (see below)
+                                removedSingleAura = false;
+                                break;
+                            }
+                        }
                     }
                 }
 
