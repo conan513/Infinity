@@ -701,6 +701,7 @@ bool IsPositiveEffect(SpellEntry const *spellproto, SpellEffectIndex effIndex)
         case 66406:                                         // Snobolled! (Trial of the Crusader, Gormok the Impaler encounter)
         case 68377:                                         // Carrying Huge Seaforium (IoC)
         case 71010:                                         // Web Wrap (Icecrown Citadel, trash mob Nerub'ar Broodkeeper)
+        case 71265:                                         // Swarming Shadows (Lanathel)
         case 72219:                                         // Gastric Bloat 10 N
         case 72551:                                         // Gastric Bloat 10 H
         case 72552:                                         // Gastric Bloat 25 N
@@ -1033,6 +1034,30 @@ bool IsPositiveSpell(SpellEntry const *spellproto)
     for (int i = 0; i < MAX_EFFECT_INDEX; ++i)
         if (spellproto->Effect[i] && !IsPositiveEffect(spellproto, SpellEffectIndex(i)))
             return false;
+    return true;
+}
+
+bool IsNonPositiveSpell(uint32 spellId)
+{
+    SpellEntry const* spellProto = sSpellStore.LookupEntry(spellId);
+
+    if (!spellProto)
+        return false;
+
+    return IsNonPositiveSpell(spellProto);
+}
+
+bool IsNonPositiveSpell(SpellEntry const* spellProto)
+{
+    if (!spellProto)
+        return false;
+
+    if (spellProto->AttributesEx6 & SPELL_ATTR_EX6_NO_STACK_DEBUFF_MAJOR)
+        return true;
+
+    if (IsPositiveSpell(spellProto))
+        return false;
+
     return true;
 }
 
@@ -4488,6 +4513,9 @@ DiminishingGroup GetDiminishingReturnsGroupForSpell(SpellEntry const* spellproto
             // Slow
             else if (spellproto->Id == 31589)
                 return DIMINISHING_LIMITONLY;
+            // Charge
+            else if (spellproto->Id == 7922)
+                return DIMINISHING_CHARGE;
             break;
         case SPELLFAMILY_ROGUE:
         {
@@ -4499,6 +4527,9 @@ DiminishingGroup GetDiminishingReturnsGroupForSpell(SpellEntry const* spellproto
                 return DIMINISHING_CHEAPSHOT_POUNCE;
             // Crippling poison - Limit to 10 seconds in PvP (No SpellFamilyFlags)
             else if (spellproto->SpellIconID == 163)
+                return DIMINISHING_LIMITONLY;
+            // Wound poison - Limit to 10 seconds in PvP (No SpellFamilyFlags)
+            else if (spellproto->SpellIconID == 1496)
                 return DIMINISHING_LIMITONLY;
             break;
         }
@@ -4517,9 +4548,9 @@ DiminishingGroup GetDiminishingReturnsGroupForSpell(SpellEntry const* spellproto
             // Judgement of Justice - limit to 10 seconds in PvP
             if (spellproto->SpellFamilyFlags.test<CF_PALADIN_JUDGEMENT_OF_JUSTICE>())
                 return DIMINISHING_LIMITONLY;
-            // Turn Evil - limit to 10 seconds in PvP
+            // Turn Evil
             else if (spellproto->SpellFamilyFlags.test<CF_PALADIN_TURN_EVIL>())
-                return DIMINISHING_LIMITONLY;
+                return DIMINISHING_FEAR_CHARM_BLIND;
             break;
         }
         case SPELLFAMILY_WARLOCK:
@@ -4671,6 +4702,7 @@ bool IsDiminishingReturnsGroupDurationLimited(DiminishingGroup group)
         case DIMINISHING_CYCLONE:
         case DIMINISHING_BANISH:
         case DIMINISHING_LIMITONLY:
+        case DIMINISHING_CHARGE:
             return true;
         default:
             return false;
@@ -4685,6 +4717,7 @@ DiminishingReturnsType GetDiminishingReturnsGroupType(DiminishingGroup group)
         case DIMINISHING_CYCLONE:
         case DIMINISHING_TRIGGER_STUN:
         case DIMINISHING_CONTROL_STUN:
+        case DIMINISHING_CHARGE:
             return DRTYPE_ALL;
         case DIMINISHING_CONTROL_ROOT:
         case DIMINISHING_TRIGGER_ROOT:
@@ -4808,8 +4841,10 @@ bool IsEffectCauseDamage(SpellEntry const *spellInfo, SpellEffectIndex effecIdx)
     switch (spellInfo->Effect[effecIdx])
     {
         // need much more correct effect definition in this check
+        case SPELL_EFFECT_NONE:
         case SPELL_EFFECT_DISPEL:
         case SPELL_EFFECT_TRIGGER_SPELL:
+        case SPELL_EFFECT_DISPEL_MECHANIC:
             return false;
 
         case SPELL_EFFECT_SCHOOL_DAMAGE:

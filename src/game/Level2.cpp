@@ -1408,7 +1408,7 @@ void ChatHandler::ShowFactionListHelper( FactionEntry const * factionEntry, Loca
 
     if (repState)                               // and then target!=NULL also
     {
-        ReputationRank rank = target->GetReputationMgr().GetRank(factionEntry, false);
+        ReputationRank rank = target->GetReputationMgr().GetRank(factionEntry);
         std::string rankName = GetMangosString(ReputationRankStrIndex[rank]);
 
         ss << " " << rankName << "|h|r (" << target->GetReputationMgr().GetReputation(factionEntry) << ")";
@@ -2680,7 +2680,7 @@ bool ChatHandler::HandlePInfoCommand(char* args)
                 security = (AccountTypes)fields[1].GetUInt32();                                         // if it doesn't for realm, apply regular perms
         }
         else
-            security = (AccountTypes)fields[1].GetUInt32();                                             // if it doesn't for account, apply regular perms 
+            security = (AccountTypes)fields[1].GetUInt32();                                             // if it doesn't for account, apply regular perms
 
         if (GetAccessLevel() >= security)
         {

@@ -5,7 +5,7 @@ rem This will automatically use the variables below to install the world and scr
 rem To use: Set your environment variables below and change 'set quick=off' to 'set quick=on' 
 set quick=off
 if %quick% == off goto standard
-echo (( MangosR2 Quick Installer ))
+echo (( Infinity Quick Installer ))
 rem -- Change the values below to match your server --
 set svr=localhost
 set user=root
@@ -54,12 +54,10 @@ set dbpath=Development\mangos
 set dbpath1=Development\characters
 set dbpath2=Development\realmd
 set dbpath3=Development\scriptdev2
-set optim=Tools\DB_Optimizer
 set mysql=.
 
 :checkpaths
 if not exist %dbpath% then goto patherror
-if not exist %optim% then goto patherror
 if not exist %mysql%\mysql.exe then goto patherror
 goto world
 
@@ -90,8 +88,6 @@ echo Importing ScriptDev2 database
 
 for %%i in (%dbpath3%\*.sql) do if %%i neq %dbpath%\*.sql if %%i neq %dbpath1%\*.sql if %%i neq %dbpath2%\*.sql echo %%i & %mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %sd2db% < %%i
 
-if %quick% neq off goto optimize
-
 :characters
 echo.
 echo This will wipe out your current Characters database and replace it.
@@ -107,32 +103,12 @@ for %%i in (%dbpath1%\*.sql) do if %%i neq %dbpath%\*.sql if %%i neq %dbpath1%\*
 echo.
 echo This will wipe out your current Realm database and replace it.
 set /p yesno=Do you wish to continue? (y/n) 
-if %yesno% neq y if %yesno% neq Y goto optimize
+if %yesno% neq y if %yesno% neq Y goto done
 
 echo.
 echo Importing Realm database
 
 for %%i in (%dbpath2%\*.sql) do if %%i neq %dbpath%\*.sql if %%i neq %dbpath1%\*.sql if %%i neq %dbpath3%\*.sql echo %%i & %mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %rdb% < %%i
-
-:optimize
-if %quick% == off echo.
-if %quick% == off echo This will optimize your current database.
-if %quick% == off set /p yesno=Do you wish to continue? (y/n) 
-if %quick% == off if %yesno% neq y if %yesno% neq Y goto done
-
-echo.
-echo Optimizing database
-
-%optim%\Optimizer.exe
-copy %optim%\scriptdev2_optimize.sql . >nul
-echo World
-%mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %wdb% < optimize.sql >nul
-echo ScriptDev2
-%mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %sd2db% < scriptdev2_optimize.sql >nul
-del optimize.sql
-del scriptdev2_optimize.sql
-
-if %quick% neq off goto :eof
 
 :done
 echo.

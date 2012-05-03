@@ -1242,6 +1242,7 @@ class MANGOS_DLL_SPEC Player : public Unit
 
         InventoryResult CanEquipUniqueItem( Item * pItem, uint8 except_slot = NULL_SLOT, uint32 limit_count = 1 ) const;
         InventoryResult CanEquipUniqueItem( ItemPrototype const* itemProto, uint8 except_slot = NULL_SLOT, uint32 limit_count = 1 ) const;
+        InventoryResult CanEquipMoreJewelcraftingGems(uint32 count, uint8 except_slot) const;
         InventoryResult CanUnequipItems( uint32 item, uint32 count ) const;
         InventoryResult CanUnequipItem( uint16 src, bool swap ) const;
         InventoryResult CanBankItem( uint8 bag, uint8 slot, ItemPosCountVec& dest, Item *pItem, bool swap, bool not_loading = true ) const;
@@ -1622,6 +1623,7 @@ class MANGOS_DLL_SPEC Player : public Unit
         TrainerSpellState GetTrainerSpellState(TrainerSpell const* trainer_spell, uint32 reqLevel) const;
         bool IsSpellFitByClassAndRace(uint32 spell_id, uint32* pReqlevel = NULL) const;
         bool IsNeedCastPassiveLikeSpellAtLearn(SpellEntry const* spellInfo) const;
+        bool IsImmuneToSpell(SpellEntry const* spellInfo) const;
         bool IsImmuneToSpellEffect(SpellEntry const* spellInfo, SpellEffectIndex index) const;
 
         void SendProficiency(ItemClass itemClass, uint32 itemSubclassMask);

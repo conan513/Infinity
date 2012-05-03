@@ -268,6 +268,7 @@ void BattleGroundSA::Update(uint32 diff)
             SetStatus(STATUS_IN_PROGRESS); // Start round two
             PlaySoundToAll(SOUND_BG_START);
             SendWarningToAll(LANG_BG_SA_HAS_BEGUN);
+            StartTimedAchievement(ACHIEVEMENT_CRITERIA_TYPE_BE_SPELL_TARGET, BG_SA_EVENT_START_BATTLE_2);
 
             for (BattleGroundPlayerMap::const_iterator itr = GetPlayers().begin(); itr != GetPlayers().end(); ++itr)
             {
@@ -323,11 +324,12 @@ void BattleGroundSA::StartingEventCloseDoors()
 
 void BattleGroundSA::StartingEventOpenDoors()
 {
-    // runs just in 1st phase
+    // runs just in 1st round
     SpawnEvent(SA_EVENT_ADD_NPC, 0, true);
     SpawnEvent(SA_EVENT_ADD_BOMB_B, (GetDefender() == ALLIANCE ? BG_SA_GRAVE_STATUS_HORDE_OCCUPIED : BG_SA_GRAVE_STATUS_ALLY_OCCUPIED), true);
     ToggleTimer();
     HandleInteractivity();
+    StartTimedAchievement(ACHIEVEMENT_CRITERIA_TYPE_BE_SPELL_TARGET, BG_SA_EVENT_START_BATTLE_1);
 }
 
 void BattleGroundSA::RemovePlayer(Player* /*plr*/, ObjectGuid /*guid*/)
@@ -413,7 +415,7 @@ void BattleGroundSA::Reset()
     defender = ((urand(0,1)) ? ALLIANCE : HORDE);
     relicGateDestroyed = false;
 
-    for (uint8 i = 0; i <= SA_EVENT_ADD_RELIC; ++i)
+    for (uint8 i = 0; i <= SA_EVENT_ADD_YELLOW_SIGIL; ++i)
         m_ActiveEvents[i] = BG_EVENT_NONE;
 
     UpdatePhase();
@@ -424,7 +426,7 @@ void BattleGroundSA::UpdatePhase()
     if (Phase == SA_ROUND_TWO)
     {
         // despawn everything
-        for (uint8 i = 0; i <= SA_EVENT_ADD_RELIC; ++i)
+        for (uint8 i = 0; i <= SA_EVENT_ADD_YELLOW_SIGIL; ++i)
             for (uint8 j = 0; j < 5; ++j)
                 SpawnEvent(i, j, false);
 
@@ -461,6 +463,10 @@ void BattleGroundSA::UpdatePhase()
     SpawnEvent(SA_EVENT_ADD_CANNON, 0, true);
     SpawnEvent(SA_EVENT_ADD_RELIC, (GetDefender() == ALLIANCE) ? 2 : 1, true);
     MakeInteractive(SA_EVENT_ADD_RELIC, (GetDefender() == ALLIANCE) ? 2 : 1, false);
+
+    // spawn gate sigils
+    for (uint8 i = SA_EVENT_ADD_GREEN_SIGIL; i <= SA_EVENT_ADD_YELLOW_SIGIL; ++i)
+        SpawnEvent(i, 0, true);
 }
 
 void BattleGroundSA::HandleInteractivity()
@@ -678,6 +684,7 @@ void BattleGroundSA::EventPlayerDamageGO(Player *player, GameObject* target_obj,
                     // make western/eastern graveyard capturable
                     for (int i = SA_EVENT_ADD_GRAVE_E; i <= SA_EVENT_ADD_GRAVE_W; i++)
                         MakeInteractive(i, (GetDefender() == ALLIANCE) ? BG_SA_GRAVE_STATUS_ALLY_CONTESTED : BG_SA_GRAVE_STATUS_HORDE_CONTESTED, true);
+                    SpawnEvent(SA_EVENT_ADD_GREEN_SIGIL, 0, false);
                     break;
             }
             break;
@@ -706,6 +713,7 @@ void BattleGroundSA::EventPlayerDamageGO(Player *player, GameObject* target_obj,
                     // make western/eastern graveyard capturable
                     for (int i = SA_EVENT_ADD_GRAVE_E; i <= SA_EVENT_ADD_GRAVE_W; i++)
                         MakeInteractive(i, (GetDefender() == ALLIANCE) ? BG_SA_GRAVE_STATUS_ALLY_CONTESTED : BG_SA_GRAVE_STATUS_HORDE_CONTESTED, true);
+                    SpawnEvent(SA_EVENT_ADD_BLUE_SIGIL, 0, false);
                     break;
             }
             break;
@@ -733,6 +741,7 @@ void BattleGroundSA::EventPlayerDamageGO(Player *player, GameObject* target_obj,
                     RewardHonorToTeam(85, (teamIndex == 0) ? ALLIANCE : HORDE);
                     // make the central graveyard capturable
                     MakeInteractive(SA_EVENT_ADD_GRAVE_C, (GetDefender() == ALLIANCE) ? BG_SA_GRAVE_STATUS_ALLY_CONTESTED : BG_SA_GRAVE_STATUS_HORDE_CONTESTED, true);
+                    SpawnEvent(SA_EVENT_ADD_PURPLE_SIGIL, 0, false);
                     break;
             }
             break;
@@ -760,6 +769,7 @@ void BattleGroundSA::EventPlayerDamageGO(Player *player, GameObject* target_obj,
                     RewardHonorToTeam(85, (teamIndex == 0) ? ALLIANCE : HORDE);
                     // make the central graveyard capturable
                     MakeInteractive(SA_EVENT_ADD_GRAVE_C, (GetDefender() == ALLIANCE) ? BG_SA_GRAVE_STATUS_ALLY_CONTESTED : BG_SA_GRAVE_STATUS_HORDE_CONTESTED, true);
+                    SpawnEvent(SA_EVENT_ADD_RED_SIGIL, 0, false);
                     break;
             }
             break;
@@ -785,6 +795,7 @@ void BattleGroundSA::EventPlayerDamageGO(Player *player, GameObject* target_obj,
                     UpdateWorldState(BG_SA_GateStatus[type], GateStatus[type] = BG_SA_GO_GATES_DESTROY);
                     UpdatePlayerScore(player, SCORE_GATES_DESTROYED, 1);
                     RewardHonorToTeam(85, (teamIndex == 0) ? ALLIANCE : HORDE);
+                    SpawnEvent(SA_EVENT_ADD_YELLOW_SIGIL, 0, false);
                     break;
             }
             break;
@@ -799,6 +810,14 @@ void BattleGroundSA::EventPlayerDamageGO(Player *player, GameObject* target_obj,
                     player->GetSession()->KickPlayer();
                     sLog.outError("Player %s has clicked SOTA Relic without Relic gate being destroyed", player->GetName());
                     return;
+                }
+
+                //Achievement Storm the Beach (1310)
+                for (BattleGroundPlayerMap::const_iterator itr = GetPlayers().begin(); itr != GetPlayers().end(); ++itr)
+                {
+                    if (Player *plr = sObjectMgr.GetPlayer(itr->first))
+                        if (plr->GetTeam() != defender)
+                            plr->UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_BE_SPELL_TARGET, 65246);
                 }
 
                 if (Phase == SA_ROUND_ONE) // Victory at first round

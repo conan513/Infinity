@@ -158,7 +158,7 @@ INSERT INTO spell_proc_event VALUES (67361, 0x00, 0x07, 0x00000002, 0x00000002, 
 
 -- (67356) Item - Druid T9 Restoration Relic (Rejuvenation)
 DELETE FROM spell_proc_event WHERE entry = 67356;
-INSERT INTO spell_proc_event VALUES (67356, 0x00, 0x07, 0x00000010, 0x00000010, 0x00000010, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00044000, 0x00000000, 0, 80, 0);
+INSERT INTO spell_proc_event VALUES (67356, 0x00, 0x07, 0x00000010, 0x00000010, 0x00000010, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00040000, 0x00040000, 0, 50, 0);
 
 -- (64952) Item - Druid T8 Feral Relic
 DELETE FROM spell_proc_event WHERE entry  = 64952;
@@ -759,6 +759,10 @@ DELETE FROM `spell_proc_event` WHERE `entry` IN (71835, 71836);
 INSERT INTO `spell_proc_event` VALUES
 (71835, 0x01, 0x00, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0, 0, 0, 0, 0, 0, 0, 0),
 (71836, 0x01, 0x00, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- (16164) Elemental Focus
+DELETE FROM `spell_proc_event` WHERE `entry` IN (16164);
+INSERT INTO `spell_proc_event` VALUES (16164, 0x1C, 0x0B, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00015550, 0x00000002, 0, 0, 0);
 
 -- ----------------------------------------------------------------------------------------------------------------------------------
 -- spell proc hacks -

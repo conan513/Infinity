@@ -4717,7 +4717,7 @@ void Spell::EffectTriggerMissileSpell(SpellEffectIndex effect_idx)
 
     MaNGOS::NormalizeMapCoord(x);
     MaNGOS::NormalizeMapCoord(y);
-    m_caster->UpdateGroundPositionZ(x,y,z);
+    m_caster->UpdateAllowedPositionZ(x,y,z);
 
     m_caster->CastSpell(x, y, z, spellInfo, true, m_CastItem, 0, m_originalCasterGUID);
 }
@@ -5712,6 +5712,11 @@ void Spell::EffectEnergisePct(SpellEffectIndex eff_idx)
 
 void Spell::SendLoot(ObjectGuid guid, LootType loottype, LockType lockType)
 {
+    if (!m_caster)
+        return;
+
+    m_caster->RemoveAurasWithInterruptFlags(AURA_INTERRUPT_FLAG_USE);
+
     if (gameObjTarget)
     {
         switch (gameObjTarget->GetGoType())
@@ -6078,12 +6083,12 @@ void Spell::DoSummonGroupPets(SpellEffectIndex eff_idx)
         m_duration = 0;
     }
 
-    uint32 amount = damage;
+    int32 amount = m_spellInfo->EffectRealPointsPerLevel[eff_idx] ? m_spellInfo->EffectRealPointsPerLevel[eff_idx] : m_currentBasePoints[eff_idx];
+
+    if (amount < 0)
+        amount = 1;
 
     uint32 originalSpellID = (m_IsTriggeredSpell && m_triggeredBySpellInfo) ? m_triggeredBySpellInfo->Id : m_spellInfo->Id;
-
-    if (amount > 5)
-        amount = 1;  // Don't find any cast, summons over 3 pet.
 
     CreatureCreatePos pos (m_caster->GetMap(), m_targets.m_destX, m_targets.m_destY, m_targets.m_destZ, -m_caster->GetOrientation(), m_caster->GetPhaseMask());
 
@@ -6497,7 +6502,9 @@ void Spell::DoSummonWild(SpellEffectIndex eff_idx, uint32 forceFaction)
     float radius = GetSpellRadius(sSpellRadiusStore.LookupEntry(m_spellInfo->EffectRadiusIndex[eff_idx]));
     TempSummonType summonType = (m_duration == 0) ? TEMPSUMMON_DEAD_DESPAWN : TEMPSUMMON_TIMED_OR_DEAD_DESPAWN;
 
-    int32 amount = damage > 0 ? damage : 1;
+    int32 amount = m_spellInfo->EffectRealPointsPerLevel[eff_idx] ? m_spellInfo->EffectRealPointsPerLevel[eff_idx] : m_currentBasePoints[eff_idx];
+    if (amount < 0)
+        amount = 1;
 
     for(int32 count = 0; count < amount; ++count)
     {
@@ -6595,8 +6602,12 @@ void Spell::DoSummonGuardian(SpellEffectIndex eff_idx, uint32 forceFaction)
         if (Pet* old_protector = m_caster->GetProtectorPet())
             old_protector->Unsummon(PET_SAVE_AS_DELETED, m_caster);
 
-    // in another case summon new
-    uint32 level = m_caster->getLevel();
+    int32 amount = m_spellInfo->EffectRealPointsPerLevel[eff_idx] ? m_spellInfo->EffectRealPointsPerLevel[eff_idx] : m_currentBasePoints[eff_idx];
+    if (amount < 0)
+        amount = 1;
+
+    //uint32 level  = m_caster->getLevel();
+    uint32 level  = m_spellInfo->EffectRealPointsPerLevel[eff_idx] ? (damage < m_caster->getLevel() ? damage : m_caster->getLevel()) : m_caster->getLevel();
 
     // level of pet summoned using engineering item based at engineering skill level
     if (m_caster->GetTypeId() == TYPEID_PLAYER && m_CastItem)
@@ -6626,9 +6637,6 @@ void Spell::DoSummonGuardian(SpellEffectIndex eff_idx, uint32 forceFaction)
     float radius = GetSpellRadius(sSpellRadiusStore.LookupEntry(m_spellInfo->EffectRadiusIndex[eff_idx]));
 
     uint32 originalSpellID = (m_IsTriggeredSpell && m_triggeredBySpellInfo) ? m_triggeredBySpellInfo->Id : m_spellInfo->Id;
-
-    // cannot find any guardian group over 5. need correct?
-    int32 amount = (damage > 0 && damage < 6) ? damage : 1;
 
     for (int32 count = 0; count < amount; ++count)
     {
@@ -12520,10 +12528,19 @@ void Spell::EffectSuspendGravity(SpellEffectIndex eff_idx)
     if (!unitTarget)
         return;
 
-    float fTargetX, fTargetY, fTargetZ;
-    unitTarget->GetPosition(fTargetX, fTargetY, fTargetZ);
-    float mapZ = unitTarget->GetTerrain()->GetHeight(fTargetX, fTargetY, fTargetZ);
-    float radius = m_spellInfo->EffectMiscValue[eff_idx]/10;
-    if (fTargetZ < mapZ + 0.5)
-        unitTarget->KnockBackFrom(m_caster, -radius, radius);
+    float x,y,z;
+    if (m_targets.m_targetMask & TARGET_FLAG_DEST_LOCATION)
+    {
+        x = m_targets.m_destX;
+        y = m_targets.m_destY;
+        z = m_targets.m_destZ;
+    }
+    else
+    {
+        m_caster->GetClosePoint(x, y, z, m_caster->GetObjectBoundingRadius(), 0.0f, m_caster->GetAngle(unitTarget));
+    }
+    unitTarget->UpdateAllowedPositionZ(x, y, z);
+    float speed  = float(m_spellInfo->EffectMiscValue[eff_idx]/2.0f);
+    float height = float(unitTarget->GetDistance(x,y,z) / 10.0f);
+    unitTarget->MonsterMoveJump(x, y, z + 0.1f, unitTarget->GetOrientation(), speed, height, true, m_caster == unitTarget ? NULL : m_caster);
 }

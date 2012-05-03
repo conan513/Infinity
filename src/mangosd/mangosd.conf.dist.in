@@ -65,9 +65,9 @@ LogsDir = ""
 LoginDatabaseInfo     = "127.0.0.1;3306;mangos;mangos;realmd"
 WorldDatabaseInfo     = "127.0.0.1;3306;mangos;mangos;mangos"
 CharacterDatabaseInfo = "127.0.0.1;3306;mangos;mangos;characters"
-LoginDatabaseConnections = 1
-WorldDatabaseConnections = 1
-CharacterDatabaseConnections = 1
+LoginDatabaseConnections = 3
+WorldDatabaseConnections = 3
+CharacterDatabaseConnections = 3
 MaxPingTime = 30
 WorldServerPort = 8085
 BindIP = "0.0.0.0"
@@ -910,6 +910,12 @@ LexicsCutterNoActionOnGM = 1
 #        min:     0.0  (default mangos method)
 #        max:     1.0  (full CrowdControl, auras like Fear not breaked by damage anyway)
 #
+#    AllowTransferToCustomMap
+#        Allowing moving to maps, enter for which absent in AraeTrigger.dbc (by custom areatrigger_teleport entryes)
+#        Attention! Changing this option "on-the-fly" required reload areatrigger_teleport table!
+#        Default: 0 - disabled (only GM's may transfer to this maps
+#                 1 - enabled  (any player, fit to custom areatrigger_teleport condition, may transfer to this maps).
+#
 ###################################################################################################################
 
 GameType = 6
@@ -989,6 +995,7 @@ Motd = "Udv a Single Player Project Infinity szerveren."
 Raid.MinLevel = 10
 CheckGOInPath = 1
 CrowdControlHPBase = 0.1
+AllowTransferToCustomMap = 0
 
 ###################################################################################################################
 # PLAYER INTERACTION
@@ -1140,11 +1147,11 @@ AutoBroadcast.Timer = 30000
 #
 #    ListenRange.Say
 #        Distance from player to listen text that creature (or other world object) say
-#        Default: 25
+#        Default: 40
 #
 #    ListenRange.TextEmote
 #        Distance from player to listen textemote that creature (or other world object) say
-#        Default: 25
+#        Default: 40
 #
 #    ListenRange.Yell
 #        Distance from player to listen text that creature (or other world object) yell
@@ -1901,9 +1908,9 @@ Anticheat.Warden  = 1
 #
 ###################################################################################################################
 
-CharDelete.Method = 1
+CharDelete.Method = 2
 CharDelete.MinLevel = 10
-CharDelete.KeepDays = 30
+CharDelete.KeepDays = 120
 
 ###################################################################################################################
 #    Refer-A-Friend system by Mas0n
@@ -2021,7 +2028,7 @@ LFG.OnlyLastEncounterForCompleteDungeon = 0
 #
 ###################################################################################################################
 PlayerbotAI.DisableBots = 0
-PlayerbotAI.SharedBots = 0
+PlayerbotAI.SharedBots = 1
 PlayerbotAI.DebugWhisper = 0
 PlayerbotAI.FollowDistanceMin = 0.5
 PlayerbotAI.FollowDistanceMax = 1.0

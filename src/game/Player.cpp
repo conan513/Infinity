@@ -1778,6 +1778,9 @@ bool Player::TeleportTo(uint32 mapid, float x, float y, float z, float orientati
         DEBUG_LOG("Player %s is being teleported to map %u", GetName(), mapid);
     }
 
+    if (Group* grp = GetGroup())
+        grp->SetPlayerMap(GetObjectGuid(), mapid);
+
     // if we were on a transport, leave
     if (!(options & TELE_TO_NOT_LEAVE_TRANSPORT) && GetTransport())
     {
@@ -2325,15 +2328,8 @@ Creature* Player::GetNPCIfCanInteractWith(ObjectGuid guid, uint32 npcflagmask)
     if (unit->IsHostileTo(this))
         return NULL;
 
-    // not unfriendly
-    if(FactionTemplateEntry const* factionTemplate = sFactionTemplateStore.LookupEntry(unit->getFaction()))
-        if(factionTemplate->faction)
-            if(FactionEntry const* faction = sFactionStore.LookupEntry(factionTemplate->faction))
-                if(faction->reputationListID >= 0 && GetReputationMgr().GetRank(faction, true) <= REP_UNFRIENDLY)
-                    return NULL;
-
     // not too far
-    if(!unit->IsWithinDistInMap(this,INTERACTION_DISTANCE, unit, this))
+    if (!unit->IsWithinDistInMap(this, INTERACTION_DISTANCE, unit, this))
         return NULL;
 
     return unit;
@@ -6452,7 +6448,7 @@ void Player::CheckAreaExploreAndOutdoor()
     if (!isAlive())
         return;
 
-    if (IsTaxiFlying())
+    if (IsTaxiFlying() || !GetMap())
         return;
 
     bool isOutdoor;
@@ -6575,7 +6571,7 @@ void Player::setFactionForRace(uint8 race)
 ReputationRank Player::GetReputationRank(uint32 faction) const
 {
     FactionEntry const* factionEntry = sFactionStore.LookupEntry(faction);
-    return GetReputationMgr().GetRank(factionEntry, false);
+    return GetReputationMgr().GetRank(factionEntry);
 }
 
 //Calculate total reputation percent player gain with quest/creature level
@@ -6673,12 +6669,12 @@ void Player::RewardReputation(Unit *pVictim, float rate)
         }
     }
 
-    if (Rep->repfaction1 && (!Rep->team_dependent || GetTeam()==ALLIANCE))
+    if (Repfaction1 && (!Rep->team_dependent || GetTeam()==ALLIANCE))
     {
         int32 donerep1 = CalculateReputationGain(REPUTATION_SOURCE_KILL, Rep->repvalue1, Repfaction1, pVictim->getLevel());
         donerep1 = int32(donerep1*rate);
-        FactionEntry const *factionEntry1 = sFactionStore.LookupEntry(Rep->repfaction1);
-        uint32 current_reputation_rank1 = GetReputationMgr().GetRank(factionEntry1, false);
+        FactionEntry const *factionEntry1 = sFactionStore.LookupEntry(Repfaction1);
+        uint32 current_reputation_rank1 = GetReputationMgr().GetRank(factionEntry1);
         if (factionEntry1 && current_reputation_rank1 <= Rep->reputation_max_cap1)
             GetReputationMgr().ModifyReputation(factionEntry1, donerep1);
 
@@ -6691,12 +6687,12 @@ void Player::RewardReputation(Unit *pVictim, float rate)
         }
     }
 
-    if (Rep->repfaction2 && (!Rep->team_dependent || GetTeam()==HORDE))
+    if (Repfaction2 && (!Rep->team_dependent || GetTeam()==HORDE))
     {
         int32 donerep2 = CalculateReputationGain(REPUTATION_SOURCE_KILL, Rep->repvalue2, Repfaction2, pVictim->getLevel());
         donerep2 = int32(donerep2*rate);
-        FactionEntry const *factionEntry2 = sFactionStore.LookupEntry(Rep->repfaction2);
-        uint32 current_reputation_rank2 = GetReputationMgr().GetRank(factionEntry2, false);
+        FactionEntry const *factionEntry2 = sFactionStore.LookupEntry(Repfaction2);
+        uint32 current_reputation_rank2 = GetReputationMgr().GetRank(factionEntry2);
         if (factionEntry2 && current_reputation_rank2 <= Rep->reputation_max_cap2)
             GetReputationMgr().ModifyReputation(factionEntry2, donerep2);
 
@@ -10236,7 +10232,7 @@ bool Player::HasItemOrGemWithIdEquipped( uint32 item, uint32 count, uint8 except
                 continue;
 
             Item *pItem = GetItemByPos( INVENTORY_SLOT_BAG_0, i );
-            if ( pItem && pItem->GetProto()->Socket[0].Color)
+            if (pItem && (pItem->GetProto()->Socket[0].Color || pItem->GetEnchantmentId(PRISMATIC_ENCHANTMENT_SLOT)))
             {
                 tempcount += pItem->GetGemCountWithID(item);
                 if ( tempcount >= count )
@@ -11315,6 +11311,10 @@ InventoryResult Player::CanEquipItem( uint8 slot, uint16 &dest, Item *pItem, boo
             uint8 eslot = FindEquipSlot( pProto, slot, swap );
             if (eslot == NULL_SLOT)
                 return EQUIP_ERR_ITEM_CANT_BE_EQUIPPED;
+
+            // jewelcrafting gem check
+            if (InventoryResult res2 = CanEquipMoreJewelcraftingGems(pItem->GetJewelcraftingGemCount(), swap ? eslot : NULL_SLOT))
+                return res2;
 
             InventoryResult msg = CanUseItem(pItem , direct_action);
             if (msg != EQUIP_ERR_OK)
@@ -17976,6 +17976,7 @@ InstancePlayerBind* Player::GetBoundInstance(uint32 mapid, Difficulty difficulty
     if(!mapDiff)
         return NULL;
 
+    MAPLOCK_READ(this, MAP_LOCK_TYPE_DEFAULT);
     BoundInstancesMap::iterator itr = m_boundInstances[difficulty].find(mapid);
     if (itr != m_boundInstances[difficulty].end())
         return &itr->second;
@@ -17985,6 +17986,7 @@ InstancePlayerBind* Player::GetBoundInstance(uint32 mapid, Difficulty difficulty
 
 void Player::UnbindInstance(uint32 mapid, Difficulty difficulty, bool unload)
 {
+    MAPLOCK_WRITE(this, MAP_LOCK_TYPE_DEFAULT);
     BoundInstancesMap::iterator itr = m_boundInstances[difficulty].find(mapid);
     UnbindInstance(itr, difficulty, unload);
 }
@@ -18005,6 +18007,7 @@ InstancePlayerBind* Player::BindToInstance(DungeonPersistentState *state, bool p
 {
     if (state)
     {
+        MAPLOCK_READ(this, MAP_LOCK_TYPE_DEFAULT);
         InstancePlayerBind& bind = m_boundInstances[state->GetDifficulty()][state->GetMapId()];
         if (bind.state)
         {
@@ -23219,6 +23222,33 @@ InventoryResult Player::CanEquipUniqueItem( ItemPrototype const* itemProto, uint
     return EQUIP_ERR_OK;
 }
 
+InventoryResult Player::CanEquipMoreJewelcraftingGems(uint32 count, uint8 except_slot) const
+{
+    //uint32 tempcount = count;
+    for (int i = EQUIPMENT_SLOT_START; i < EQUIPMENT_SLOT_END; ++i)
+    {
+        if (i == int(except_slot))
+            continue;
+
+        Item *pItem = GetItemByPos(INVENTORY_SLOT_BAG_0, i);
+        if (!pItem)
+            continue;
+
+        ItemPrototype const *pProto = pItem->GetProto();
+        if (!pProto)
+            continue;
+
+        if (pProto->Socket[0].Color || pItem->GetEnchantmentId(PRISMATIC_ENCHANTMENT_SLOT))
+        {
+            count += pItem->GetJewelcraftingGemCount();
+            if (count > MAX_JEWELCRAFTING_GEMS)
+                return EQUIP_ERR_ITEM_MAX_COUNT_EQUIPPED_SOCKETED;
+        }
+    }
+
+    return EQUIP_ERR_OK;
+}
+
 void Player::HandleFall(MovementInfo const& movementInfo)
 {
     // calculate total z distance of the fall
@@ -24313,6 +24343,11 @@ void Player::SendDuelCountdown(uint32 counter)
     GetSession()->SendPacket(&data);
 }
 
+bool Player::IsImmuneToSpell(SpellEntry const* spellInfo) const
+{
+    return Unit::IsImmuneToSpell(spellInfo);
+}
+
 bool Player::IsImmuneToSpellEffect(SpellEntry const* spellInfo, SpellEffectIndex index) const
 {
     switch(spellInfo->Effect[index])
@@ -24735,7 +24770,10 @@ bool Player::CheckTransferPossibility(uint32 mapId)
 
     MapEntry const* targetMapEntry = sMapStore.LookupEntry(mapId);
     if (!targetMapEntry)
+    {
+        sLog.outError("Player::CheckTransferPossibility: player %s try teleport to map %u, but map not exists!", GetObjectGuid().GetString().c_str(), mapId);
         return false;
+    }
 
     // Battleground requirements checked in another place
     if(InBattleGround() && targetMapEntry->IsBattleGroundOrArena())
@@ -24744,14 +24782,22 @@ bool Player::CheckTransferPossibility(uint32 mapId)
     AreaTrigger const* at = sObjectMgr.GetMapEntranceTrigger(mapId);
     if (!at)
     {
-        if (targetMapEntry->IsContinent())
+        if (isGameMaster())
         {
-            if (isGameMaster())
-                return true;
-            if (GetSession()->Expansion() < targetMapEntry->Expansion())
-                return false;
+            sLog.outDetail("Player::CheckTransferPossibility: gamemaster %s try teleport to map %u, but entrance trigger not exists (possible for some test maps).", GetObjectGuid().GetString().c_str(), mapId);
             return true;
         }
+
+        if (targetMapEntry->IsContinent())
+        {
+            if (GetSession()->Expansion() < targetMapEntry->Expansion())
+            {
+                sLog.outError("Player::CheckTransferPossibility: player %s try teleport to map %u, but not has sufficient expansion (%u instead of %u)", GetObjectGuid().GetString().c_str(), mapId, GetSession()->Expansion(), targetMapEntry->Expansion());
+                return false;
+            }
+            return true;
+        }
+        sLog.outError("Player::CheckTransferPossibility: player %s try teleport to map %u, but entrance trigger not exists!", GetObjectGuid().GetString().c_str(), mapId);
         return false;
     }
 
